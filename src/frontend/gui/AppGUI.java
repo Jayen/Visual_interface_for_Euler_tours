@@ -1,14 +1,20 @@
 package frontend.gui;
 
+import backend.fileparser.GraphParser;
+import backend.fileparser.IncorrectFileFormatException;
+import backend.internalgraph.Graph;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 /**
  *@author Jayen kumar Jaentilal k1189304
  */
+
 public class AppGUI extends JFrame {
 
     public AppGUI() {
@@ -29,6 +35,7 @@ public class AppGUI extends JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(400,400);
         this.setupMenuBar();
+        this.setupMainGUI();
     }
 
     private void setupMenuBar() {
@@ -47,7 +54,13 @@ public class AppGUI extends JFrame {
                 int returnVal = fileChooser.showOpenDialog(AppGUI.this);
                 File file = fileChooser.getSelectedFile();
                 if(file!=null && returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +fileChooser.getSelectedFile().getName());
+                    try {
+                        Graph graph = GraphParser.createGraphFromFile(file);
+                    } catch (IncorrectFileFormatException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                 }
             }
         });
@@ -71,5 +84,10 @@ public class AppGUI extends JFrame {
         menuBar.add(fileMenu);
         menuBar.add(helpMenu);
         this.setJMenuBar(menuBar);
+    }
+
+
+    private void setupMainGUI() {
+
     }
 }
