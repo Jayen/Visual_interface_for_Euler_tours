@@ -8,7 +8,6 @@ import java.io.*;
  * This class creates a internal
  * representation of the graph
  * from file.
- * This class makes use of the Singleton pattern
  * @author Jayen kumar Jaentilal k1189304
  */
 

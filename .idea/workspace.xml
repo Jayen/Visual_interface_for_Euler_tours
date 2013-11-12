@@ -5,10 +5,10 @@
     <ignored path="FinaYearProject.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Main.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1382628575676" ignored="false" />
-    <file path="/Node.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384179415162" ignored="false" />
+    <file path="/Node.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384275160023" ignored="false" />
     <file path="/Edge.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384099759973" ignored="false" />
-    <file path="/Graph.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384182629421" ignored="false" />
-    <file path="/GraphParser.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384185972645" ignored="false" />
+    <file path="/Graph.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384277893225" ignored="false" />
+    <file path="/GraphParser.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384275097063" ignored="false" />
     <file path="/AppGUI.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384186385910" ignored="false" />
     <file path="/fragment.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384177127438" ignored="false" />
     <file path="/IncorrectFileFormatException.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1384183245541" ignored="false" />
@@ -74,16 +74,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AppGUI.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AppGUI.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="8" selection-start="2853" selection-end="2853" vertical-scroll-proportion="0.8538961">
-              <folding>
-                <element signature="e#1386#2285#0" expanded="true" />
-                <element signature="e#2274#2275#0" expanded="true" />
-                <element signature="e#2320#2484#0" expanded="true" />
-                <element signature="e#2473#2474#0" expanded="true" />
-              </folding>
+            <state line="59" column="88" selection-start="2128" selection-end="2128" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,18 +86,16 @@
       <file leaf-file-name="GraphParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="9" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="41" column="116" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Graph.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Graph.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="40" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
+            <state line="84" column="39" selection-start="2000" selection-end="2000" vertical-scroll-proportion="0.8863636">
               <folding />
             </state>
           </provider>
@@ -111,10 +104,8 @@
       <file leaf-file-name="Node.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="16" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#261#267#0" expanded="true" />
-              </folding>
+            <state line="37" column="27" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,11 +122,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Edge.java" />
+        <option value="$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
+        <option value="$PROJECT_DIR$/src/backend/fileparser/GraphParser.java" />
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Node.java" />
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Graph.java" />
-        <option value="$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java" />
-        <option value="$PROJECT_DIR$/src/backend/fileparser/GraphParser.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
       </list>
     </option>
   </component>
@@ -321,6 +312,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -417,12 +409,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="copyright.filetypes.JAVA" />
@@ -599,7 +591,6 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947367" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903865" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -609,6 +600,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947367" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -678,24 +670,24 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="16" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1386#2285#0" expanded="true" />
-            <element signature="e#2274#2275#0" expanded="true" />
-            <element signature="e#2320#2484#0" expanded="true" />
-            <element signature="e#2473#2474#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="16" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#261#267#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -736,66 +728,51 @@
     </entry>
     <entry file="jar:///usr/lib/jvm/oracle-jdk-bin-1.7/jre/lib/rt.jar!/java/io/BufferedReader.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="620" selection-end="620" vertical-scroll-proportion="0.30844155">
-          <folding />
-        </state>
+        <state line="20" column="16" selection-start="620" selection-end="620" vertical-scroll-proportion="0.30844155" />
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/oracle-jdk-bin-1.7/jre/lib/rt.jar!/java/util/ArrayList.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="22" selection-start="827" selection-end="827" vertical-scroll-proportion="0.31284302">
-          <folding />
-        </state>
+        <state line="20" column="22" selection-start="827" selection-end="827" vertical-scroll-proportion="0.31284302" />
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/oracle-jdk-bin-1.7/jre/lib/rt.jar!/java/lang/String.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="28" selection-start="5221" selection-end="5221" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
+        <state line="143" column="28" selection-start="5221" selection-end="5221" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="118" selection-end="118" vertical-scroll-proportion="0.08116883">
+        <state line="19" column="52" selection-start="387" selection-end="387" vertical-scroll-proportion="0.30844155">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="16" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#261#267#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="40" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
+        <state line="37" column="27" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="9" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="41" column="116" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="8" selection-start="2853" selection-end="2853" vertical-scroll-proportion="0.8538961">
-          <folding>
-            <element signature="e#1386#2285#0" expanded="true" />
-            <element signature="e#2274#2275#0" expanded="true" />
-            <element signature="e#2320#2484#0" expanded="true" />
-            <element signature="e#2473#2474#0" expanded="true" />
-          </folding>
+        <state line="59" column="88" selection-start="2128" selection-end="2128" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="39" selection-start="2000" selection-end="2000" vertical-scroll-proportion="0.8863636">
+          <folding />
         </state>
       </provider>
     </entry>

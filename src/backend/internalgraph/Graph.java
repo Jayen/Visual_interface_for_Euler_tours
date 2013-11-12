@@ -65,4 +65,23 @@ public class Graph {
         node1.connectNode(node2);
         node2.connectNode(node1);
     }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        Node node;
+        ArrayList<Node> connectedNode;
+
+        for(int i=0; i<this.getNumberOfNodes(); i++) {
+            node = this.getNode(i);
+            stringBuffer.append(node.toString()+ " connectedNodes: ");
+            connectedNode = node.getConnectedNodes();
+
+            for(int j=0; j<connectedNode.size(); i++) {
+                stringBuffer.append(connectedNode.get(j).toString()+" ");
+            }
+            stringBuffer.append("\n");
+        }
+        return stringBuffer.toString();
+    }
 }

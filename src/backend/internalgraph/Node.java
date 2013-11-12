@@ -35,4 +35,9 @@ public class Node {
     public ArrayList<Node> getConnectedNodes() {
         return  connectedNodes;
     }
+
+    @Override
+    public String toString() {
+        return this.getNodeName();
+    }
 }
