@@ -20,7 +20,7 @@ public class GraphParser {
      * Method throws IncorrectFileFormatException if the
      * files content does not follow the required format,
      * Also throws IOException if the file path is invalid
-     * @param graphTextFile
+     * @param graphTextFile -graph file in .txt
      * @return Graph -graph created from file
      * @throws IncorrectFileFormatException
      * @throws IOException
@@ -57,15 +57,15 @@ public class GraphParser {
     /**
      * Method to connect nodes
      * based on the input
-     * @param connectedNodeString
+     * @param connectNodeString -String describing the connection
      */
-    private static void connectNodes(String connectedNodeString) {
+    private static void connectNodes(String connectNodeString) {
         String node1Name;
         String node2Name;
 
-        int connectSymbolIndex = connectedNodeString.indexOf("-");
-        node1Name = connectedNodeString.substring(0,connectSymbolIndex);
-        node2Name = connectedNodeString.substring(connectSymbolIndex-1,connectedNodeString.length());
-        graph.connectNodes(graph.getNode(node1Name),graph.getNode(node2Name));
+        int connectSymbolIndex = connectNodeString.indexOf("-");
+        node1Name = connectNodeString.substring(0,connectSymbolIndex);
+        node2Name = connectNodeString.substring(connectSymbolIndex-1,connectNodeString.length());
+        graph.addEdge(graph.getNode(node1Name), graph.getNode(node2Name));
     }
 }

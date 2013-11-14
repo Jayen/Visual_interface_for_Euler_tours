@@ -41,7 +41,7 @@ public class Graph {
      */
     public Node getNode(String nodeName) {
         for(int i=0; i<this.getNumberOfNodes(); i++) {
-            if(this.getNode(i).equals(nodeName)) {
+            if(this.getNode(i).getNodeName().equals(nodeName)) {
                 return nodes.get(i);
             }
         }
@@ -57,11 +57,11 @@ public class Graph {
     }
 
     /**
-     * Connect 2 nodes in the graph
+     * Connect 2 nodes in the graph with an edge
      * @param node1
      * @param node2
      */
-    public void connectNodes(Node node1, Node node2) {
+    public void addEdge(Node node1, Node node2) {
         node1.connectNode(node2);
         node2.connectNode(node1);
     }
@@ -74,11 +74,11 @@ public class Graph {
 
         for(int i=0; i<this.getNumberOfNodes(); i++) {
             node = this.getNode(i);
-            stringBuffer.append(node.toString()+ " connectedNodes: ");
+            stringBuffer.append(node.toString()).append(" connectedNodes: ");
             connectedNode = node.getConnectedNodes();
 
             for(int j=0; j<connectedNode.size(); i++) {
-                stringBuffer.append(connectedNode.get(j).toString()+" ");
+                stringBuffer.append(connectedNode.get(j).toString()).append(" ");
             }
             stringBuffer.append("\n");
         }
