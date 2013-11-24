@@ -2,7 +2,11 @@ package backend.fileparser;
 
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * This class creates a internal

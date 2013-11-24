@@ -7,6 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="weblaf-1.25 library" level="project" />
+    <orderEntry type="library" name="jung2-2_0_1" level="project" />
   </component>
 </module>
 
