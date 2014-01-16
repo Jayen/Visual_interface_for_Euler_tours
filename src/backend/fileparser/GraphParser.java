@@ -10,8 +10,7 @@ import java.io.IOException;
 
 /**
  * This class creates a internal
- * representation of the graph
- * from file.
+ * representation of the graph from file.
  * @author Jayen kumar Jaentilal k1189304
  */
 

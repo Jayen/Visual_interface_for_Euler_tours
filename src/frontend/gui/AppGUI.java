@@ -6,15 +6,21 @@ import backend.internalgraph.Graph;
 import com.alee.laf.WebLookAndFeel;
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.algorithms.layout.StaticLayout;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
+import org.apache.commons.collections15.Transformer;
+import org.apache.commons.collections15.TransformerUtils;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Main class for GUI,
@@ -105,15 +111,32 @@ public class AppGUI extends JFrame {
 
         this.add(inputPanel, BorderLayout.LINE_END);
 
-        SimpleGraphView sgv = new SimpleGraphView(); //We create our graph in here
-        // The Layout<V, E> is parameterized by the vertex and edge types
-        Layout<Integer, String> layout = new CircleLayout(sgv.getGraph());
-        layout.setSize(new Dimension(300, 300)); // sets the initial size of the space
-        // The BasicVisualizationServer<V,E> is parameterized by the edge types
-        BasicVisualizationServer<Integer,String> vv =
-                new BasicVisualizationServer<Integer,String>(layout);
-        vv.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
-        this.add(vv);
+        GraphView mainGraphView = new GraphView(); //we create our graph in here
+
+        Map<String,Point2D> vertexLocationsMap = mainGraphView.getGraph().getVertexLocations();
+        Transformer<String, Point2D> vertexLocations =TransformerUtils.mapTransformer(vertexLocationsMap);
+
+//        Layout<String,String> graphLayout = new CircleLayout<String,String>(mainGraphView.getGraph());
+        Layout<String,String> graphLayout = new StaticLayout<String, String>(mainGraphView.getGraph(),vertexLocations,new Dimension(300,300));
+        BasicVisualizationServer<String,String> visualizationServer = new BasicVisualizationServer<String, String>(graphLayout);
+        visualizationServer.setPreferredSize(new Dimension(350,350));
+        this.add(visualizationServer);
+
+
+
+
+
+//        SimpleGraphView sgv = new SimpleGraphView(); //We create our graph in here
+//
+//        // The Layout<V, E> is parameterized by the vertex and edge types
+//        Layout<Integer, String> layout = new CircleLayout<Integer, String>(sgv.getGraph());
+//        layout.setSize(new Dimension(300, 300)); // sets the initial size of the space
+//
+//        // The BasicVisualizationServer<V,E> is parameterized by the edge types
+//        BasicVisualizationServer<Integer,String> visualisation =
+//                new BasicVisualizationServer<Integer,String>(layout);
+//        visualisation.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
+//        this.add(visualisation);
     }
 
     /**
