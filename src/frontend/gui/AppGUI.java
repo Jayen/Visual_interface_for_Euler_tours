@@ -19,7 +19,6 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -114,17 +113,12 @@ public class AppGUI extends JFrame {
         GraphView mainGraphView = new GraphView(); //we create our graph in here
 
         Map<String,Point2D> vertexLocationsMap = mainGraphView.getGraph().getVertexLocations();
-        Transformer<String, Point2D> vertexLocations =TransformerUtils.mapTransformer(vertexLocationsMap);
+        Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
 
-//        Layout<String,String> graphLayout = new CircleLayout<String,String>(mainGraphView.getGraph());
         Layout<String,String> graphLayout = new StaticLayout<String, String>(mainGraphView.getGraph(),vertexLocations,new Dimension(300,300));
         BasicVisualizationServer<String,String> visualizationServer = new BasicVisualizationServer<String, String>(graphLayout);
         visualizationServer.setPreferredSize(new Dimension(350,350));
         this.add(visualizationServer);
-
-
-
-
 
 //        SimpleGraphView sgv = new SimpleGraphView(); //We create our graph in here
 //
