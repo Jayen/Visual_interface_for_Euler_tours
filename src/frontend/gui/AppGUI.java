@@ -8,6 +8,9 @@ import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.*;
+import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
@@ -16,6 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
@@ -116,8 +120,14 @@ public class AppGUI extends JFrame {
         Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
 
         Layout<String,String> graphLayout = new StaticLayout<String, String>(mainGraphView.getGraph(),vertexLocations,new Dimension(300,300));
-        BasicVisualizationServer<String,String> visualizationServer = new BasicVisualizationServer<String, String>(graphLayout);
+        VisualizationViewer<String,String> visualizationServer = new VisualizationViewer<String, String>(graphLayout);
         visualizationServer.setPreferredSize(new Dimension(350,350));
+        visualizationServer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+//        visualizationServer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+        PluggableGraphMouse graphMouse = new PluggableGraphMouse();
+        graphMouse.add(new TranslatingGraphMousePlugin(MouseEvent.BUTTON1_MASK));
+        graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
+        visualizationServer.setGraphMouse(graphMouse);
         this.add(visualizationServer);
 
 //        SimpleGraphView sgv = new SimpleGraphView(); //We create our graph in here

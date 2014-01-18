@@ -31,28 +31,28 @@ public class GraphParser {
     public static Graph createGraphFromFile(File graphTextFile) throws IncorrectFileFormatException, IOException {
 
         graph = new Graph();
-        BufferedReader br = new BufferedReader(new FileReader(graphTextFile));
-        String line = br.readLine();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(graphTextFile));
+        String line = bufferedReader.readLine();
 
         if(line.equals("#nodes")) {
-            line = br.readLine();
+            line = bufferedReader.readLine();
         }
         else {
             throw new IncorrectFileFormatException();
         }
         while(!line.contains("#")) {
             graph.addNode(new Node(line));
-            line = br.readLine();
+            line = bufferedReader.readLine();
         }
         if(line.equals("#edges")) {
-            line = br.readLine();
+            line = bufferedReader.readLine();
         }
         else {
             throw new IncorrectFileFormatException();
         }
         while(line!=null) {
             connectNodes(line);
-            line = br.readLine();
+            line = bufferedReader.readLine();
         }
         return graph;
     }
