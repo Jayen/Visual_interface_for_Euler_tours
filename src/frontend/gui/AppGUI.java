@@ -200,7 +200,7 @@ public class AppGUI extends JFrame {
 //        visualizationServer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<String>());
 //        visualizationServer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
 
-        visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<String, String>());
+        visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.QuadCurve<String, String>());
         AbstractEdgeShapeTransformer<String,String> edgeShapeTransformer =
                 (AbstractEdgeShapeTransformer<String,String>) visualizationServer.getRenderContext().getEdgeShapeTransformer();
         edgeShapeTransformer.setControlOffsetIncrement(35);
