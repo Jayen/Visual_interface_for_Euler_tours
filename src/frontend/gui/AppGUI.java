@@ -2,15 +2,19 @@ package frontend.gui;
 
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
-import backend.internalgraph.Graph;
+import backend.internalgraph.LocationFixedSparseGraph;
+import backend.internalgraph.VertexLabeller;
 import com.alee.laf.WebLookAndFeel;
-import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
-import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
-import edu.uci.ics.jung.visualization.control.*;
-import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.jung.visualization.control.CrossoverScalingControl;
+import edu.uci.ics.jung.visualization.control.PluggableGraphMouse;
+import edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin;
+import edu.uci.ics.jung.visualization.control.TranslatingGraphMousePlugin;
+import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
+import edu.uci.ics.jung.visualization.decorators.EdgeShape;
+import edu.uci.ics.jung.visualization.renderers.DefaultVertexLabelRenderer;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
@@ -33,6 +37,11 @@ import java.util.Map;
 
 public class AppGUI extends JFrame {
 
+    private LocationFixedSparseGraph<String,String> graph;
+    private VisualizationViewer<String,String> visualizationServer;
+    private Layout<String,String> graphLayout;
+    private PluggableGraphMouse graphMouse;
+
     public AppGUI() {
 
         super("Euler Tours Visual Interface");
@@ -47,8 +56,8 @@ public class AppGUI extends JFrame {
 //            }
         }
         catch (Exception e) { }
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setSize(400,400);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(700,700);
         this.setupMenuBar();
         this.setupMainGUI();
     }
@@ -71,7 +80,8 @@ public class AppGUI extends JFrame {
                 File file = fileChooser.getSelectedFile();
                 if(file!=null && returnVal == JFileChooser.APPROVE_OPTION) {
                     try {
-                        Graph graph = GraphParser.createGraphFromFile(file);
+                        graph = GraphParser.createGraphFromFile(file);
+                        createGraphView(graph);
                     } catch (IncorrectFileFormatException e1) {
                         e1.printStackTrace();
                     } catch (IOException e1) {
@@ -113,34 +123,6 @@ public class AppGUI extends JFrame {
         inputPanel.add(tabbedPane);
 
         this.add(inputPanel, BorderLayout.LINE_END);
-
-        GraphView mainGraphView = new GraphView(); //we create our graph in here
-
-        Map<String,Point2D> vertexLocationsMap = mainGraphView.getGraph().getVertexLocations();
-        Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
-
-        Layout<String,String> graphLayout = new StaticLayout<String, String>(mainGraphView.getGraph(),vertexLocations,new Dimension(300,300));
-        VisualizationViewer<String,String> visualizationServer = new VisualizationViewer<String, String>(graphLayout);
-        visualizationServer.setPreferredSize(new Dimension(350,350));
-        visualizationServer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
-//        visualizationServer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
-        PluggableGraphMouse graphMouse = new PluggableGraphMouse();
-        graphMouse.add(new TranslatingGraphMousePlugin(MouseEvent.BUTTON1_MASK));
-        graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
-        visualizationServer.setGraphMouse(graphMouse);
-        this.add(visualizationServer);
-
-//        SimpleGraphView sgv = new SimpleGraphView(); //We create our graph in here
-//
-//        // The Layout<V, E> is parameterized by the vertex and edge types
-//        Layout<Integer, String> layout = new CircleLayout<Integer, String>(sgv.getGraph());
-//        layout.setSize(new Dimension(300, 300)); // sets the initial size of the space
-//
-//        // The BasicVisualizationServer<V,E> is parameterized by the edge types
-//        BasicVisualizationServer<Integer,String> visualisation =
-//                new BasicVisualizationServer<Integer,String>(layout);
-//        visualisation.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
-//        this.add(visualisation);
     }
 
     /**
@@ -194,6 +176,44 @@ public class AppGUI extends JFrame {
         panel.add(runJB,constraints);
 
         return panel;
+    }
+
+    private void createGraphView(LocationFixedSparseGraph<String,String> graph) {
+        Map<String,Point2D> vertexLocationsMap = graph.getVertexLocations();
+        Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
+
+        if(graphLayout==null) {
+            graphLayout = new StaticLayout<String, String>(graph,vertexLocations);
+        }
+        else {
+            graphLayout.setGraph(graph);
+            graphLayout.setInitializer(vertexLocations);
+        }
+        if(visualizationServer==null) {
+            visualizationServer = new VisualizationViewer<String, String>(graphLayout);
+        }
+        else {
+            visualizationServer.setGraphLayout(graphLayout);
+        }
+
+        visualizationServer.getRenderContext().setVertexLabelTransformer(new VertexLabeller<String>(graph));
+//        visualizationServer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<String>());
+//        visualizationServer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+
+        visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<String, String>());
+        AbstractEdgeShapeTransformer<String,String> edgeShapeTransformer =
+                (AbstractEdgeShapeTransformer<String,String>) visualizationServer.getRenderContext().getEdgeShapeTransformer();
+        edgeShapeTransformer.setControlOffsetIncrement(35);
+
+        if(graphMouse==null) {
+            graphMouse = new PluggableGraphMouse();
+            graphMouse.add(new TranslatingGraphMousePlugin(MouseEvent.BUTTON1_MASK));
+            graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
+            visualizationServer.setGraphMouse(graphMouse);
+        }
+        this.add(visualizationServer);
+        this.revalidate();
+        this.repaint();
     }
 
     /**
