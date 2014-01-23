@@ -1,10 +1,8 @@
 package backend.fileparser;
 
-import backend.internalgraph.Graph;
 import backend.internalgraph.LocationFixedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 import edu.uci.ics.jung.graph.util.Pair;
-
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.BufferedReader;
@@ -22,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class GraphParser {
 
-    private static Graph graph;
+    private static LocationFixedSparseGraph<String,String> graph;
 
     /**
      * Method to generate a graph from a text file.
@@ -36,7 +34,7 @@ public class GraphParser {
      */
     public static LocationFixedSparseGraph<String,String> createGraphFromFile(File graphTextFile) throws IncorrectFileFormatException, IOException {
 
-        LocationFixedSparseGraph<String,String> graph = new LocationFixedSparseGraph<String, String>();
+        graph = new LocationFixedSparseGraph<String, String>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(graphTextFile));
         String line = bufferedReader.readLine();
 

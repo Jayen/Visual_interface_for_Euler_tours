@@ -1,6 +1,6 @@
 package backend.internalgraph;
 
-import java.util.ArrayList;
+import java.awt.geom.Point2D;
 
 /**
  * Node represents a vertex of the graph
@@ -10,34 +10,27 @@ import java.util.ArrayList;
 public class Node {
 
     private String nodeName;
-    private ArrayList<Node> connectedNodes = new ArrayList<Node>();
+    private Point2D location;
 
-    public Node(String nodeName) {
+    public Node(String nodeName,Point2D location) {
         this.nodeName = nodeName;
-    }
-
-    /**
-     * Connect a node to this node
-     * @param node
-     */
-    public void connectNode(Node node) {
-        this.connectedNodes.add(node);
+        this.location = location;
     }
 
     public String getNodeName() {
         return nodeName;
     }
 
-    /**
-     * Get all the nodes connected to this node
-     * @return ArrayList<Node> -list of connected nodes
-     */
-    public ArrayList<Node> getConnectedNodes() {
-        return  connectedNodes;
-    }
-
     @Override
     public String toString() {
         return this.getNodeName();
+    }
+
+    public Point2D getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point2D location) {
+        this.location = location;
     }
 }
