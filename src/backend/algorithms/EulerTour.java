@@ -1,6 +1,7 @@
 package backend.algorithms;
 
 import backend.internalgraph.LocationFixedSparseGraph;
+
 import java.util.Collection;
 import java.util.Iterator;
 

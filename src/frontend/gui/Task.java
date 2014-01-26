@@ -1,7 +1,5 @@
 package frontend.gui;
 
-import edu.uci.ics.jung.graph.Graph;
-
 /**
  * User: Jayen
  * Date: 25/01/14, Time: 16:17

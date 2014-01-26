@@ -1,7 +1,5 @@
 package frontend.gui;
 
-import backend.fileparser.GraphParser;
-import backend.fileparser.IncorrectFileFormatException;
 import backend.internalgraph.LocationFixedSparseGraph;
 import backend.internalgraph.VertexLabeller;
 import com.alee.laf.WebLookAndFeel;
@@ -14,19 +12,15 @@ import edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin;
 import edu.uci.ics.jung.visualization.control.TranslatingGraphMousePlugin;
 import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
-import edu.uci.ics.jung.visualization.renderers.DefaultVertexLabelRenderer;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
-import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -66,26 +60,7 @@ public class AppGUI extends JFrame {
         JMenuItem save = new JMenuItem("Save");
         JMenuItem exit = new JMenuItem("Exit");
 
-        open.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES","txt","text");
-                fileChooser.setFileFilter(filter);
-                int returnVal = fileChooser.showOpenDialog(AppGUI.this);
-                File file = fileChooser.getSelectedFile();
-                if(file!=null && returnVal == JFileChooser.APPROVE_OPTION) {
-                    try {
-                        graph = GraphParser.createGraphFromFile(file);
-                        createGraphView(graph);
-                    } catch (IncorrectFileFormatException e1) {
-                        e1.printStackTrace();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                }
-            }
-        });
+        open.addActionListener(new OpenFileActionListener());
 
         exit.addActionListener(new ActionListener() {
             @Override

@@ -69,23 +69,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AppGUI.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AppGUI.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="76" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.1918736" vertical-offset="340" max-vertical-offset="3417">
-              <folding>
-                <element signature="e#2485#3426#0" expanded="true" />
-                <element signature="e#3415#3416#0" expanded="true" />
-                <element signature="e#6060#6068#0" expanded="true" />
-              </folding>
+            <state line="27" column="38" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3536">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunButtonListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+      <file leaf-file-name="OpenFileActionListener.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="68" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="1258">
+            <state line="29" column="31" selection-start="582" selection-end="582" vertical-scroll-proportion="0.83417934" vertical-offset="0" max-vertical-offset="833">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,21 +89,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectivityChecker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
+      <file leaf-file-name="Observable.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="867">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="13" column="45" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EulerTour.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTour.java">
+      <file leaf-file-name="Observer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="56" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="731">
+            <state line="3" column="41" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -143,6 +137,10 @@
         <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTour.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/Observer.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/openFileActionListener.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/Observable.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java" />
       </list>
     </option>
   </component>
@@ -333,7 +331,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -453,6 +450,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -533,6 +531,19 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -558,19 +569,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -706,19 +704,19 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31219512" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.7497169" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23942599" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23739837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23867069" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23667711" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31219512" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -745,12 +743,45 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="53" selection-start="5537" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3927">
+        <state line="27" column="38" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3536">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="8" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="833">
           <folding>
-            <element signature="e#2485#3426#0" expanded="true" />
-            <element signature="e#3415#3416#0" expanded="true" />
-            <element signature="e#6060#6068#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="60" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="45" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="41" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="150" column="53" selection-start="5537" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3927">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -764,9 +795,7 @@
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="20" selection-start="1914" selection-end="1914" vertical-scroll-proportion="0.0" vertical-offset="577" max-vertical-offset="1088">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -856,18 +885,9 @@
         <state line="126" column="17" selection-start="5453" selection-end="5453" vertical-scroll-proportion="0.41962776" vertical-offset="1503" max-vertical-offset="7463" />
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="17" selection-start="5224" selection-end="5224" vertical-scroll-proportion="0.33333334" vertical-offset="1384" max-vertical-offset="7837">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/javax/swing/ButtonGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="23" selection-start="3820" selection-end="3820" vertical-scroll-proportion="0.33182845" vertical-offset="1876" max-vertical-offset="2890">
-          <folding />
-        </state>
+        <state line="145" column="23" selection-start="3820" selection-end="3820" vertical-scroll-proportion="0.33182845" vertical-offset="1876" max-vertical-offset="2890" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
@@ -891,23 +911,17 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="0" selection-start="8120" selection-end="8120" vertical-scroll-proportion="0.33182845" vertical-offset="3576" max-vertical-offset="4947">
-          <folding />
-        </state>
+        <state line="251" column="0" selection-start="8120" selection-end="8120" vertical-scroll-proportion="0.33182845" vertical-offset="3576" max-vertical-offset="4947" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="68" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="1258">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="116" column="17" selection-start="5224" selection-end="5224" vertical-scroll-proportion="0.33175355" vertical-offset="1441" max-vertical-offset="7837" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="867">
+        <state line="15" column="13" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="918">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -916,18 +930,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="56" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="731">
+        <state line="32" column="55" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="731">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="76" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.1918736" vertical-offset="340" max-vertical-offset="3417">
+        <state line="27" column="38" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3094">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/util/Observable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="23" selection-start="6935" selection-end="6947" vertical-scroll-proportion="0.27088037" vertical-offset="2889" max-vertical-offset="3332" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="41" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="45" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="47" selection-start="360" selection-end="360" vertical-scroll-proportion="0.28764805" vertical-offset="0" max-vertical-offset="1173">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="31" selection-start="582" selection-end="582" vertical-scroll-proportion="0.83417934" vertical-offset="0" max-vertical-offset="833">
           <folding>
-            <element signature="e#2485#3426#0" expanded="true" />
-            <element signature="e#3415#3416#0" expanded="true" />
-            <element signature="e#6060#6068#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
