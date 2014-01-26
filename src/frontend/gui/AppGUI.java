@@ -41,22 +41,18 @@ public class AppGUI extends JFrame {
     private VisualizationViewer<String,String> visualizationServer;
     private Layout<String,String> graphLayout;
     private PluggableGraphMouse graphMouse;
+    private JButton runJB;
 
     public AppGUI() {
 
         super("Euler Tours Visual Interface");
         try {
             UIManager.setLookAndFeel(new WebLookAndFeel());
-//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
         }
-        catch (Exception e) { }
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        catch (Exception e) {
+            //some problem occurred with setting the WebLookAndFeel defaults to native look
+        }
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(700,700);
         this.setupMenuBar();
         this.setupMainGUI();
@@ -142,9 +138,12 @@ public class AppGUI extends JFrame {
         JLabel taskLabel = new JLabel("Select Task:");
         panel.add(taskLabel,constraints);
 
-        JRadioButton eulerTourCheckRB = new JRadioButton("Check if Euler Tour Exists");
-        JRadioButton euleriseGraphRB = new JRadioButton("Eulerise the graph");
-        JRadioButton findEulerTourRB = new JRadioButton("Find Euler Tour ");
+        JRadioButton eulerTourCheckRB = new JRadioButton(Task.EulerTourCheck.getName());
+        JRadioButton euleriseGraphRB = new JRadioButton(Task.EuleriseGraph.getName());
+        JRadioButton findEulerTourRB = new JRadioButton(Task.FindEulerTour.getName());
+        eulerTourCheckRB.setActionCommand(Task.EulerTourCheck.getName());
+        euleriseGraphRB.setActionCommand(Task.EuleriseGraph.getName());
+        findEulerTourRB.setActionCommand(Task.FindEulerTour.getName());
 
         ButtonGroup taskGroup = new ButtonGroup();
         taskGroup.add(eulerTourCheckRB);
@@ -163,14 +162,16 @@ public class AppGUI extends JFrame {
         JPanel algorithmPanel = new JPanel();
         JLabel algorithmLabel = new JLabel("Algorithm: ");
         JComboBox<String> algorithmJCB = new JComboBox<String>();
-        algorithmJCB.addItem("Fleury's Algorithm");
-        algorithmJCB.addItem("Huffman code: Tree Algorithm");
+        algorithmJCB.addItem(Task.FleuryAlgorithm.getName());
+        algorithmJCB.addItem(Task.HuffmanCodeTreeAlgorithm.getName());
+
         algorithmPanel.add(algorithmLabel);
         algorithmPanel.add(algorithmJCB);
         constraints.gridy = 5;
         panel.add(algorithmPanel,constraints);
 
-        JButton runJB = new JButton("Run Task");
+        runJB = new JButton("Run Task");
+        runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB));
         constraints.gridy = 6;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(runJB,constraints);
@@ -179,6 +180,7 @@ public class AppGUI extends JFrame {
     }
 
     private void createGraphView(LocationFixedSparseGraph<String,String> graph) {
+        runJB.putClientProperty("graph",graph);
         Map<String,Point2D> vertexLocationsMap = graph.getVertexLocations();
         Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
 
