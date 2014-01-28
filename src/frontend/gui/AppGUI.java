@@ -14,7 +14,6 @@ import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,10 +30,6 @@ import java.util.Map;
 
 public class AppGUI extends JFrame {
 
-    private LocationFixedSparseGraph<String,String> graph;
-    private VisualizationViewer<String,String> visualizationServer;
-    private Layout<String,String> graphLayout;
-    private PluggableGraphMouse graphMouse;
     private JButton runJB;
 
     public AppGUI() {
@@ -50,6 +45,7 @@ public class AppGUI extends JFrame {
         this.setSize(700,700);
         this.setupMenuBar();
         this.setupMainGUI();
+        GraphVisualiser graphVisualiser = new GraphVisualiser(this);
     }
 
 
@@ -60,7 +56,7 @@ public class AppGUI extends JFrame {
         JMenuItem save = new JMenuItem("Save");
         JMenuItem exit = new JMenuItem("Exit");
 
-        open.addActionListener(new OpenFileActionListener());
+        open.addActionListener(new OpenFileActionListener(this));
 
         exit.addActionListener(new ActionListener() {
             @Override
@@ -94,6 +90,7 @@ public class AppGUI extends JFrame {
         inputPanel.add(tabbedPane);
 
         this.add(inputPanel, BorderLayout.LINE_END);
+
     }
 
     /**
@@ -152,45 +149,6 @@ public class AppGUI extends JFrame {
         panel.add(runJB,constraints);
 
         return panel;
-    }
-
-    private void createGraphView(LocationFixedSparseGraph<String,String> graph) {
-        runJB.putClientProperty("graph",graph);
-        Map<String,Point2D> vertexLocationsMap = graph.getVertexLocations();
-        Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
-
-        if(graphLayout==null) {
-            graphLayout = new StaticLayout<String, String>(graph,vertexLocations);
-        }
-        else {
-            graphLayout.setGraph(graph);
-            graphLayout.setInitializer(vertexLocations);
-        }
-        if(visualizationServer==null) {
-            visualizationServer = new VisualizationViewer<String, String>(graphLayout);
-        }
-        else {
-            visualizationServer.setGraphLayout(graphLayout);
-        }
-
-        visualizationServer.getRenderContext().setVertexLabelTransformer(new VertexLabeller<String>(graph));
-//        visualizationServer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<String>());
-//        visualizationServer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
-
-        visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.QuadCurve<String, String>());
-        AbstractEdgeShapeTransformer<String,String> edgeShapeTransformer =
-                (AbstractEdgeShapeTransformer<String,String>) visualizationServer.getRenderContext().getEdgeShapeTransformer();
-        edgeShapeTransformer.setControlOffsetIncrement(35);
-
-        if(graphMouse==null) {
-            graphMouse = new PluggableGraphMouse();
-            graphMouse.add(new TranslatingGraphMousePlugin(MouseEvent.BUTTON1_MASK));
-            graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
-            visualizationServer.setGraphMouse(graphMouse);
-        }
-        this.add(visualizationServer);
-        this.revalidate();
-        this.repaint();
     }
 
     /**

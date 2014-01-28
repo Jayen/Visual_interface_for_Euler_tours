@@ -7,5 +7,5 @@ public interface Observer {
 
     public void update();
 
-    public void addObserver(Observer obj);
+    public void addObservable(Observer obj);
 }
