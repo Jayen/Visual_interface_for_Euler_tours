@@ -13,6 +13,8 @@ import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
+
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.util.Map;
@@ -28,30 +30,33 @@ public class GraphVisualiser {
     private PluggableGraphMouse graphMouse;
     private AppGUI appGUI;
     private boolean firstVisualisation;
+    private Map<String,Point2D> vertexLocationsMap;
+    private Transformer<String,Point2D> vertexLocations;
 
     public GraphVisualiser(AppGUI appGUI) {
         this.appGUI = appGUI;
-        firstVisualisation = false;
+        firstVisualisation = true;
     }
 
-    private void createInitialView(LocationFixedSparseGraph<String, String> graph) {
+    private void initialise(LocationFixedSparseGraph<String, String> graph) {
 //        runJB.putClientProperty("graph",graph);
-        Map<String,Point2D> vertexLocationsMap = graph.getVertexLocations();
-        Transformer<String, Point2D> vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
+        this.graph = graph;
+        vertexLocationsMap = graph.getVertexLocations();
+        vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
 
         if(graphLayout==null) {
-            graphLayout = new StaticLayout<String, String>(graph,vertexLocations);
+            graphLayout = new StaticLayout<String, String>(graph, vertexLocations);
         }
-        else {
-            graphLayout.setGraph(graph);
-            graphLayout.setInitializer(vertexLocations);
-        }
+//        else {
+//            graphLayout.setGraph(graph);
+//            graphLayout.setInitializer(vertexLocations);
+//        }
         if(visualizationServer==null) {
             visualizationServer = new VisualizationViewer<String, String>(graphLayout);
         }
-        else {
-            visualizationServer.setGraphLayout(graphLayout);
-        }
+//        else {
+//            visualizationServer.setGraphLayout(graphLayout);
+//        }
 
         visualizationServer.getRenderContext().setVertexLabelTransformer(new VertexLabeller<String>(graph));
 //        visualizationServer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<String>());
@@ -71,5 +76,26 @@ public class GraphVisualiser {
         appGUI.add(visualizationServer);
         appGUI.revalidate();
         appGUI.repaint();
+    }
+
+    public void updateView(LocationFixedSparseGraph<String,String> graph) {
+        if(firstVisualisation) {
+            initialise(graph);
+            firstVisualisation = false;
+        }
+        else {
+            this.graph = graph;
+            vertexLocationsMap =  graph.getVertexLocations();
+            vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
+            graphLayout.setGraph(graph);
+            graphLayout.setInitializer(vertexLocations);
+            visualizationServer.setGraphLayout(graphLayout);
+            appGUI.revalidate();
+            appGUI.repaint();
+        }
+    }
+
+    public LocationFixedSparseGraph getCurrentGraph() {
+        return graph;
     }
 }

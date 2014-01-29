@@ -15,16 +15,18 @@ public class RunButtonListener implements ActionListener {
 
     private ButtonGroup taskGroup;
     private JComboBox<String> algorithmJCB;
+    private GraphVisualiser graphVisualiser;
 
-    public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB) {
+    public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiser graphVisualiser) {
         this.taskGroup = taskGroup;
         this.algorithmJCB = algorithmJCB;
+        this.graphVisualiser = graphVisualiser;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Task task = getTask(taskGroup,algorithmJCB);
-        LocationFixedSparseGraph graph = (LocationFixedSparseGraph) ((JButton) e.getSource()).getClientProperty("graph");
+        LocationFixedSparseGraph graph = graphVisualiser.getCurrentGraph();
         switch(task) {
             case EulerTourCheck:
                 System.out.println("case euler tour check");

@@ -31,6 +31,7 @@ import java.util.Map;
 public class AppGUI extends JFrame {
 
     private JButton runJB;
+    private final GraphVisualiser graphVisualiser;
 
     public AppGUI() {
 
@@ -43,9 +44,9 @@ public class AppGUI extends JFrame {
         }
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(700,700);
+        graphVisualiser = new GraphVisualiser(this);
         this.setupMenuBar();
         this.setupMainGUI();
-        GraphVisualiser graphVisualiser = new GraphVisualiser(this);
     }
 
 
@@ -56,8 +57,7 @@ public class AppGUI extends JFrame {
         JMenuItem save = new JMenuItem("Save");
         JMenuItem exit = new JMenuItem("Exit");
 
-        open.addActionListener(new OpenFileActionListener(this));
-
+        open.addActionListener(new OpenFileActionListener(this,graphVisualiser));
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -143,7 +143,7 @@ public class AppGUI extends JFrame {
         panel.add(algorithmPanel,constraints);
 
         runJB = new JButton("Run Task");
-        runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB));
+        runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB,graphVisualiser));
         constraints.gridy = 6;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(runJB,constraints);

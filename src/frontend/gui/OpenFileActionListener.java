@@ -16,16 +16,14 @@ import java.util.List;
 /**
  * @author Jayen kumar Jaentilal k1189304
  */
-public class OpenFileActionListener implements ActionListener, Observable{
+public class OpenFileActionListener implements ActionListener {
 
-    List<Observer> observers;
-    private boolean changed;
     AppGUI appGUI;
+    GraphVisualiser graphVisualiser;
 
-    public  OpenFileActionListener(AppGUI appGUI) {
+    public  OpenFileActionListener(AppGUI appGUI,GraphVisualiser graphVisualiser) {
         this.appGUI = appGUI;
-        this.changed = false;
-        this.observers = new ArrayList<Observer>();
+        this.graphVisualiser = graphVisualiser;
     }
 
     @Override
@@ -38,40 +36,12 @@ public class OpenFileActionListener implements ActionListener, Observable{
         if(file!=null && returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(file);
-//                createGraphView(graph);
-                changed = true;
-                this.notifyObservers();
+                graphVisualiser.updateView(graph);
             } catch (IncorrectFileFormatException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public void register(Observer observer) {
-        if(observer!=null && !observers.contains(observer)) {
-            observers.add(observer);
-        }
-    }
-
-    @Override
-    public void unregister(Observer observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        if(changed) {
-            for(int i=0; i<observers.size(); i++) {
-                observers.get(i).update();
-            }
-        }
-    }
-
-    @Override
-    public Object getUpdate(Observer observer) {
-        return null;
     }
 }

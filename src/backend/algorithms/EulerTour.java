@@ -36,5 +36,4 @@ public class EulerTour {
         }
         return true;
     }
-
 }
