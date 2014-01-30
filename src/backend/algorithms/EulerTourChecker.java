@@ -9,7 +9,7 @@ import java.util.Iterator;
  *
  * Jayen kumar Jaentilal k1189304
  */
-public class EulerTour {
+public class EulerTourChecker {
 
     public static boolean EulerTourCheck(LocationFixedSparseGraph graph) {
         ConnectivityChecker<String> connectivityChecker = new ConnectivityChecker(graph);

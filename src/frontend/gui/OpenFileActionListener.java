@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Jayen kumar Jaentilal k1189304
@@ -36,7 +34,7 @@ public class OpenFileActionListener implements ActionListener {
         if(file!=null && returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(file);
-                graphVisualiser.updateView(graph);
+                graphVisualiser.drawNewGraph(graph);
             } catch (IncorrectFileFormatException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {

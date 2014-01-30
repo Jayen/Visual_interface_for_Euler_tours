@@ -1,26 +1,10 @@
 package frontend.gui;
 
-import backend.internalgraph.LocationFixedSparseGraph;
-import backend.internalgraph.VertexLabeller;
 import com.alee.laf.WebLookAndFeel;
-import edu.uci.ics.jung.algorithms.layout.Layout;
-import edu.uci.ics.jung.algorithms.layout.StaticLayout;
-import edu.uci.ics.jung.visualization.VisualizationViewer;
-import edu.uci.ics.jung.visualization.control.CrossoverScalingControl;
-import edu.uci.ics.jung.visualization.control.PluggableGraphMouse;
-import edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin;
-import edu.uci.ics.jung.visualization.control.TranslatingGraphMousePlugin;
-import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
-import edu.uci.ics.jung.visualization.decorators.EdgeShape;
-import org.apache.commons.collections15.Transformer;
-import org.apache.commons.collections15.TransformerUtils;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
-import java.util.Map;
 
 /**
  * Main class for GUI,
@@ -31,7 +15,7 @@ import java.util.Map;
 public class AppGUI extends JFrame {
 
     private JButton runJB;
-    private final GraphVisualiser graphVisualiser;
+    private GraphVisualiser graphVisualiser;
 
     public AppGUI() {
 

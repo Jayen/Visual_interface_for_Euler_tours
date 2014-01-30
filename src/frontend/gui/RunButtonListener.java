@@ -1,6 +1,6 @@
 package frontend.gui;
 
-import backend.algorithms.EulerTour;
+import backend.algorithms.EulerTourChecker;
 import backend.internalgraph.LocationFixedSparseGraph;
 
 import javax.swing.*;
@@ -30,7 +30,7 @@ public class RunButtonListener implements ActionListener {
         switch(task) {
             case EulerTourCheck:
                 System.out.println("case euler tour check");
-                if(EulerTour.EulerTourCheck(graph)) {
+                if(EulerTourChecker.EulerTourCheck(graph)) {
                     System.out.println("euler tour exists");
                 }
                 else {

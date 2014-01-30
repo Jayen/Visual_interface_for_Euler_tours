@@ -13,11 +13,9 @@ import java.util.Map;
 public class ConnectivityChecker<V> {
 
     private LocationFixedSparseGraph graph;
-    private Map<V,V> marked;//TODO what if the vertex names are the same?
 
     public ConnectivityChecker(LocationFixedSparseGraph graph) {
         this.graph = graph;
-        marked = new HashMap<V,V>(graph.getVertexCount());
     }
 
     /**
@@ -28,13 +26,13 @@ public class ConnectivityChecker<V> {
      * @return true if graph is connected else false
      */
     public boolean depthFirstSearch(V sourceVertex) {
-        //TODO DFS for checking connectivity
+        Map<V,V> marked = new HashMap<V, V>(graph.getVertexCount());//TODO what if the vertex names are the same?
         marked.put(sourceVertex,sourceVertex);
         Collection connectedVertex = graph.getNeighbors(sourceVertex);
-        Iterator interator = connectedVertex.iterator();
+        Iterator iterator = connectedVertex.iterator();
         V vertex;
-        while(interator.hasNext()) {
-            vertex = (V) interator.next();
+        while(iterator.hasNext()) {
+            vertex = (V) iterator.next();
             if(!marked.containsValue(vertex)) {
                 depthFirstSearch(vertex);
             }
@@ -45,4 +43,6 @@ public class ConnectivityChecker<V> {
         }
         return false;
     }
+
+
 }

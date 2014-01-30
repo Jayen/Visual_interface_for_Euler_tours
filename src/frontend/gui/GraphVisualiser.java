@@ -14,7 +14,6 @@ import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.util.Map;
@@ -78,7 +77,7 @@ public class GraphVisualiser {
         appGUI.repaint();
     }
 
-    public void updateView(LocationFixedSparseGraph<String,String> graph) {
+    public void drawNewGraph(LocationFixedSparseGraph<String, String> graph) {
         if(firstVisualisation) {
             initialise(graph);
             firstVisualisation = false;
