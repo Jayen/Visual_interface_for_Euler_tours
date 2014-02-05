@@ -2,7 +2,7 @@ package backend.algorithms;
 
 import backend.internalgraph.LocationFixedSparseGraph;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Jayen kumar Jaentilal k1189304
@@ -17,7 +17,7 @@ public class HuffmanCodeAlgorithm implements EulerTourAlgorithm{
 
 
     @Override
-    public ArrayList getEulerTour() {
+    public List getEulerTour() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

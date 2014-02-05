@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class EulerTourChecker {
 
     public static boolean EulerTourCheck(LocationFixedSparseGraph graph) {
-        ConnectivityChecker<String> connectivityChecker = new ConnectivityChecker(graph);
+        ConnectivityChecker<String,String> connectivityChecker = new ConnectivityChecker(graph);
         if(connectivityChecker.depthFirstSearch((String) graph.getVertices().iterator().next()) && hasNoOddDegreeVetices(graph)) {
             return true;
         }

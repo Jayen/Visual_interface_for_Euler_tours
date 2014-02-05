@@ -1,6 +1,7 @@
 package frontend.gui;
 
 import backend.algorithms.EulerTourChecker;
+import backend.algorithms.FleurysAlgorithm;
 import backend.internalgraph.LocationFixedSparseGraph;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ public class RunButtonListener implements ActionListener {
     private ButtonGroup taskGroup;
     private JComboBox<String> algorithmJCB;
     private GraphVisualiser graphVisualiser;
+    private FleurysAlgorithm fleurysAlgorithm;
 
     public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiser graphVisualiser) {
         this.taskGroup = taskGroup;
@@ -27,6 +29,7 @@ public class RunButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Task task = getTask(taskGroup,algorithmJCB);
         LocationFixedSparseGraph graph = graphVisualiser.getCurrentGraph();
+        fleurysAlgorithm = new FleurysAlgorithm();
         switch(task) {
             case EulerTourCheck:
                 System.out.println("case euler tour check");
@@ -42,6 +45,7 @@ public class RunButtonListener implements ActionListener {
                 break;
             case FleuryAlgorithm:
                 System.out.println("case fleury algorithm");
+                fleurysAlgorithm.getEulerTour();
                 break;
             case HuffmanCodeTreeAlgorithm:
                 System.out.println("case huffman code");

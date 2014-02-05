@@ -3,7 +3,6 @@ package frontend.gui;
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
 import backend.internalgraph.LocationFixedSparseGraph;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
@@ -16,8 +15,10 @@ import java.io.IOException;
  */
 public class OpenFileActionListener implements ActionListener {
 
-    AppGUI appGUI;
-    GraphVisualiser graphVisualiser;
+    public static File currentFile;
+    private AppGUI appGUI;
+    private GraphVisualiser graphVisualiser;
+
 
     public  OpenFileActionListener(AppGUI appGUI,GraphVisualiser graphVisualiser) {
         this.appGUI = appGUI;
@@ -30,10 +31,10 @@ public class OpenFileActionListener implements ActionListener {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES","txt","text");
         fileChooser.setFileFilter(filter);
         int returnVal = fileChooser.showOpenDialog(appGUI);
-        File file = fileChooser.getSelectedFile();
-        if(file!=null && returnVal == JFileChooser.APPROVE_OPTION) {
+        currentFile = fileChooser.getSelectedFile();
+        if(currentFile!=null && returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(file);
+                LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(currentFile);
                 graphVisualiser.drawNewGraph(graph);
             } catch (IncorrectFileFormatException e1) {
                 e1.printStackTrace();

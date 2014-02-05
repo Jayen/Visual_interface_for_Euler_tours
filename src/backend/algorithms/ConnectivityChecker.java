@@ -2,20 +2,19 @@ package backend.algorithms;
 
 import backend.internalgraph.LocationFixedSparseGraph;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Jayen kumar Jaentilal k1189304
  */
-public class ConnectivityChecker<V> {
+public class ConnectivityChecker<V,E> {
 
     private LocationFixedSparseGraph graph;
+    private Map<V,V> marked;
 
     public ConnectivityChecker(LocationFixedSparseGraph graph) {
         this.graph = graph;
+        marked = new HashMap<V, V>(graph.getVertexCount());
     }
 
     /**
@@ -26,14 +25,13 @@ public class ConnectivityChecker<V> {
      * @return true if graph is connected else false
      */
     public boolean depthFirstSearch(V sourceVertex) {
-        Map<V,V> marked = new HashMap<V, V>(graph.getVertexCount());//TODO what if the vertex names are the same?
-        marked.put(sourceVertex,sourceVertex);
-        Collection connectedVertex = graph.getNeighbors(sourceVertex);
-        Iterator iterator = connectedVertex.iterator();
+        marked.put(sourceVertex, sourceVertex);
+        Collection connectedVertices = graph.getNeighbors(sourceVertex);
+        Iterator iterator = connectedVertices.iterator();
         V vertex;
         while(iterator.hasNext()) {
             vertex = (V) iterator.next();
-            if(!marked.containsValue(vertex)) {
+            if(marked.get(vertex)==null) {
                 depthFirstSearch(vertex);
             }
         }
@@ -43,6 +41,4 @@ public class ConnectivityChecker<V> {
         }
         return false;
     }
-
-
 }

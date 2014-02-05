@@ -88,6 +88,8 @@ public class GraphVisualiser {
             vertexLocations = TransformerUtils.mapTransformer(vertexLocationsMap);
             graphLayout.setGraph(graph);
             graphLayout.setInitializer(vertexLocations);
+            visualizationServer.getRenderContext().setVertexLabelTransformer(new VertexLabeller<String>(graph));
+            visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.QuadCurve<String, String>());
             visualizationServer.setGraphLayout(graphLayout);
             appGUI.revalidate();
             appGUI.repaint();
