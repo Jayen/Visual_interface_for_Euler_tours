@@ -29,7 +29,7 @@ public class EulerTourChecker {
         Collection vertices = graph.getVertices();
         Iterator vertexIterator = vertices.iterator();
         while(vertexIterator.hasNext()) {
-            if(graph.getNeighborCount(vertexIterator.next())%2!=0){
+            if(graph.outDegree(vertexIterator.next())%2!=0) {
                 System.out.println("found odd degree");
                 return false;
             }
