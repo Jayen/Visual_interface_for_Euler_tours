@@ -47,7 +47,7 @@ public class RunButtonListener implements ActionListener {
                 System.out.println("case fleury algorithm");
                 fleurysAlgorithm.getEulerTour();
                 break;
-            case HuffmanCodeTreeAlgorithm:
+            case HierholzersAlgorithm:
                 System.out.println("case huffman code");
                 break;
         }
@@ -59,8 +59,8 @@ public class RunButtonListener implements ActionListener {
             if(algorithmJCB.getSelectedItem().equals(Task.FleuryAlgorithm.getName())) {
                 return Task.FleuryAlgorithm;
             }
-            else if(algorithmJCB.getSelectedItem().equals(Task.HuffmanCodeTreeAlgorithm.getName())) {
-                return Task.HuffmanCodeTreeAlgorithm;
+            else if(algorithmJCB.getSelectedItem().equals(Task.HierholzersAlgorithm.getName())) {
+                return Task.HierholzersAlgorithm;
             }
         }
         else if(actionCommand.equals(Task.EulerTourCheck.getName())) {

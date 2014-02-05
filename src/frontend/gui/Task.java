@@ -10,7 +10,7 @@ public enum Task {
     EuleriseGraph("Eulerise the graph"),
     FindEulerTour("Find Euler Tour"),
     FleuryAlgorithm("Fleury's Algorithm"),
-    HuffmanCodeTreeAlgorithm("Huffman code: Tree Algorithm");
+    HierholzersAlgorithm("Hierholzer's Algorithm");
 
     private final String name;
 

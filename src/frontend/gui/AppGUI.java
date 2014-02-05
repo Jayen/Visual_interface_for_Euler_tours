@@ -1,10 +1,19 @@
 package frontend.gui;
 
+import backend.fileparser.GraphParser;
+import backend.fileparser.IncorrectFileFormatException;
+import backend.internalgraph.LocationFixedSparseGraph;
+import com.alee.extended.filechooser.FilesSelectionListener;
+import com.alee.extended.filechooser.WebFileChooserField;
 import com.alee.laf.WebLookAndFeel;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Main class for GUI,
@@ -16,6 +25,7 @@ public class AppGUI extends JFrame {
 
     private JButton runJB;
     private GraphVisualiser graphVisualiser;
+    public static File currentFile;
 
     public AppGUI() {
 
@@ -27,9 +37,8 @@ public class AppGUI extends JFrame {
             //some problem occurred with setting the WebLookAndFeel defaults to native look
         }
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(700,700);
+        this.setSize(1000,700);
         graphVisualiser = new GraphVisualiser(this);
-        this.setupMenuBar();
         this.setupMainGUI();
     }
 
@@ -57,7 +66,6 @@ public class AppGUI extends JFrame {
         JMenuItem fileFormat = new JMenuItem("File format");
 
         helpMenu.add(fileFormat);
-
         menuBar.add(fileMenu);
         menuBar.add(helpMenu);
         this.setJMenuBar(menuBar);
@@ -73,8 +81,7 @@ public class AppGUI extends JFrame {
         tabbedPane.add("Help", createHelpTab());
         inputPanel.add(tabbedPane);
 
-        this.add(inputPanel, BorderLayout.LINE_END);
-
+        this.add(inputPanel, BorderLayout.WEST);
     }
 
     /**
@@ -91,49 +98,74 @@ public class AppGUI extends JFrame {
         constraints.anchor = GridBagConstraints.FIRST_LINE_START;
         constraints.insets = new Insets(2,0,2,0);
 
-        JLabel taskLabel = new JLabel("Select Task:");
-        panel.add(taskLabel,constraints);
 
-        JRadioButton eulerTourCheckRB = new JRadioButton(Task.EulerTourCheck.getName());
-        JRadioButton euleriseGraphRB = new JRadioButton(Task.EuleriseGraph.getName());
-        JRadioButton findEulerTourRB = new JRadioButton(Task.FindEulerTour.getName());
-        eulerTourCheckRB.setActionCommand(Task.EulerTourCheck.getName());
-        euleriseGraphRB.setActionCommand(Task.EuleriseGraph.getName());
-        findEulerTourRB.setActionCommand(Task.FindEulerTour.getName());
+        JPanel filePanel = new JPanel();
+        JLabel fileChooserLabel = new JLabel("Graph file: ");
+        filePanel.add(fileChooserLabel);
+        final WebFileChooserField fileChooserField = new WebFileChooserField(this);
+        fileChooserField.setPreferredSize(new Dimension(210,25));
+        fileChooserField.setMultiSelectionEnabled(false);
+        fileChooserField.getWebFileChooser().setFileFilter(new FileNameExtensionFilter("TEXT FILES","txt","text"));
+        fileChooserField.addSelectedFilesListener(new FilesSelectionListener() {
+            @Override
+            public void selectionChanged(List<File> files) {
+                try {
+                    currentFile = files.get(0);
+                    LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(currentFile);
+                    graphVisualiser.drawNewGraph(graph);
+                } catch (IncorrectFileFormatException e1) {
+                } catch (IOException e1) {
+                } catch (IndexOutOfBoundsException e1) {
+                }
+            }
+    });
+    filePanel.add(fileChooserField,constraints);
+    panel.add(filePanel);
 
-        ButtonGroup taskGroup = new ButtonGroup();
-        taskGroup.add(eulerTourCheckRB);
-        taskGroup.add(euleriseGraphRB);
-        taskGroup.add(findEulerTourRB);
+    constraints.gridy++;
+    JLabel taskLabel = new JLabel("Select Task:");
+    panel.add(taskLabel,constraints);
 
-        constraints.gridy = 1;
-        panel.add(taskLabel,constraints);
-        constraints.gridy = 2;
-        panel.add(eulerTourCheckRB,constraints);
-        constraints.gridy = 3;
-        panel.add(euleriseGraphRB,constraints);
-        constraints.gridy = 4;
-        panel.add(findEulerTourRB,constraints);
+    JRadioButton eulerTourCheckRB = new JRadioButton(Task.EulerTourCheck.getName());
+    JRadioButton euleriseGraphRB = new JRadioButton(Task.EuleriseGraph.getName());
+    JRadioButton findEulerTourRB = new JRadioButton(Task.FindEulerTour.getName());
+    eulerTourCheckRB.setActionCommand(Task.EulerTourCheck.getName());
+    euleriseGraphRB.setActionCommand(Task.EuleriseGraph.getName());
+    findEulerTourRB.setActionCommand(Task.FindEulerTour.getName());
 
-        JPanel algorithmPanel = new JPanel();
-        JLabel algorithmLabel = new JLabel("Algorithm: ");
-        JComboBox<String> algorithmJCB = new JComboBox<String>();
-        algorithmJCB.addItem(Task.FleuryAlgorithm.getName());
-        algorithmJCB.addItem(Task.HuffmanCodeTreeAlgorithm.getName());
+    ButtonGroup taskGroup = new ButtonGroup();
+    taskGroup.add(eulerTourCheckRB);
+    taskGroup.add(euleriseGraphRB);
+    taskGroup.add(findEulerTourRB);
 
-        algorithmPanel.add(algorithmLabel);
-        algorithmPanel.add(algorithmJCB);
-        constraints.gridy = 5;
-        panel.add(algorithmPanel,constraints);
+    constraints.gridy++;
+    panel.add(taskLabel,constraints);
+    constraints.gridy++;
+    panel.add(eulerTourCheckRB,constraints);
+    constraints.gridy++;
+    panel.add(euleriseGraphRB,constraints);
+    constraints.gridy++;
+    panel.add(findEulerTourRB,constraints);
 
-        runJB = new JButton("Run Task");
-        runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB,graphVisualiser));
-        constraints.gridy = 6;
-        constraints.anchor = GridBagConstraints.CENTER;
-        panel.add(runJB,constraints);
+    JPanel algorithmPanel = new JPanel();
+    JLabel algorithmLabel = new JLabel("Algorithm: ");
+    JComboBox<String> algorithmJCB = new JComboBox<String>();
+    algorithmJCB.addItem(Task.FleuryAlgorithm.getName());
+    algorithmJCB.addItem(Task.HierholzersAlgorithm.getName());
 
-        return panel;
-    }
+    algorithmPanel.add(algorithmLabel);
+    algorithmPanel.add(algorithmJCB);
+    constraints.gridy++;
+    panel.add(algorithmPanel,constraints);
+
+    runJB = new JButton("Run Task");
+    runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB,graphVisualiser));
+    constraints.gridy++;
+    constraints.anchor = GridBagConstraints.CENTER;
+    panel.add(runJB,constraints);
+
+    return panel;
+}
 
     /**
      * Create the help tab panel

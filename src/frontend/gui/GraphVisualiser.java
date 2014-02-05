@@ -14,6 +14,8 @@ import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.util.Map;
@@ -72,7 +74,8 @@ public class GraphVisualiser {
             graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
             visualizationServer.setGraphMouse(graphMouse);
         }
-        appGUI.add(visualizationServer);
+        visualizationServer.setBorder(BorderFactory.createLoweredBevelBorder());
+        appGUI.add(visualizationServer,BorderLayout.CENTER);
         appGUI.revalidate();
         appGUI.repaint();
     }
