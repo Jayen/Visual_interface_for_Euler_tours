@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class EulerTourChecker {
 
-    public static boolean EulerTourCheck(LocationFixedSparseGraph graph) {
+    public static boolean hasEulerTour(LocationFixedSparseGraph graph) {
         ConnectivityChecker<String,String> connectivityChecker = new ConnectivityChecker(graph);
         if(connectivityChecker.depthFirstSearch((String) graph.getVertices().iterator().next()) && hasNoOddDegreeVetices(graph)) {
             return true;
@@ -28,9 +28,11 @@ public class EulerTourChecker {
     private static boolean hasNoOddDegreeVetices(LocationFixedSparseGraph graph) {
         Collection vertices = graph.getVertices();
         Iterator vertexIterator = vertices.iterator();
+        Object vertex;
         while(vertexIterator.hasNext()) {
-            if(graph.outDegree(vertexIterator.next())%2!=0) {
-                System.out.println("found odd degree");
+            vertex = vertexIterator.next();
+            if(graph.outDegree(vertex)%2!=0) {
+                System.out.println("found odd degree "+vertex);
                 return false;
             }
         }

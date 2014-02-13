@@ -6,7 +6,6 @@ import backend.internalgraph.LocationFixedSparseGraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 import edu.uci.ics.jung.graph.util.Pair;
 import frontend.gui.AppGUI;
-import frontend.gui.OpenFileActionListener;
 
 import java.io.IOException;
 import java.util.*;
@@ -17,7 +16,8 @@ import java.util.*;
 public class FleurysAlgorithm<V,E> implements EulerTourAlgorithm {
 
     private LocationFixedSparseGraph graph;
-    private ArrayList pathList;
+    private ArrayList vertexPathList;
+    private ArrayList edgePathList;
     private ConnectivityChecker connectivityChecker;
 
     @Override
@@ -30,40 +30,59 @@ public class FleurysAlgorithm<V,E> implements EulerTourAlgorithm {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        pathList = new ArrayList(graph.getEdgeCount());
-        connectivityChecker = new ConnectivityChecker(graph);
-        V currentVertex = (V) graph.getVertices().iterator().next();
-        System.out.println(currentVertex);
-        Iterator incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
-        E edge = null;
-        int edgesCount = graph.getEdgeCount();
-        for(int i=0; i<edgesCount; i++) {
-            while(incidentEdges.hasNext()) {
-                edge = (E) incidentEdges.next();
-                if(!pathList.contains(edge)) {//make sure we haven't already travelled the edge
-                    if (!this.isBridge(edge)) {
-                        pathList.add(edge);
-                        break;
-                    }
-                    else if(!incidentEdges.hasNext()) {
-                        pathList.add(edge);
-                        break;
+        if(EulerTourChecker.hasEulerTour(graph)) {
+            connectivityChecker = new ConnectivityChecker(graph);
+            vertexPathList = new ArrayList(graph.getVertexCount());
+            edgePathList = new ArrayList(graph.getEdgeCount());
+            V currentVertex = (V) graph.getVertices().iterator().next();
+            vertexPathList.add(currentVertex);
+            Iterator incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+            E edge = null;
+            int edgesCount = graph.getEdgeCount();
+
+            V vertex1;
+            V vertex2;
+
+            for(int i=0; i<edgesCount; i++) {
+                while(incidentEdges.hasNext()) {
+                    edge = (E) incidentEdges.next();
+                    if(!edgePathList.contains(edge)) {//make sure we haven't already travelled the edge
+                        if (!this.isBridge(edge)) {
+                            edgePathList.add(edge);
+                            break;
+                        }
+                        else if(!incidentEdges.hasNext()) {//only take the bridge edge is there is no other edge to take
+                            edgePathList.add(edge);
+                            break;
+                        }
                     }
                 }
+                currentVertex = (V) graph.getOpposite(currentVertex,edge);
+                vertexPathList.add(currentVertex);
+                vertex1 = (V) graph.getEndpoints(edge).getFirst();
+                vertex2 = (V) graph.getEndpoints(edge).getSecond();
+                graph.removeEdge(edge);
+                incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+                //we remove the vertices that are no longer reachable in the reduced graph
+                if(graph.degree(vertex1)==0) {
+                    graph.removeVertex(vertex1);
+                }
+                if(graph.degree(vertex2)==0) {
+                    graph.removeVertex(vertex2);
+                }
             }
-            currentVertex = (V) graph.getOpposite(currentVertex,edge);
-            System.out.println(currentVertex);
-            graph.removeEdge(edge);
-            incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+            System.out.println(vertexPathList);
+            return edgePathList;
         }
-        return pathList;
+        return null;
     }
 
     private boolean isBridge(E edge) {
         V node1 = (V) graph.getEndpoints(edge).getFirst();
         V node2 = (V) graph.getEndpoints(edge).getSecond();
         graph.removeEdge(edge);
-        boolean isConnected = connectivityChecker.depthFirstSearch(node1);
+        connectivityChecker = new ConnectivityChecker(graph);
+        boolean isConnected = connectivityChecker.depthFirstSearch(node2);
         graph.addEdge(edge,new Pair(node1,node2), EdgeType.UNDIRECTED);
         return !isConnected;
     }

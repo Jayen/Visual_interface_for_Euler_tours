@@ -5,12 +5,10 @@ import backend.internalgraph.VertexLabeller;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
-import edu.uci.ics.jung.visualization.control.CrossoverScalingControl;
-import edu.uci.ics.jung.visualization.control.PluggableGraphMouse;
-import edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin;
-import edu.uci.ics.jung.visualization.control.TranslatingGraphMousePlugin;
+import edu.uci.ics.jung.visualization.control.*;
 import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
+import edu.uci.ics.jung.visualization.decorators.GradientEdgePaintTransformer;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
@@ -66,14 +64,20 @@ public class GraphVisualiser {
         visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.QuadCurve<String, String>());
         AbstractEdgeShapeTransformer<String,String> edgeShapeTransformer =
                 (AbstractEdgeShapeTransformer<String,String>) visualizationServer.getRenderContext().getEdgeShapeTransformer();
-        edgeShapeTransformer.setControlOffsetIncrement(35);
+        edgeShapeTransformer.setControlOffsetIncrement(60);
 
         if(graphMouse==null) {
             graphMouse = new PluggableGraphMouse();
             graphMouse.add(new TranslatingGraphMousePlugin(MouseEvent.BUTTON1_MASK));
             graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
+            graphMouse.add(new LensTranslatingGraphMousePlugin());
             visualizationServer.setGraphMouse(graphMouse);
         }
+
+//        DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
+//        gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
+//        visualizationServer.setGraphMouse(gm);
+
         visualizationServer.setBorder(BorderFactory.createLoweredBevelBorder());
         appGUI.add(visualizationServer,BorderLayout.CENTER);
         appGUI.revalidate();
@@ -92,7 +96,6 @@ public class GraphVisualiser {
             graphLayout.setGraph(graph);
             graphLayout.setInitializer(vertexLocations);
             visualizationServer.getRenderContext().setVertexLabelTransformer(new VertexLabeller<String>(graph));
-            visualizationServer.getRenderContext().setEdgeShapeTransformer(new EdgeShape.QuadCurve<String, String>());
             visualizationServer.setGraphLayout(graphLayout);
             appGUI.revalidate();
             appGUI.repaint();

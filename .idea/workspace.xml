@@ -69,19 +69,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EulerTourAlgorithm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTourAlgorithm.java">
+      <file leaf-file-name="GraphVisualiser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="12" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+            <state line="93" column="124" selection-start="3945" selection-end="3945" vertical-scroll-proportion="0.60101867" vertical-offset="955" max-vertical-offset="1632">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FleurysAlgorithm.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java">
+      <file leaf-file-name="ConnectivityChecker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="5" selection-start="2534" selection-end="2534" vertical-scroll-proportion="2.0391197" vertical-offset="169" max-vertical-offset="1139">
+            <state line="40" column="37" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="833">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunButtonListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="0" selection-start="1802" selection-end="1802" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1513">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EdgeShape.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/decorators/EdgeShape.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="139" column="16" selection-start="4448" selection-end="4448" vertical-scroll-proportion="0.0" vertical-offset="2363" max-vertical-offset="8296">
               <folding />
             </state>
           </provider>
@@ -106,12 +124,13 @@
         <option value="$PROJECT_DIR$/src/backend/algorithms/HuffmanCodeAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTour.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/Task.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/Task.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java" />
       </list>
     </option>
@@ -303,8 +322,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -334,6 +351,226 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung-visualization-2.0.1-sources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung-visualization-2.0.1-sources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung-visualization-2.0.1-sources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="renderers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung-algorithms-2.0.1-sources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung-algorithms-2.0.1-sources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung2-2_0_1-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jung-algorithms-2.0.1-sources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flows" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -423,6 +660,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,7 +673,7 @@
     <property name="options.lastSelected" value="preferences.externalTools" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="SearchEverywhereHistory" value="VisualizationViewer" />
+    <property name="SearchEverywhereHistory" value="&#10;VisualizationViewer" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/jung2-2_0_1" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -501,6 +740,33 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -639,58 +905,31 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.7497169" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40325204" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30569106" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.7497169" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6900648" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29268292" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40325204" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854986" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30307943" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24773414" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18882175" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4878049" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2326284" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24390244" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40325204" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30569106" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -713,159 +952,73 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="39" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="35" selection-start="4298" selection-end="4298" vertical-scroll-proportion="0.0" vertical-offset="2159" max-vertical-offset="3128">
-          <folding>
-            <element signature="method#setupMenuBar#0;class#AppGUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="77" selection-start="3494" selection-end="3494" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="1547">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="54" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1700">
+        <state line="38" column="0" selection-start="1253" selection-end="1253" vertical-scroll-proportion="-0.8235294" vertical-offset="935" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1360">
+        <state line="8" column="13" selection-start="178" selection-end="178" vertical-scroll-proportion="0.23011844" vertical-offset="0" max-vertical-offset="591">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="2142">
+        <state line="5" column="13" selection-start="95" selection-end="95" vertical-scroll-proportion="0.14382403" vertical-offset="0" max-vertical-offset="591">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/LocationFixedSparseGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="39" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="850">
+        <state line="11" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.20135364" vertical-offset="0" max-vertical-offset="591">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="61" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="714" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="77" selection-start="1815" selection-end="1815" vertical-scroll-proportion="0.68457943" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/layout/StaticLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="37" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.81840795" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.43293718" vertical-offset="0" max-vertical-offset="0" />
+        <state line="9" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.25211507" vertical-offset="4" max-vertical-offset="595">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/VertexLabeller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-graph-impl-2.0.1-sources.jar!/edu/uci/ics/jung/graph/SparseMultigraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="19" selection-start="3497" selection-end="3497" vertical-scroll-proportion="0.3416557" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-graph-impl-2.0.1-sources.jar!/edu/uci/ics/jung/graph/AbstractGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="24" selection-start="5687" selection-end="5692" vertical-scroll-proportion="0.39809525" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="41" selection-start="628" selection-end="628" vertical-scroll-proportion="0.5465313" vertical-offset="0" max-vertical-offset="714" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/extended/filechooser/WebFileChooserField.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="3587" selection-end="3587" vertical-scroll-proportion="0.79466665" vertical-offset="1130" max-vertical-offset="1530" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.0" vertical-offset="564" max-vertical-offset="1258">
+        <state line="20" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.5177665" vertical-offset="0" max-vertical-offset="591">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="23" selection-start="512" selection-end="512" vertical-scroll-proportion="0.25976232" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.15619694" vertical-offset="367" max-vertical-offset="1513">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="82" selection-start="4365" selection-end="4365" vertical-scroll-proportion="0.663837" vertical-offset="935" max-vertical-offset="1547">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="39" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.4804754" vertical-offset="227" max-vertical-offset="816">
+        <state line="17" column="23" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="748">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="48" selection-start="317" selection-end="317" vertical-scroll-proportion="0.37309644" vertical-offset="57" max-vertical-offset="646">
+        <state line="12" column="48" selection-start="317" selection-end="317" vertical-scroll-proportion="0.25211507" vertical-offset="55" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar!/edu/uci/ics/jung/graph/util/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="41" selection-start="5455" selection-end="5455" vertical-scroll-proportion="0.6472081" vertical-offset="1632" max-vertical-offset="2380">
-          <folding>
-            <element signature="method#setupMenuBar#0;class#AppGUI#0" expanded="false" />
-          </folding>
+        <state line="103" column="13" selection-start="3301" selection-end="3301" vertical-scroll-proportion="0.33333334" vertical-offset="1299" max-vertical-offset="4046">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-graph-impl-2.0.1-sources.jar!/edu/uci/ics/jung/graph/SparseMultigraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="76" selection-start="5457" selection-end="5457" vertical-scroll-proportion="0.6557093" vertical-offset="2324" max-vertical-offset="5083">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -876,9 +1029,251 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/util/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="159" column="46" selection-start="4879" selection-end="4879" vertical-scroll-proportion="0.62347186" vertical-offset="2057" max-vertical-offset="19057" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="34" selection-start="2664" selection-end="2664" vertical-scroll-proportion="1.663837" vertical-offset="125" max-vertical-offset="1326">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#addNextCycle#0;class#HierholzersAlgorithm#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="48" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.5670628" vertical-offset="159" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/RenderContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="9" selection-start="3345" selection-end="3345" vertical-scroll-proportion="1.327674" vertical-offset="561" max-vertical-offset="3366">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1/collections-generic-4.01.jar!/org/apache/commons/collections15/map/LazyMap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="676" selection-end="676" vertical-scroll-proportion="0.33938295" vertical-offset="0" max-vertical-offset="551" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/layout/AbstractLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="35" selection-start="2364" selection-end="2364" vertical-scroll-proportion="0.27504244" vertical-offset="688" max-vertical-offset="3842" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-3d-demos-2.0.1-sources.jar!/edu/uci/ics/jung/samples/GraphDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="13" selection-start="883" selection-end="883" vertical-scroll-proportion="-0.067911714" vertical-offset="261" max-vertical-offset="850" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar!/edu/uci/ics/jung/graph/Forest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="220" selection-end="220" vertical-scroll-proportion="-1.1833616" vertical-offset="867" max-vertical-offset="1649" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar!/edu/uci/ics/jung/graph/GraphDecorator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="485" selection-end="485" vertical-scroll-proportion="-0.2951389" vertical-offset="357" max-vertical-offset="5678" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar!/edu/uci/ics/jung/graph/event/GraphEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="22" selection-start="198" selection-end="198" vertical-scroll-proportion="-1.6553481" vertical-offset="1179" max-vertical-offset="1768" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/transform/shape/Graphics2DWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="13" selection-start="1425" selection-end="1425" vertical-scroll-proportion="-2.7152777" vertical-offset="1887" max-vertical-offset="10948" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/transform/shape/MagnifyIconGraphics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="13" selection-start="751" selection-end="751" vertical-scroll-proportion="0.3327674" vertical-offset="42" max-vertical-offset="1258" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/transform/shape/MagnifyShapeTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="13" selection-start="954" selection-end="954" vertical-scroll-proportion="0.3327674" vertical-offset="59" max-vertical-offset="4454" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/transform/AffineTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="13" selection-start="836" selection-end="836" vertical-scroll-proportion="-0.18675722" vertical-offset="348" max-vertical-offset="4386" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/GraphZoomScrollPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="13" selection-start="1936" selection-end="1936" vertical-scroll-proportion="0.33333334" vertical-offset="301" max-vertical-offset="5066">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/PluggableRenderContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="13" selection-start="1853" selection-end="1853" vertical-scroll-proportion="0.265625" vertical-offset="0" max-vertical-offset="7837">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/VisualizationImageServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="13" selection-start="826" selection-end="826" vertical-scroll-proportion="0.3327674" vertical-offset="42" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/VisualizationServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="17" selection-start="849" selection-end="849" vertical-scroll-proportion="0.31748727" vertical-offset="0" max-vertical-offset="4012">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/renderers/BasicRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="55" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.33333334" vertical-offset="131" max-vertical-offset="1989">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/layout/StaticLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="4" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.5059423" vertical-offset="161" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/BasicTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="13" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="3842">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/renderers/Renderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="17" selection-start="652" selection-end="652" vertical-scroll-proportion="0.2886248" vertical-offset="0" max-vertical-offset="1360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/awt/geom/Path2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="369" column="39" selection-start="12881" selection-end="12881" vertical-scroll-proportion="6.032258" vertical-offset="2244" max-vertical-offset="43707" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/renderers/BasicEdgeRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="57" selection-start="4989" selection-end="4989" vertical-scroll-proportion="0.5607639" vertical-offset="1173" max-vertical-offset="4080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-graph-impl-2.0.1-sources.jar!/edu/uci/ics/jung/graph/AbstractGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="174" column="0" selection-start="5487" selection-end="5487" vertical-scroll-proportion="0.33333334" vertical-offset="2554" max-vertical-offset="3859">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="24" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2380">
+          <folding>
+            <element signature="method#setupMenuBar#0;class#AppGUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/VisualizationViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="13" selection-start="1076" selection-end="1076" vertical-scroll-proportion="-4.368421" vertical-offset="2794" max-vertical-offset="3383">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/awt/geom/GeneralPath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="11" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.32215744" vertical-offset="357" max-vertical-offset="1870" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-api-2.0.1-sources.jar!/edu/uci/ics/jung/graph/util/EdgeIndexFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="8" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.4052478" vertical-offset="164" max-vertical-offset="850" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/decorators/AbstractEdgeShapeTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="20" selection-start="889" selection-end="889" vertical-scroll-proportion="0.49562684" vertical-offset="0" max-vertical-offset="686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/generators/random/MixedRandomGraphGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="767" selection-end="767" vertical-scroll-proportion="0.27259475" vertical-offset="0" max-vertical-offset="1326" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/generators/random/BarabasiAlbertGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="33" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/generators/random/ErdosRenyiGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="807" selection-end="807" vertical-scroll-proportion="0.27259475" vertical-offset="0" max-vertical-offset="1530" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/generators/random/KleinbergSmallWorldGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="13" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.65676075" vertical-offset="0" max-vertical-offset="2992" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-algorithms-2.0.1-sources.jar!/edu/uci/ics/jung/algorithms/flows/EdmondsKarpMaxFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="13" selection-start="1698" selection-end="1698" vertical-scroll-proportion="0.5304606" vertical-offset="51" max-vertical-offset="4879">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="0" selection-start="1802" selection-end="1802" vertical-scroll-proportion="0.0" vertical-offset="507" max-vertical-offset="1394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/jung2-2_0_1-sources/jung-visualization-2.0.1-sources.jar!/edu/uci/ics/jung/visualization/decorators/EdgeShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="16" selection-start="4448" selection-end="4448" vertical-scroll-proportion="0.0" vertical-offset="1731" max-vertical-offset="7650">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="37" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="5" selection-start="2534" selection-end="2534" vertical-scroll-proportion="2.0391197" vertical-offset="169" max-vertical-offset="1139">
+        <state line="84" column="72" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.61959" vertical-offset="1020" max-vertical-offset="1479">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="124" selection-start="3945" selection-end="3945" vertical-scroll-proportion="0.60101867" vertical-offset="955" max-vertical-offset="1632">
           <folding />
         </state>
       </provider>

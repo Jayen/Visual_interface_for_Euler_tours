@@ -9,10 +9,10 @@ F (300,300)
 #edges
 A-B
 A-C
-A-D
+A-X
 A-E
-B-D
-C-D
+B-X
+C-X
 C-F
 D-F
 C-E

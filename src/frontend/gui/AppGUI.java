@@ -37,7 +37,7 @@ public class AppGUI extends JFrame {
             //some problem occurred with setting the WebLookAndFeel defaults to native look
         }
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(1000,700);
+        this.setSize(700,700);
         graphVisualiser = new GraphVisualiser(this);
         this.setupMainGUI();
     }

@@ -35,7 +35,6 @@ public class ConnectivityChecker<V,E> {
                 depthFirstSearch(vertex);
             }
         }
-
         if(marked.size()==graph.getVertexCount()) {
             return true;
         }
