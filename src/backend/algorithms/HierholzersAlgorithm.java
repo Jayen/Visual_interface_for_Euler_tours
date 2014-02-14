@@ -2,7 +2,10 @@ package backend.algorithms;
 
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
+import backend.internalgraph.Edge;
+import backend.internalgraph.Graph;
 import backend.internalgraph.LocationFixedSparseGraph;
+import backend.internalgraph.Node;
 import frontend.gui.AppGUI;
 import java.io.IOException;
 import java.util.*;
@@ -10,11 +13,11 @@ import java.util.*;
 /**
  * Jayen kumar Jaentilal k1189304
  */
-public class HierholzersAlgorithm<V,E> implements EulerTourAlgorithm{
+public class HierholzersAlgorithm implements EulerTourAlgorithm{
 
-    private LocationFixedSparseGraph graph;
+    private Graph graph;
     private ArrayList edgePathList;
-    private LinkedList<V> vertexPathList;
+    private LinkedList<Node> nodePathList;
     private int nodeCount;
 
     @Override
@@ -28,65 +31,65 @@ public class HierholzersAlgorithm<V,E> implements EulerTourAlgorithm{
             e.printStackTrace();
         }
         if(EulerTourChecker.hasEulerTour(graph)) {
-            vertexPathList = new LinkedList<V>();
+            nodePathList = new LinkedList<Node>();
             edgePathList = new ArrayList(graph.getEdgeCount());
-            V currentVertex = (V) graph.getVertices().iterator().next();
-            vertexPathList.add(currentVertex);
-            Iterator incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
-            E edge;
-            nodeCount = graph.getVertexCount();
+            Node currentNode = graph.getNodes().iterator().next();
+            nodePathList.add(currentNode);
+            Iterator incidentEdges = graph.getIncidentEdges(currentNode).iterator();
+            Edge edge;
+            nodeCount = graph.getNodesCount();
             int edgesCount = graph.getEdgeCount();
 
             while(incidentEdges.hasNext()) {
-                edge = (E) incidentEdges.next();
+                edge = (Edge) incidentEdges.next();
                 edgePathList.add(edge);
-                currentVertex = (V) graph.getOpposite(currentVertex,edge);
-                vertexPathList.add(currentVertex);
+                currentNode = edge.getOpposite(currentNode);
+                nodePathList.add(currentNode);
                 graph.removeEdge(edge);
-                incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+                incidentEdges = graph.getIncidentEdges(currentNode).iterator();
             }
 
             int insertionIndex = 0;
             while(edgePathList.size() < edgesCount) {
-                while(insertionIndex < vertexPathList.size()) {
-                    currentVertex = vertexPathList.get(insertionIndex);
-                    incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+                while(insertionIndex < nodePathList.size()) {
+                    currentNode = nodePathList.get(insertionIndex);
+                    incidentEdges = graph.getIncidentEdges(currentNode).iterator();
                     while(incidentEdges.hasNext()) {
-                        edge = (E) incidentEdges.next();
+                        edge = (Edge) incidentEdges.next();
                         edgePathList.add(edge);
-                        currentVertex = (V) graph.getOpposite(currentVertex,edge);
-                        vertexPathList.add(insertionIndex,currentVertex);
+                        currentNode = edge.getOpposite(currentNode);
+                        nodePathList.add(insertionIndex,currentNode);
                         graph.removeEdge(edge);
-                        incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+                        incidentEdges = graph.getIncidentEdges(currentNode).iterator();
                     }
                     insertionIndex++;
                 }
             }
-            System.out.println(vertexPathList);
-            return vertexPathList;
+            System.out.println(nodePathList);
+            return nodePathList;
         }
         return null;
     }
 
     private void addNextCycle() {
-        if(vertexPathList.size()==nodeCount) {
+        if(nodePathList.size()==nodeCount) {
             return;
         }
         else {
             int nextIndexPointer;
-            V currentVertex;
-            E edge;
+            Node currenNode;
+            Edge edge;
             Iterator incidentEdges;
-            ListIterator pathListIterator = vertexPathList.listIterator();
+            ListIterator pathListIterator = nodePathList.listIterator();
             while(pathListIterator.hasNext()) {
-                currentVertex = (V) pathListIterator.next();
-                incidentEdges = graph.getIncidentEdges(currentVertex).iterator();
+                currenNode = (Node) pathListIterator.next();
+                incidentEdges = graph.getIncidentEdges(currenNode).iterator();
                 if(incidentEdges.hasNext()){
-                    nextIndexPointer = vertexPathList.indexOf(currentVertex);
-                    edge = (E) incidentEdges.next();
+                    nextIndexPointer = nodePathList.indexOf(currenNode);
+                    edge = (Edge) incidentEdges.next();
                     edgePathList.add(edge);
-                    currentVertex = (V) graph.getOpposite(currentVertex,edge);
-                    vertexPathList.add(nextIndexPointer, currentVertex);
+                    currenNode = edge.getOpposite(currenNode);
+                    nodePathList.add(nextIndexPointer, currenNode);
                     graph.removeEdge(edge);
                 }
             }

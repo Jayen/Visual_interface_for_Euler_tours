@@ -7,34 +7,34 @@ package backend.internalgraph;
  */
 public class Edge {
 
-    private Vertex v1, v2;
+    private Node v1, v2;
 
-    public Edge(Vertex v1, Vertex v2) {
+    public Edge(Node v1, Node v2) {
         this.v1 = v1;
         this.v2 = v2;
     }
 
-    public Vertex getFirstVertex() {
+    public Node getFirstNode() {
         return v1;
     }
 
-    public void setFirstVertex(Vertex v1) {
+    public void setFirstVertex(Node v1) {
         this.v1 = v1;
     }
 
-    public Vertex getSecondVertex() {
+    public Node getSecondNode() {
         return v2;
     }
 
-    public void setSecondVertex(Vertex v2) {
+    public void setSecondVertex(Node v2) {
         this.v2 = v2;
     }
 
-    public Vertex getOpposite(Vertex sourceVertex) {
-        if(sourceVertex.equals(v1)) {
+    public Node getOpposite(Node sourceNode) {
+        if(sourceNode.equals(v1)) {
             return v2;
         }
-        if(sourceVertex.equals(v2)){
+        if(sourceNode.equals(v2)){
             return v1;
         }
         return null;

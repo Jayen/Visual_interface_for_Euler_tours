@@ -3,22 +3,26 @@ package backend.internalgraph;
 import java.awt.geom.Point2D;
 
 /**
- * Vertex represents a vertex of the graph
+ * Node represents a vertex of the graph
  * @author Jayen kumar Jaentilal k1189304
  */
 
-public class Vertex {
+public class Node {
 
-    private String vertexName;
+    private String nodeName;
     private Point2D location;
 
-    public Vertex(String vertexName, Point2D location) {
-        this.vertexName = vertexName;
+    public Node(String nodeName, Point2D location) {
+        this.nodeName = nodeName;
         this.location = location;
     }
 
-    public String getVertexName() {
-        return vertexName;
+    public String getNodeName() {
+        return nodeName;
+    }
+
+    public void setNodeName(String name) {
+        this.nodeName = name;
     }
 
     public Point2D getLocation() {
@@ -38,8 +42,8 @@ public class Vertex {
             return false;
         }
 
-        Vertex otherVertex = (Vertex) obj;
-        if(otherVertex.getVertexName().equals(this.getVertexName())) {
+        Node otherNode = (Node) obj;
+        if(otherNode.getNodeName().equals(this.getNodeName())) {
             return true;
         }
         return false;
@@ -47,6 +51,6 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return this.getVertexName();
+        return this.getNodeName();
     }
 }
