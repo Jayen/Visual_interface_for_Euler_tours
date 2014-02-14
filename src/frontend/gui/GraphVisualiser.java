@@ -70,7 +70,7 @@ public class GraphVisualiser {
             graphMouse = new PluggableGraphMouse();
             graphMouse.add(new TranslatingGraphMousePlugin(MouseEvent.BUTTON1_MASK));
             graphMouse.add(new ScalingGraphMousePlugin(new CrossoverScalingControl(), 0, 1.1f, 0.9f));
-            graphMouse.add(new LensTranslatingGraphMousePlugin());
+            graphMouse.add(new PickingGraphMousePlugin<String,String>());
             visualizationServer.setGraphMouse(graphMouse);
         }
 
