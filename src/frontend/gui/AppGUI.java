@@ -2,10 +2,11 @@ package frontend.gui;
 
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
-import backend.internalgraph.LocationFixedSparseGraph;
+import backend.internalgraph.Graph;
 import com.alee.extended.filechooser.FilesSelectionListener;
 import com.alee.extended.filechooser.WebFileChooserField;
 import com.alee.laf.WebLookAndFeel;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -23,9 +24,11 @@ import java.util.List;
 
 public class AppGUI extends JFrame {
 
+    public static File currentFile;
+    public static Graph graph;
+
     private JButton runJB;
     private GraphVisualiser graphVisualiser;
-    public static File currentFile;
 
     public AppGUI() {
 
@@ -111,7 +114,7 @@ public class AppGUI extends JFrame {
             public void selectionChanged(List<File> files) {
                 try {
                     currentFile = files.get(0);
-                    LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(currentFile);
+                    graph = GraphParser.createGraphFromFile(currentFile);
                     graphVisualiser.drawNewGraph(graph);
                 } catch (IncorrectFileFormatException e1) {
                 } catch (IOException e1) {

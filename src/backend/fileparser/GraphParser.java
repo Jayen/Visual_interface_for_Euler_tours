@@ -75,15 +75,13 @@ public class GraphParser {
         pattern = Pattern.compile("([A-z|0-9]+)[-]([A-z|0-9]+)");
         Node node1;
         Node node2;
-        Edge edge;
         while(line!=null) {
             matcher = pattern.matcher(line);
             if(matcher.matches()) {
                 node1 = new Node(matcher.group(1),null);
                 node2 = new Node(matcher.group(2),null);
                 if(graph.containsNode(node1) && graph.containsNode(node2)) {
-                    edge = new Edge(node1,node2);
-                    graph.addEdge(edge);
+                    graph.addEdge(node1,node2);
                 }
                 else {
                     throw new IncorrectFileFormatException("the node specified in edges does not exist in graph");

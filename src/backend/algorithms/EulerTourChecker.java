@@ -7,7 +7,8 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- *
+ * This class can be used to check
+ * if a given graph has a euler tour
  * Jayen kumar Jaentilal k1189304
  */
 public class EulerTourChecker {

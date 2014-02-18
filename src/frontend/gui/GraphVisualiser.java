@@ -1,5 +1,6 @@
 package frontend.gui;
 
+import backend.internalgraph.Graph;
 import backend.internalgraph.LocationFixedSparseGraph;
 import backend.internalgraph.VertexLabeller;
 import edu.uci.ics.jung.algorithms.layout.Layout;
@@ -8,7 +9,6 @@ import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.*;
 import edu.uci.ics.jung.visualization.decorators.AbstractEdgeShapeTransformer;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
-import edu.uci.ics.jung.visualization.decorators.GradientEdgePaintTransformer;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.TransformerUtils;
 
@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public class GraphVisualiser {
 
-    private LocationFixedSparseGraph<String,String> graph;
+    private Graph graph;
     private VisualizationViewer<String,String> visualizationServer;
     private Layout<String,String> graphLayout;
     private PluggableGraphMouse graphMouse;
@@ -84,7 +84,7 @@ public class GraphVisualiser {
         appGUI.repaint();
     }
 
-    public void drawNewGraph(LocationFixedSparseGraph<String, String> graph) {
+    public void drawNewGraph(Graph graph) {
         if(firstVisualisation) {
             initialise(graph);
             firstVisualisation = false;

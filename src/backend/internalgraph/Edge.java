@@ -2,7 +2,7 @@ package backend.internalgraph;
 
 /**
  * This class represents a
- * undirected edge between 2 vertices
+ * undirected edge between 2 nodes
  * @author Jayen kumar Jaentilal k1189304
  */
 public class Edge {
@@ -38,5 +38,10 @@ public class Edge {
             return v1;
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return v1.toString()+v2.toString();
     }
 }

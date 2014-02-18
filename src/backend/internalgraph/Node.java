@@ -53,4 +53,11 @@ public class Node {
     public String toString() {
         return this.getNodeName();
     }
+
+    @Override
+    public int hashCode() {
+        int result = nodeName.hashCode();
+        result = 31 * result + location.hashCode();
+        return result;
+    }
 }

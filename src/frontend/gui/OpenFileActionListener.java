@@ -3,6 +3,7 @@ package frontend.gui;
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
 import backend.internalgraph.LocationFixedSparseGraph;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;

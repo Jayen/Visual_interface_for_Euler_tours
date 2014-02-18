@@ -1,12 +1,14 @@
 package backend.algorithms;
 
 import backend.internalgraph.Graph;
-import backend.internalgraph.LocationFixedSparseGraph;
 import backend.internalgraph.Node;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
+ * This class allows you to check if
+ * a graph is connected using DFS
  * Jayen kumar Jaentilal k1189304
  */
 public class ConnectivityChecker {
@@ -16,7 +18,7 @@ public class ConnectivityChecker {
 
     public ConnectivityChecker(Graph graph) {
         this.graph = graph;
-        marked = new HashMap<Node,Node>(graph.getNodesCount());
+        marked = new HashMap<Node,Node>(graph.getNumberOfNodes());
     }
 
     /**
@@ -37,7 +39,7 @@ public class ConnectivityChecker {
                 depthFirstSearch(node);
             }
         }
-        if(marked.size()==graph.getNodesCount()) {
+        if(marked.size()==graph.getNumberOfNodes()) {
             return true;
         }
         return false;
