@@ -2,6 +2,7 @@ package frontend.gui;
 
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
+import backend.internalgraph.Graph;
 import backend.internalgraph.LocationFixedSparseGraph;
 
 import javax.swing.*;
@@ -35,7 +36,7 @@ public class OpenFileActionListener implements ActionListener {
         currentFile = fileChooser.getSelectedFile();
         if(currentFile!=null && returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                LocationFixedSparseGraph graph = GraphParser.createGraphFromFile(currentFile);
+                Graph graph = GraphParser.createGraphFromFile(currentFile);
                 graphVisualiser.drawNewGraph(graph);
             } catch (IncorrectFileFormatException e1) {
                 e1.printStackTrace();

@@ -56,8 +56,6 @@ public class Node {
 
     @Override
     public int hashCode() {
-        int result = nodeName.hashCode();
-        result = 31 * result + location.hashCode();
-        return result;
+        return nodeName != null ? nodeName.hashCode() : 0;
     }
 }

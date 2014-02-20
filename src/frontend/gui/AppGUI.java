@@ -43,6 +43,7 @@ public class AppGUI extends JFrame {
         this.setSize(700,700);
         graphVisualiser = new GraphVisualiser(this);
         this.setupMainGUI();
+        this.add(graphVisualiser,BorderLayout.CENTER);
     }
 
 
@@ -116,6 +117,8 @@ public class AppGUI extends JFrame {
                     currentFile = files.get(0);
                     graph = GraphParser.createGraphFromFile(currentFile);
                     graphVisualiser.drawNewGraph(graph);
+                    AppGUI.this.revalidate();
+                    AppGUI.this.repaint();
                 } catch (IncorrectFileFormatException e1) {
                 } catch (IOException e1) {
                 } catch (IndexOutOfBoundsException e1) {

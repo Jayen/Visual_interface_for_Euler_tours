@@ -12,11 +12,12 @@ import java.util.*;
 public class Graph {
 
     private HashMap<Node, List<Node>> nodes;
-    private int numberOfEdges;
+
+    private LinkedList<Edge> edges;
 
     public Graph() {
         nodes = new HashMap<Node, List<Node>>();
-        numberOfEdges = 0;
+        edges = new LinkedList<Edge>();
     }
 
     public void addNode(Node node) {
@@ -28,24 +29,41 @@ public class Graph {
         }
     }
 
-    public void removeNode(Node node) {
-        LinkedList<Node> incidentNodes = (LinkedList<Node>) nodes.get(node);
+    public void removeNode(Node nodeToRemove) {
+        LinkedList<Node> incidentNodes = (LinkedList<Node>) nodes.get(nodeToRemove);
         Iterator nodesIterator = incidentNodes.iterator();
         Node oppositeNode;
         while(nodesIterator.hasNext()) {
             oppositeNode = (Node) nodesIterator.next();
-            nodes.get(oppositeNode).remove(node);
+            nodes.get(oppositeNode).remove(nodeToRemove);
         }
-        nodes.remove(node);
+        nodes.remove(nodeToRemove);
+        for(int i=0; i<edges.size(); i++) {
+            if(edges.get(i).contains(nodeToRemove)) {
+                edges.remove(i);
+            }
+        }
     }
 
     public void removeEdge(Node node1, Node node2) {
         nodes.get(node1).remove(node2);
         nodes.get(node2).remove(node1);
-        numberOfEdges--;
+        edges.remove(new Edge(node1,node2));
     }
 
     public void addEdge(Node node1, Node node2) {
+        //iterate to find the original nodes in the keyset rather than using new objects of node
+        Iterator<Node> keyNodesIterator = nodes.keySet().iterator();
+        Node currentNode;
+        while(keyNodesIterator.hasNext()) {
+            currentNode = keyNodesIterator.next();
+            if(currentNode.equals(node1)) {
+                node1 = currentNode;
+            }
+            if(currentNode.equals(node2)) {
+                node2 = currentNode;
+            }
+        }
         LinkedList<Node> connectedNodes = (LinkedList<Node>) nodes.get(node1);
         if(connectedNodes==null) {
             connectedNodes = new LinkedList<Node>();
@@ -62,17 +80,17 @@ public class Graph {
         else {
             connectedNodes.add(node1);
         }
-        numberOfEdges++;
+        edges.add(new Edge(node1,node2));
     }
 
    public Collection<Node> getIncidentNodes(Node node) {
        return nodes.get(node);
    }
 
-
     public boolean containsNode(Node node) {
         return nodes.containsKey(node);
     }
+
 
     public Set<Node> getNodes() {
         return nodes.keySet();
@@ -98,7 +116,11 @@ public class Graph {
         return connectedNodes;
     }
 
+    public LinkedList<Edge> getEdges() {
+        return edges;
+    }
+
     public int getNumberOfEdges() {
-        return numberOfEdges;
+        return edges.size();
     }
 }

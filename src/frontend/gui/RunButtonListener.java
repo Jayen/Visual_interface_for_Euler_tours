@@ -3,6 +3,7 @@ package frontend.gui;
 import backend.algorithms.EulerTourChecker;
 import backend.algorithms.FleurysAlgorithm;
 import backend.algorithms.HierholzersAlgorithm;
+import backend.internalgraph.Graph;
 import backend.internalgraph.LocationFixedSparseGraph;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class RunButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Task task = getTask(taskGroup,algorithmJCB);
-        LocationFixedSparseGraph graph = graphVisualiser.getCurrentGraph();
+        Graph graph = graphVisualiser.getCurrentGraph();
         fleurysAlgorithm = new FleurysAlgorithm();
         hierholzersAlgorithm = new HierholzersAlgorithm();
         switch(task) {
