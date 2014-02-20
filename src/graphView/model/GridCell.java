@@ -18,10 +18,6 @@ public class GridCell {
     public GridCell(int row, int col)  {
         this.row = row;
         this.col = col;
-        this.occupancy = occupancy;
-        this.heuristicValue = heuristicValue;
-        this.movementCost = movementCost;
-        this.parent = parent;
     }
 
 
@@ -73,10 +69,6 @@ public class GridCell {
     public int hashCode() {
         int result = row;
         result = 31 * result + col;
-        result = 31 * result + (int) occupancy;
-        result = 31 * result + heuristicValue;
-        result = 31 * result + movementCost;
-        result = 31 * result + (parent != null ? parent.hashCode() : 0);
         return result;
     }
 

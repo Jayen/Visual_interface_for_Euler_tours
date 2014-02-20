@@ -23,7 +23,7 @@ public class PathRouter {
     private ArrayList<GridCell> route;
 
     private static int straightCost = 4;
-    private static int diagnolCost = 2;
+    private static int diagonalCost = 2;
 
     public PathRouter(int startRow,int startCol, int endRow, int endCol, byte traversableValue,ViewGrid viewGrid) {
         this.startRow = startRow;
@@ -104,8 +104,8 @@ public class PathRouter {
         }
     }
 
-    private int calculateHeuristic(int currenctCellRow, int currentCellCol, int endRow, int endCol) {
-        int rowDiff = Math.abs(currenctCellRow-endRow);
+    private int calculateHeuristic(int currentCellRow, int currentCellCol, int endRow, int endCol) {
+        int rowDiff = Math.abs(currentCellRow-endRow);
         int colDiff = Math.abs(currentCellCol-endCol);
         return rowDiff+colDiff;
     }
@@ -138,7 +138,7 @@ public class PathRouter {
                                 heuristic = calculateHeuristic(row,col,endRow,endCol);
                                 cell.setHeuristicValue(heuristic);
                                 if(cellisDiagonal(cell, parentCell)) {
-                                    movementCost = calculateMovementCost(parentCell,diagnolCost);
+                                    movementCost = calculateMovementCost(parentCell, diagonalCost);
                                     cell.setMovementCost(movementCost);
                                 }
                                 else {
