@@ -5,10 +5,7 @@ import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 import frontend.gui.AppGUI;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * The ViewGrid class maintains the
@@ -46,6 +43,7 @@ public class ViewGrid {
         PathRouter router;
 
         Iterator<Edge> edgesIterator = graph.getEdges().iterator();
+        ArrayList<Edge> currentlyDrawnEdges = new ArrayList<Edge>(graph.getNumberOfEdges());
         Edge edge;
         while (edgesIterator.hasNext()) {
             edge = edgesIterator.next();
@@ -55,12 +53,52 @@ public class ViewGrid {
             if(!occupancyType.containsKey(key)) {
                 occupancyType.put(key, occupancyValue);
             }
-            router = new PathRouter((int)originNode.getLocation().getY(),(int)originNode.getLocation().getX(),
-                    (int)nextNode.getLocation().getY(),(int)nextNode.getLocation().getX(),
-                    occupancyType.get("unoccupied"),this);
-            this.markPath(router.getPath(),occupancyValue);
+
+            if(currentlyDrawnEdges.size()!=0) {
+                for(int i=0; i<currentlyDrawnEdges.size(); i++) {
+                    if(edgeCrosses(originNode,nextNode,currentlyDrawnEdges.get(i))) {
+                        router = new PathRouter((int)originNode.getLocation().getY(),(int)originNode.getLocation().getX(),
+                                (int)nextNode.getLocation().getY(),(int)nextNode.getLocation().getX(),
+                                occupancyType.get("unoccupied"),this);
+                        this.markPath(router.getPath(),occupancyValue);
+                    }
+                    else {
+                        this.drawStraightPath();
+                    }
+                }
+            }
             occupancyValue++;
         }
+    }
+
+    private void drawStraightPath() {
+
+    }
+
+    private boolean edgeCrosses(Node originNode, Node nextNode, Edge edge) {
+        double y1;
+        double c1;
+        double gradient1;
+
+        gradient1 = (nextNode.getY()-originNode.getY()) / (nextNode.getX()-originNode.getX());
+        c1 = originNode.getY() - (gradient1*originNode.getX());
+        y1 = (gradient1*originNode.getX()) + c1;
+
+        double y2;
+        double c2;
+        double gradient2;
+
+        Node otherLineOriginNode = edge.getFirstNode();
+        Node otherLineNextNode = edge.getSecondNode();
+
+        gradient2 = (otherLineNextNode.getY()-otherLineOriginNode.getY()) / (otherLineNextNode.getX()-otherLineOriginNode.getY());
+        c2 = originNode.getY() - (gradient2*otherLineOriginNode.getX());
+        y2 = (gradient2*otherLineOriginNode.getX()) + c2;
+
+        double xIntersection;
+        double yIntersection;
+
+        return false;
     }
 
     /**

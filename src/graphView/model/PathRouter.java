@@ -22,8 +22,8 @@ public class PathRouter {
     private Map<GridCell,GridCell> smallestCostMap;//Map maintains all the cells that have been explored and being explored
     private ArrayList<GridCell> route;
 
-    private static int straightCost = 4;
-    private static int diagonalCost = 2;
+    private static int straightCost = 10;
+    private static int diagonalCost = 14;
 
     public PathRouter(int startRow,int startCol, int endRow, int endCol, byte traversableValue,ViewGrid viewGrid) {
         this.startRow = startRow;
@@ -44,7 +44,7 @@ public class PathRouter {
             @Override
             public int compare(GridCell gridCell1, GridCell gridCell2) {
                 return Integer.compare(gridCell1.getMovementCost()+gridCell1.getHeuristicValue(),
-                                       gridCell2.getMovementCost()+gridCell2.getHeuristicValue());
+                        gridCell2.getMovementCost()+gridCell2.getHeuristicValue());
             }
         };
         unvisitedQueue = new PriorityQueue<GridCell>(50,gridCellComparator);
@@ -105,9 +105,10 @@ public class PathRouter {
     }
 
     private int calculateHeuristic(int currentCellRow, int currentCellCol, int endRow, int endCol) {
-        int rowDiff = Math.abs(currentCellRow-endRow);
-        int colDiff = Math.abs(currentCellCol-endCol);
-        return rowDiff+colDiff;
+        return 0;
+//        int rowDiff = Math.abs(currentCellRow-endRow);
+//        int colDiff = Math.abs(currentCellCol-endCol);
+//        return rowDiff+colDiff;
     }
 
     private void addChildCellsToUnvisitedQueue(GridCell parentCell) {
@@ -134,22 +135,20 @@ public class PathRouter {
                         isCuttingCorners= isCuttingCorners(row, col, parentsRow, parentsCol);
                         if(!isSettled(row,col) && !isCuttingCorners) {
                             cell = new GridCell(row,col);
-                            if(!cellisDiagonal(cell,parentCell)) {
-                                heuristic = calculateHeuristic(row,col,endRow,endCol);
-                                cell.setHeuristicValue(heuristic);
-                                if(cellisDiagonal(cell, parentCell)) {
-                                    movementCost = calculateMovementCost(parentCell, diagonalCost);
-                                    cell.setMovementCost(movementCost);
-                                }
-                                else {
-                                    movementCost = calculateMovementCost(parentCell,straightCost);
-                                    cell.setMovementCost(movementCost);
-                                }
-                                //we check if the current cost is less than the one we have calculated before
-                                if(cell.getHeuristicValue()+cell.getMovementCost()<getSmallestCost(cell)) {
-                                    setSmallestCost(cell);
-                                    cell.setParent(parentCell);
-                                }
+                            heuristic = calculateHeuristic(row,col,endRow,endCol);
+                            cell.setHeuristicValue(heuristic);
+                            if(cellisDiagonal(cell, parentCell)) {
+                                movementCost = calculateMovementCost(parentCell, diagonalCost);
+                                cell.setMovementCost(movementCost);
+                            }
+                            else {
+                                movementCost = calculateMovementCost(parentCell,straightCost);
+                                cell.setMovementCost(movementCost);
+                            }
+                            //we check if the current cost is less than the one we have calculated before
+                            if(cell.getHeuristicValue()+cell.getMovementCost()<getSmallestCost(cell)) {
+                                setSmallestCost(cell);
+                                cell.setParent(parentCell);
                             }
                         }
                     }
@@ -236,7 +235,7 @@ public class PathRouter {
         if(row==parentsRow-1 && col==parentsCol-1) {
             //check to see if the east and the north cells are not traversable
             if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)!=traversableValue
-               && viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol)!=traversableValue) {
+                    && viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol)!=traversableValue) {
                 return true;
             }
             return false;
@@ -245,7 +244,7 @@ public class PathRouter {
         else if(row ==parentsRow-1 && col==parentsCol+1) {
             //check to see if the west and the north cells are not traversable
             if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)!=traversableValue
-               && viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol)!=traversableValue) {
+                    && viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol)!=traversableValue) {
                 return true;
             }
             return false;
@@ -254,7 +253,7 @@ public class PathRouter {
         else if(row==parentsRow+1 && col==parentsCol-1) {
             //check to see if the east and the south cells are not traversable
             if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)!=traversableValue
-               && viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol)!=traversableValue) {
+                    && viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol)!=traversableValue) {
                 return true;
             }
             return false;
@@ -263,7 +262,7 @@ public class PathRouter {
         else if(row==parentsRow+1 && col==parentsCol+1) {
             //check to see if the west and the south cells are not traversable
             if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)!=traversableValue
-               && viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol)!=traversableValue) {
+                    && viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol)!=traversableValue) {
                 return true;
             }
             return false;

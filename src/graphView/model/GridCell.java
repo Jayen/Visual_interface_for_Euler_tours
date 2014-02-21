@@ -65,16 +65,16 @@ public class GridCell {
         return parent;
     }
 
+    public void setParent(GridCell parent) {
+        this.parent = parent;
+
+    }
+
     @Override
     public int hashCode() {
         int result = row;
         result = 31 * result + col;
         return result;
-    }
-
-    public void setParent(GridCell parent) {
-        this.parent = parent;
-
     }
 
     @Override

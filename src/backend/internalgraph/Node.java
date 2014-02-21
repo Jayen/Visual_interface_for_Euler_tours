@@ -58,4 +58,12 @@ public class Node {
     public int hashCode() {
         return nodeName != null ? nodeName.hashCode() : 0;
     }
+
+    public double getX() {
+        return location.getX();
+    }
+
+    public double getY() {
+        return location.getY();
+    }
 }
