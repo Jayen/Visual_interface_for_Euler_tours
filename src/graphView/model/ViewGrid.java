@@ -27,7 +27,8 @@ public class ViewGrid {
     public void loadNewGraph(Graph graph) {
         occupancyType = new HashMap<String, Byte>();
         occupancyType.put("unoccupied", (byte) 0);
-        occupancyType.put("paddingOccupied", (byte) 1);
+        occupancyType.put("node", (byte) 1);
+        occupancyType.put("paddingOccupied", (byte) 2);
 
         //initialise the grid with all cells unoccupied
         for(int row=0; row<grid.length; row++) {
@@ -36,14 +37,13 @@ public class ViewGrid {
             }
         }
 
-        byte occupancyValue = 2;
+        byte occupancyValue = 3;
         Node originNode;
         Node nextNode;
         String key;
         PathRouter router;
 
         Iterator<Edge> edgesIterator = graph.getEdges().iterator();
-        ArrayList<Edge> currentlyDrawnEdges = new ArrayList<Edge>(graph.getNumberOfEdges());
         Edge edge;
         while (edgesIterator.hasNext()) {
             edge = edgesIterator.next();
@@ -53,65 +53,51 @@ public class ViewGrid {
             if(!occupancyType.containsKey(key)) {
                 occupancyType.put(key, occupancyValue);
             }
-
-            if(currentlyDrawnEdges.size()!=0) {
-                for(int i=0; i<currentlyDrawnEdges.size(); i++) {
-                    if(edgeCrosses(originNode,nextNode,currentlyDrawnEdges.get(i))) {
-                        router = new PathRouter((int)originNode.getLocation().getY(),(int)originNode.getLocation().getX(),
-                                (int)nextNode.getLocation().getY(),(int)nextNode.getLocation().getX(),
-                                occupancyType.get("unoccupied"),this);
-                        this.markPath(router.getPath(),occupancyValue);
-                    }
-                    else {
-                        this.drawStraightPath();
-                    }
-                }
-            }
+            System.out.println("finding path for "+originNode+" to "+nextNode);
+            System.out.println("origin node is "+originNode.getY()+" "+originNode.getX());
+            router = new PathRouter((int)originNode.getLocation().getY(),(int)originNode.getLocation().getX(),
+                                    (int)nextNode.getLocation().getY(),(int)nextNode.getLocation().getX(),
+                                    occupancyType.get("unoccupied"),this);
+            this.markPath(router.getPath(),occupancyValue,3);
             occupancyValue++;
         }
     }
 
-    private void drawStraightPath() {
-
-    }
-
-    private boolean edgeCrosses(Node originNode, Node nextNode, Edge edge) {
-        double y1;
-        double c1;
-        double gradient1;
-
-        gradient1 = (nextNode.getY()-originNode.getY()) / (nextNode.getX()-originNode.getX());
-        c1 = originNode.getY() - (gradient1*originNode.getX());
-        y1 = (gradient1*originNode.getX()) + c1;
-
-        double y2;
-        double c2;
-        double gradient2;
-
-        Node otherLineOriginNode = edge.getFirstNode();
-        Node otherLineNextNode = edge.getSecondNode();
-
-        gradient2 = (otherLineNextNode.getY()-otherLineOriginNode.getY()) / (otherLineNextNode.getX()-otherLineOriginNode.getY());
-        c2 = originNode.getY() - (gradient2*otherLineOriginNode.getX());
-        y2 = (gradient2*otherLineOriginNode.getX()) + c2;
-
-        double xIntersection;
-        double yIntersection;
-
-        return false;
-    }
-
     /**
      * Method to mark a certain a path which is a edge
-     * with a certain occupancy value
-      * @param path
-     * @param occupancyValue
+     * with a certain occupancy value with a set layer padding
+     * @param path -the path to mark
+     * @param occupancyValue -the value to mark with
+     * @param layers -number of layers
      */
-    private void markPath(List<GridCell> path, byte occupancyValue) {
+    private void markPath(List<GridCell> path, byte occupancyValue,int layers) {
+        if(path==null) {
+            return;
+        }
         GridCell cell;
-        for(int i=0; i<path.size(); i++) {
+        boolean notOutOfBounds;
+        int lastI = path.size()-1;
+        for(int i=lastI; i>=0; i--) {
             cell = path.get(i);
-            this.setOccupancyGridValue(cell.getRow(),cell.getCol(),occupancyValue);
+            //loop to apply the required layers padding
+            for(int row=cell.getRow()-layers; row<=cell.getRow()+layers; row++) {
+                for(int col=cell.getCol()-layers; col<=cell.getCol()+layers; col++) {
+                    notOutOfBounds = row>=0 && col>=0 && row<this.rowLength() && col<this.colLength();
+                    if(notOutOfBounds) {
+                        if(path.contains(new GridCell(row,col))) {//if the cell is part of the path don't mark as padding
+                            if(i==lastI || i==0) {
+                                this.setOccupancyGridValue(cell.getRow(),cell.getCol(),occupancyType.get("node"));
+                            }
+                            else {
+                                this.setOccupancyGridValue(cell.getRow(),cell.getCol(),occupancyValue);
+                            }
+                        }
+                        else if(this.getOccupancyGridValue(row,col)==occupancyType.get("unoccupied")){
+                            this.setOccupancyGridValue(row,col,occupancyType.get("paddingOccupied"));
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -52,9 +52,8 @@ public class HierholzersAlgorithm implements EulerTourAlgorithm{
                 incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                 prevNode = currentNode;
             }
-
             int insertionIndex = 0;
-            while(edgesTravelled <= edgesCount) {
+            while(edgesTravelled < edgesCount) {
                 while(insertionIndex < nodePathList.size()) {
                     currentNode = nodePathList.get(insertionIndex);//try a node already in the path list for untravelled edges.
                     incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();

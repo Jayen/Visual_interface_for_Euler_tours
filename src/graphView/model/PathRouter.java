@@ -20,7 +20,6 @@ public class PathRouter {
     private PriorityQueue<GridCell> unvisitedQueue;// A queue of GridCells whose lowest cost has not been found
     private Set<GridCell> settledCells;// The set of GridCells whose lowest cost has been found
     private Map<GridCell,GridCell> smallestCostMap;//Map maintains all the cells that have been explored and being explored
-    private ArrayList<GridCell> route;
 
     private static int straightCost = 10;
     private static int diagonalCost = 14;
@@ -50,11 +49,9 @@ public class PathRouter {
         unvisitedQueue = new PriorityQueue<GridCell>(50,gridCellComparator);
         settledCells = new HashSet<GridCell>(150);
         smallestCostMap = new HashMap<GridCell, GridCell>(150);
-        route = new ArrayList<GridCell>(50);
     }
 
     public List<GridCell> getPath() {
-        System.out.println("finding path");
         GridCell currentCell = new GridCell(startRow, startCol);
         currentCell.setOccupancy(viewGrid.getOccupancyGridValue(startRow, startCol));
         currentCell.setParent(null);
@@ -66,18 +63,21 @@ public class PathRouter {
         settledCells.add(currentCell);
 
         boolean currentCellIsEndCell;
-
+        boolean pathFound = false;
         while(!unvisitedQueue.isEmpty()) {
             currentCell = unvisitedQueue.poll();
             currentCellIsEndCell = currentCell.getRow()==endRow && currentCell.getCol()==endCol;
             if(currentCellIsEndCell) {
+                pathFound = true;
                 break;//we reached the end cell
             }
             addChildCellsToUnvisitedQueue(currentCell);
             settledCells.add(currentCell);
         }
-        System.out.println("found path");
-        return computePath(currentCell);
+        if(pathFound) {
+            return computePath(currentCell);
+        }
+        return null;
     }
 
     /**
@@ -92,6 +92,7 @@ public class PathRouter {
             path.add(currentCell);
             currentCell = currentCell.getParent();
         }
+        path.add(currentCell);
         return path;
     }
 
@@ -105,10 +106,9 @@ public class PathRouter {
     }
 
     private int calculateHeuristic(int currentCellRow, int currentCellCol, int endRow, int endCol) {
-        return 0;
-//        int rowDiff = Math.abs(currentCellRow-endRow);
-//        int colDiff = Math.abs(currentCellCol-endCol);
-//        return rowDiff+colDiff;
+        int rowDiff = Math.abs(currentCellRow-endRow);
+        int colDiff = Math.abs(currentCellCol-endCol);
+        return (int) Math.sqrt(rowDiff*rowDiff+colDiff*colDiff);
     }
 
     private void addChildCellsToUnvisitedQueue(GridCell parentCell) {
@@ -123,26 +123,37 @@ public class PathRouter {
 
         int heuristic;
         int movementCost;
-        boolean NotOutOfBounds;
+        boolean notOutOfBounds;
         boolean isCuttingCorners;
+        boolean cellIsEndCell;
 
         for(int row=firstRowCell; row<=lastCellsRow; row++) {
             for(int col=firstColCell; col<=lastCellsCol; col++) {
-                NotOutOfBounds = row>=0 && col>=0 && row<viewGrid.rowLength() && col<viewGrid.colLength();
-                if(!(row==parentsRow && col==parentsCol) && NotOutOfBounds) {
+                notOutOfBounds = row>=0 && col>=0 && row<viewGrid.rowLength() && col<viewGrid.colLength();
+                if(!(row==parentsRow && col==parentsCol) && notOutOfBounds) {
                     GridCell cell;
-                    if(viewGrid.getOccupancyGridValue(row,col)==traversableValue) {
-                        isCuttingCorners= isCuttingCorners(row, col, parentsRow, parentsCol);
-                        if(!isSettled(row,col) && !isCuttingCorners) {
+                    if(viewGrid.getOccupancyGridValue(row,col)==traversableValue ||
+                       viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied") ||
+                       (row==endRow && col==endCol) ) {
+
+                        isCuttingCorners= false;//isCuttingCorners(row, col, parentsRow, parentsCol);
+                        cellIsEndCell = row==endRow && col==endCol;
+                        if((!isSettled(row,col) && !isCuttingCorners) || cellIsEndCell ) {
                             cell = new GridCell(row,col);
                             heuristic = calculateHeuristic(row,col,endRow,endCol);
                             cell.setHeuristicValue(heuristic);
                             if(cellisDiagonal(cell, parentCell)) {
                                 movementCost = calculateMovementCost(parentCell, diagonalCost);
+                                if(viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied")) {
+                                    movementCost = movementCost+50;
+                                }
                                 cell.setMovementCost(movementCost);
                             }
                             else {
                                 movementCost = calculateMovementCost(parentCell,straightCost);
+                                if(viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied")) {
+                                    movementCost = movementCost+50;
+                                }
                                 cell.setMovementCost(movementCost);
                             }
                             //we check if the current cost is less than the one we have calculated before

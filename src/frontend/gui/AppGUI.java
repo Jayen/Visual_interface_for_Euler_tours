@@ -12,6 +12,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -43,7 +45,27 @@ public class AppGUI extends JFrame {
         this.setSize(700,700);
         graphVisualiser = new GraphVisualiser(this);
         this.setupMainGUI();
-        this.add(graphVisualiser,BorderLayout.CENTER);
+        JScrollPane jsp = new JScrollPane(graphVisualiser);
+        HandScrollListener handScrollListener = new HandScrollListener(graphVisualiser);
+        jsp.getViewport().addMouseMotionListener(handScrollListener);
+        jsp.getViewport().addMouseListener(handScrollListener);
+        jsp.getViewport().addMouseWheelListener(new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                int notches = e.getWheelRotation();
+                if(notches<0) {
+                    graphVisualiser.incrementScaleFactor();
+                }
+                else if(notches>0) {
+                    if(graphVisualiser.getScaleFactor()!=1.0) {
+                        graphVisualiser.decrementScaleFactor();
+                    }
+                    revalidate();
+                    repaint();
+                }
+            }
+        });
+        this.add(jsp,BorderLayout.CENTER);
     }
 
 
