@@ -13,10 +13,10 @@ public class HandScrollListener extends MouseAdapter {
     private final Cursor defaultCursor = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
     private final Cursor handCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
     private final Point point = new Point();
-    private GraphVisualiser graphVisualiser;
+    private GraphVisualiserPanel graphVisualiserPanel;
 
-    public HandScrollListener(GraphVisualiser graphVisualiser) {
-        this.graphVisualiser = graphVisualiser;
+    public HandScrollListener(GraphVisualiserPanel graphVisualiserPanel) {
+        this.graphVisualiserPanel = graphVisualiserPanel;
     }
 
     public void mouseDragged(final MouseEvent e) {
@@ -24,17 +24,17 @@ public class HandScrollListener extends MouseAdapter {
         Point cursorPoint = e.getPoint();
         Point viewportPoint = viewport.getViewPosition();
         viewportPoint.translate(point.x - cursorPoint.x, point.y - cursorPoint.y);
-        graphVisualiser.scrollRectToVisible(new Rectangle(viewportPoint, viewport.getSize()));
+        graphVisualiserPanel.scrollRectToVisible(new Rectangle(viewportPoint, viewport.getSize()));
         point.setLocation(cursorPoint);
     }
 
     public void mousePressed(MouseEvent e) {
-        graphVisualiser.setCursor(handCursor);
+        graphVisualiserPanel.setCursor(handCursor);
         point.setLocation(e.getPoint());
     }
 
     public void mouseReleased(MouseEvent e) {
-        graphVisualiser.setCursor(defaultCursor);
-        graphVisualiser.repaint();
+        graphVisualiserPanel.setCursor(defaultCursor);
+        graphVisualiserPanel.repaint();
     }
 }

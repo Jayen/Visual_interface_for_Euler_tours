@@ -4,7 +4,6 @@ import backend.algorithms.EulerTourChecker;
 import backend.algorithms.FleurysAlgorithm;
 import backend.algorithms.HierholzersAlgorithm;
 import backend.internalgraph.Graph;
-import backend.internalgraph.LocationFixedSparseGraph;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,20 +17,20 @@ public class RunButtonListener implements ActionListener {
 
     private ButtonGroup taskGroup;
     private JComboBox<String> algorithmJCB;
-    private GraphVisualiser graphVisualiser;
+    private GraphVisualiserPanel graphVisualiserPanel;
     private FleurysAlgorithm fleurysAlgorithm;
     private HierholzersAlgorithm hierholzersAlgorithm;
 
-    public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiser graphVisualiser) {
+    public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
         this.taskGroup = taskGroup;
         this.algorithmJCB = algorithmJCB;
-        this.graphVisualiser = graphVisualiser;
+        this.graphVisualiserPanel = graphVisualiserPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Task task = getTask(taskGroup,algorithmJCB);
-        Graph graph = graphVisualiser.getCurrentGraph();
+        Graph graph = graphVisualiserPanel.getCurrentGraph();
         fleurysAlgorithm = new FleurysAlgorithm();
         hierholzersAlgorithm = new HierholzersAlgorithm();
         switch(task) {

@@ -6,6 +6,7 @@ import backend.internalgraph.Graph;
 import com.alee.extended.filechooser.FilesSelectionListener;
 import com.alee.extended.filechooser.WebFileChooserField;
 import com.alee.laf.WebLookAndFeel;
+import com.alee.laf.button.WebButton;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -30,7 +31,7 @@ public class AppGUI extends JFrame {
     public static Graph graph;
 
     private JButton runJB;
-    private GraphVisualiser graphVisualiser;
+    private GraphVisualiserPanel graphVisualiserPanel;
 
     public AppGUI() {
 
@@ -43,58 +44,8 @@ public class AppGUI extends JFrame {
         }
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(700,700);
-        graphVisualiser = new GraphVisualiser(this);
+        graphVisualiserPanel = new GraphVisualiserPanel(this);
         this.setupMainGUI();
-        JScrollPane jsp = new JScrollPane(graphVisualiser);
-        HandScrollListener handScrollListener = new HandScrollListener(graphVisualiser);
-        jsp.getViewport().addMouseMotionListener(handScrollListener);
-        jsp.getViewport().addMouseListener(handScrollListener);
-        jsp.getViewport().addMouseWheelListener(new MouseWheelListener() {
-            @Override
-            public void mouseWheelMoved(MouseWheelEvent e) {
-                int notches = e.getWheelRotation();
-                if(notches<0) {
-                    graphVisualiser.incrementScaleFactor();
-                }
-                else if(notches>0) {
-                    if(graphVisualiser.getScaleFactor()!=1.0) {
-                        graphVisualiser.decrementScaleFactor();
-                    }
-                    revalidate();
-                    repaint();
-                }
-            }
-        });
-        this.add(jsp,BorderLayout.CENTER);
-    }
-
-
-    private void setupMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
-        JMenuItem open = new JMenuItem("Open...");
-        JMenuItem save = new JMenuItem("Save");
-        JMenuItem exit = new JMenuItem("Exit");
-
-        open.addActionListener(new OpenFileActionListener(this,graphVisualiser));
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AppGUI.this.dispose();
-            }
-        });
-
-        fileMenu.add(open);
-        fileMenu.add(save);
-        fileMenu.add(exit);
-
-        JMenu helpMenu = new JMenu("Help");
-        JMenuItem fileFormat = new JMenuItem("File format");
-
-        helpMenu.add(fileFormat);
-        menuBar.add(fileMenu);
-        menuBar.add(helpMenu);
-        this.setJMenuBar(menuBar);
     }
 
     private void setupMainGUI() {
@@ -106,8 +57,46 @@ public class AppGUI extends JFrame {
         tabbedPane.addTab("Algorithm",createAlgorithmTab());
         tabbedPane.add("Help", createHelpTab());
         inputPanel.add(tabbedPane);
-
+        this.setupGraphVisualiser();
         this.add(inputPanel, BorderLayout.WEST);
+    }
+
+    private void setupGraphVisualiser() {
+        JPanel graphViewPanel = new JPanel(new BorderLayout());
+
+        JScrollPane jsp = new JScrollPane(graphVisualiserPanel);
+        HandScrollListener handScrollListener = new HandScrollListener(graphVisualiserPanel);
+        jsp.getViewport().addMouseMotionListener(handScrollListener);
+        jsp.getViewport().addMouseListener(handScrollListener);
+        jsp.getViewport().addMouseWheelListener(new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                int notches = e.getWheelRotation();
+                if(notches<0) {
+                    graphVisualiserPanel.incrementScaleFactor();
+                }
+                else if(notches>0) {
+                    if(graphVisualiserPanel.getScaleFactor()!=1.0) {
+                        graphVisualiserPanel.decrementScaleFactor();
+                    }
+                    revalidate();
+                    repaint();
+                }
+            }
+        });
+        graphViewPanel.add(jsp,BorderLayout.CENTER);
+
+        WebButton backButton = new WebButton("Back");
+        WebButton pausePlayButton = new WebButton("Play");
+        WebButton nextButton = new WebButton("Next");
+
+        JPanel visulisationButtonPanel = new JPanel(new GridLayout(1,3));
+        visulisationButtonPanel.add(backButton);
+        visulisationButtonPanel.add(pausePlayButton);
+        visulisationButtonPanel.add(nextButton);
+        graphViewPanel.add(visulisationButtonPanel,BorderLayout.SOUTH);
+
+        this.add(graphViewPanel,BorderLayout.CENTER);
     }
 
     /**
@@ -138,7 +127,7 @@ public class AppGUI extends JFrame {
                 try {
                     currentFile = files.get(0);
                     graph = GraphParser.createGraphFromFile(currentFile);
-                    graphVisualiser.drawNewGraph(graph);
+                    graphVisualiserPanel.drawNewGraph(graph);
                     AppGUI.this.revalidate();
                     AppGUI.this.repaint();
                 } catch (IncorrectFileFormatException e1) {
@@ -187,7 +176,7 @@ public class AppGUI extends JFrame {
     panel.add(algorithmPanel,constraints);
 
     runJB = new JButton("Run Task");
-    runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB,graphVisualiser));
+    runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB, graphVisualiserPanel));
     constraints.gridy++;
     constraints.anchor = GridBagConstraints.CENTER;
     panel.add(runJB,constraints);
