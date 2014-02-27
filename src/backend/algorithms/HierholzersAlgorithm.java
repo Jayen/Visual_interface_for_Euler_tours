@@ -19,7 +19,6 @@ public class HierholzersAlgorithm implements EulerTourAlgorithm{
 
     private Graph graph;
     private LinkedList<Node> nodePathList;
-    private int nodeCount;
 
     @Override
     public List getEulerTour() {
@@ -38,7 +37,6 @@ public class HierholzersAlgorithm implements EulerTourAlgorithm{
             nodePathList.add(currentNode);
             Iterator incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
 
-            nodeCount = graph.getNumberOfNodes();
             int edgesCount = graph.getNumberOfEdges();
             Node prevNode = currentNode;
             int edgesTravelled = 0;

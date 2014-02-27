@@ -58,7 +58,7 @@ public class ViewGrid {
             router = new PathRouter((int)originNode.getLocation().getY(),(int)originNode.getLocation().getX(),
                                     (int)nextNode.getLocation().getY(),(int)nextNode.getLocation().getX(),
                                     occupancyType.get("unoccupied"),this);
-            this.markPath(router.getPath(),occupancyValue,3);
+            this.markPath(router.getPath(),occupancyValue,10);
             occupancyValue++;
         }
     }

@@ -145,14 +145,14 @@ public class PathRouter {
                             if(cellisDiagonal(cell, parentCell)) {
                                 movementCost = calculateMovementCost(parentCell, diagonalCost);
                                 if(viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied")) {
-                                    movementCost = movementCost+50;
+                                    movementCost = movementCost+100;
                                 }
                                 cell.setMovementCost(movementCost);
                             }
                             else {
                                 movementCost = calculateMovementCost(parentCell,straightCost);
                                 if(viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied")) {
-                                    movementCost = movementCost+50;
+                                    movementCost = movementCost+100;
                                 }
                                 cell.setMovementCost(movementCost);
                             }

@@ -72,12 +72,12 @@ public class GraphVisualiserPanel extends JPanel {
 
                     g2d.setColor(Color.BLUE);
                     g2d.fillRect((int)node.getX(),
-                                (int)node.getY() - fm.getAscent(),
+                                (int)node.getY() - fm.getAscent()+5,
                                 (int) rect.getWidth(),
                                 (int) rect.getHeight());
 
                     g2d.setColor(Color.WHITE);
-                    g2d.drawString(node.getNodeName(),(int)node.getX(),(int)node.getY());
+                    g2d.drawString(node.getNodeName(),(int)node.getX(),(int)node.getY()+5);
                 }
                 revalidate();
                 repaint();

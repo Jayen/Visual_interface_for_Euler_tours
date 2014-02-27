@@ -12,7 +12,6 @@ import java.util.*;
 public class Graph {
 
     private HashMap<Node, List<Node>> nodes;
-
     private LinkedList<Edge> edges;
 
     public Graph() {
