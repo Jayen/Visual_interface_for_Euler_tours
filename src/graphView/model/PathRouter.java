@@ -14,7 +14,7 @@ public class PathRouter {
     private int startCol;
     private int endRow;
     private int endCol;
-    private byte traversableValue;//the occupancy value the path planner is allowed to walk
+    private byte[] traversableValue;//the occupancy values the path planner is allowed to walk
     private ViewGrid viewGrid;
 
     private PriorityQueue<GridCell> unvisitedQueue;// A queue of GridCells whose lowest cost has not been found
@@ -24,7 +24,7 @@ public class PathRouter {
     private static int straightCost = 10;
     private static int diagonalCost = 14;
 
-    public PathRouter(int startRow,int startCol, int endRow, int endCol, byte traversableValue,ViewGrid viewGrid) {
+    public PathRouter(int startRow,int startCol, int endRow, int endCol, byte[] traversableValue,ViewGrid viewGrid) {
         this.startRow = startRow;
         this.startCol = startCol;
         this.endRow = endRow;
@@ -132,10 +132,8 @@ public class PathRouter {
                 notOutOfBounds = row>=0 && col>=0 && row<viewGrid.rowLength() && col<viewGrid.colLength();
                 if(!(row==parentsRow && col==parentsCol) && notOutOfBounds) {
                     GridCell cell;
-                    if(viewGrid.getOccupancyGridValue(row,col)==traversableValue ||
-                       viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied") ||
-                       (row==endRow && col==endCol) ) {
-
+                    if(this.isAllowedToWalk(viewGrid.getOccupancyGridValue(row,col))||
+                      (row==endRow && col==endCol)) {
                         isCuttingCorners= false;//isCuttingCorners(row, col, parentsRow, parentsCol);
                         cellIsEndCell = row==endRow && col==endCol;
                         if((!isSettled(row,col) && !isCuttingCorners) || cellIsEndCell ) {
@@ -144,14 +142,14 @@ public class PathRouter {
                             cell.setHeuristicValue(heuristic);
                             if(cellisDiagonal(cell, parentCell)) {
                                 movementCost = calculateMovementCost(parentCell, diagonalCost);
-                                if(viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied")) {
+                                if(this.isPadding(viewGrid.getOccupancyGridValue(row,col))) {
                                     movementCost = movementCost+100;
                                 }
                                 cell.setMovementCost(movementCost);
                             }
                             else {
                                 movementCost = calculateMovementCost(parentCell,straightCost);
-                                if(viewGrid.getOccupancyGridValue(row,col)==viewGrid.getOccupancyType("paddingOccupied")) {
+                                if(this.isPadding(viewGrid.getOccupancyGridValue(row,col))) {
                                     movementCost = movementCost+100;
                                 }
                                 cell.setMovementCost(movementCost);
@@ -166,6 +164,22 @@ public class PathRouter {
                 }
             }
         }
+    }
+
+    private boolean isPadding(byte occupancyGridValue) {
+        if(occupancyGridValue==viewGrid.getOccupancyType("paddingOccupied")) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isAllowedToWalk(byte occupancyGridValue) {
+        for(int i=0; i<traversableValue.length; i++) {
+            if(traversableValue[i]==occupancyGridValue) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -245,8 +259,8 @@ public class PathRouter {
         //check diagonal north east
         if(row==parentsRow-1 && col==parentsCol-1) {
             //check to see if the east and the north cells are not traversable
-            if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)!=traversableValue
-                    && viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol)!=traversableValue) {
+            if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)) &&
+               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol))) {
                 return true;
             }
             return false;
@@ -254,8 +268,8 @@ public class PathRouter {
         //check diagonal north west
         else if(row ==parentsRow-1 && col==parentsCol+1) {
             //check to see if the west and the north cells are not traversable
-            if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)!=traversableValue
-                    && viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol)!=traversableValue) {
+            if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)) &&
+               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol))) {
                 return true;
             }
             return false;
@@ -263,8 +277,8 @@ public class PathRouter {
         //check diagonal south east
         else if(row==parentsRow+1 && col==parentsCol-1) {
             //check to see if the east and the south cells are not traversable
-            if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)!=traversableValue
-                    && viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol)!=traversableValue) {
+            if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)) &&
+               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol))) {
                 return true;
             }
             return false;
@@ -272,8 +286,8 @@ public class PathRouter {
         //check diagonal south west
         else if(row==parentsRow+1 && col==parentsCol+1) {
             //check to see if the west and the south cells are not traversable
-            if(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)!=traversableValue
-                    && viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol)!=traversableValue) {
+            if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)) &&
+               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol))) {
                 return true;
             }
             return false;

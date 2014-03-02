@@ -37,6 +37,7 @@ public class ViewGrid {
             }
         }
 
+        byte[] traversableValues = new byte[]{occupancyType.get("unoccupied"),occupancyType.get("paddingOccupied")};
         byte occupancyValue = 3;
         Node originNode;
         Node nextNode;
@@ -53,11 +54,11 @@ public class ViewGrid {
             if(!occupancyType.containsKey(key)) {
                 occupancyType.put(key, occupancyValue);
             }
-            System.out.println("finding path for "+originNode+" to "+nextNode);
-            System.out.println("origin node is "+originNode.getY()+" "+originNode.getX());
-            router = new PathRouter((int)originNode.getLocation().getY(),(int)originNode.getLocation().getX(),
-                                    (int)nextNode.getLocation().getY(),(int)nextNode.getLocation().getX(),
-                                    occupancyType.get("unoccupied"),this);
+//            System.out.println("finding path for "+originNode+" to "+nextNode);
+//            System.out.println("origin node is "+originNode.getY()+" "+originNode.getX());
+            router = new PathRouter((int)originNode.getY(),(int)originNode.getX(),
+                                    (int)nextNode.getY(),(int)nextNode.getX(),
+                                    traversableValues,this);
             this.markPath(router.getPath(),occupancyValue,10);
             occupancyValue++;
         }
@@ -128,5 +129,16 @@ public class ViewGrid {
             }
             System.out.println();
         }
+    }
+
+    public int getEdgeValue(Node node1, Node node2) {
+        Integer value = null;
+        if(occupancyType.get(node1.toString()+" "+node2.toString())!=null) {
+            value = Integer.valueOf(occupancyType.get(node1.toString()+" "+node2.toString()));
+        }
+        else if(occupancyType.get(node2.toString()+" "+node1.toString())!=null) {
+            value = Integer.valueOf(occupancyType.get(node2.toString()+" "+node1.toString()));
+        }
+        return value;
     }
 }

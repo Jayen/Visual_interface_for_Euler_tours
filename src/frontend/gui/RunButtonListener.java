@@ -1,5 +1,6 @@
 package frontend.gui;
 
+import backend.algorithms.EulerTourAlgorithm;
 import backend.algorithms.EulerTourChecker;
 import backend.algorithms.FleurysAlgorithm;
 import backend.algorithms.HierholzersAlgorithm;
@@ -18,8 +19,10 @@ public class RunButtonListener implements ActionListener {
     private ButtonGroup taskGroup;
     private JComboBox<String> algorithmJCB;
     private GraphVisualiserPanel graphVisualiserPanel;
+    private EulerTourAlgorithm eulerTourAlgorithm;
     private FleurysAlgorithm fleurysAlgorithm;
     private HierholzersAlgorithm hierholzersAlgorithm;
+    private AlgorithmVisualiser algorithmVisualiser;
 
     public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
         this.taskGroup = taskGroup;
@@ -35,6 +38,7 @@ public class RunButtonListener implements ActionListener {
         hierholzersAlgorithm = new HierholzersAlgorithm();
         switch(task) {
             case EulerTourCheck:
+                //TODO show result on GUI
                 System.out.println("case euler tour check");
                 if(EulerTourChecker.hasEulerTour(graph)) {
                     System.out.println("euler tour exists");
@@ -47,12 +51,14 @@ public class RunButtonListener implements ActionListener {
                 System.out.println("case eulerise graph");
                 break;
             case FleuryAlgorithm:
+                eulerTourAlgorithm = new FleurysAlgorithm();
+                algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
                 System.out.println("case fleury algorithm");
-                fleurysAlgorithm.getEulerTour();
                 break;
             case HierholzersAlgorithm:
+                eulerTourAlgorithm = new HierholzersAlgorithm();
+                algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
                 System.out.println("case hierholzers algorithm");
-                hierholzersAlgorithm.getEulerTour();
                 break;
         }
     }
