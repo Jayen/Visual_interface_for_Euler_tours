@@ -84,7 +84,7 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
         connectivityChecker = new ConnectivityChecker(graph);
         //if the graph is connected then the edge is not a bridge i.e isConnected = true
         boolean isConnected = connectivityChecker.depthFirstSearch(node2);
-        System.out.println(node1+" "+node2+" is not a bridge "+isConnected);
+//        System.out.println(node1+" "+node2+" is not a bridge "+isConnected);
         graph.addEdge(node1,node2);//add the edge back to the original graph
         return !isConnected;
     }

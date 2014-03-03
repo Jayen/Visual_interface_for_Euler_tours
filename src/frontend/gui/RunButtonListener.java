@@ -7,6 +7,7 @@ import backend.algorithms.HierholzersAlgorithm;
 import backend.internalgraph.Graph;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -82,7 +83,8 @@ public class RunButtonListener implements ActionListener {
             }
         }
         catch (NullPointerException e) {
-            //TODO add waring since user never selected task from radio buttons
+            JOptionPane.showMessageDialog(null,"No task selected","No task",JOptionPane.INFORMATION_MESSAGE);
+
         }
         return null;
     }

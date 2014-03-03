@@ -14,7 +14,7 @@ public class PathRouter {
     private int startCol;
     private int endRow;
     private int endCol;
-    private byte[] traversableValue;//the occupancy values the path planner is allowed to walk
+    private short[] traversableValue;//the occupancy values the path planner is allowed to walk
     private ViewGrid viewGrid;
 
     private PriorityQueue<GridCell> unvisitedQueue;// A queue of GridCells whose lowest cost has not been found
@@ -24,7 +24,7 @@ public class PathRouter {
     private static int straightCost = 10;
     private static int diagonalCost = 14;
 
-    public PathRouter(int startRow,int startCol, int endRow, int endCol, byte[] traversableValue,ViewGrid viewGrid) {
+    public PathRouter(int startRow,int startCol, int endRow, int endCol, short[] traversableValue,ViewGrid viewGrid) {
         this.startRow = startRow;
         this.startCol = startCol;
         this.endRow = endRow;
@@ -83,16 +83,16 @@ public class PathRouter {
     /**
      * Method to compute the path from
      * start cell to end cell
-     * @param currentCell
+     * @param endCell -the last cell of the path
      * @return List<GridCell> path
      */
-    private List<GridCell> computePath(GridCell currentCell) {
+    private List<GridCell> computePath(GridCell endCell) {
         ArrayList<GridCell> path = new ArrayList<GridCell>();
-        while(currentCell.getParent()!=null) {
-            path.add(currentCell);
-            currentCell = currentCell.getParent();
+        while(endCell.getParent()!=null) {
+            path.add(endCell);
+            endCell = endCell.getParent();
         }
-        path.add(currentCell);
+        path.add(endCell);
         return path;
     }
 
@@ -166,14 +166,14 @@ public class PathRouter {
         }
     }
 
-    private boolean isPadding(byte occupancyGridValue) {
-        if(occupancyGridValue==viewGrid.getOccupancyType("paddingOccupied")) {
+    private boolean isPadding(short occupancyGridValue) {
+        if(occupancyGridValue==viewGrid.getOccupancyType("paddingOccupied").get(0)) {
             return true;
         }
         return false;
     }
 
-    private boolean isAllowedToWalk(byte occupancyGridValue) {
+    private boolean isAllowedToWalk(short occupancyGridValue) {
         for(int i=0; i<traversableValue.length; i++) {
             if(traversableValue[i]==occupancyGridValue) {
                 return true;

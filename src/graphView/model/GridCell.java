@@ -10,7 +10,7 @@ public class GridCell {
 
     private int row;
     private int col;
-    private byte occupancy;
+    private short occupancy;
     private int heuristicValue;
     private int movementCost;
     private GridCell parent;
@@ -37,11 +37,11 @@ public class GridCell {
         this.col = col;
     }
 
-    public byte getOccupancy() {
+    public short getOccupancy() {
         return occupancy;
     }
 
-    public void setOccupancy(byte occupancy) {
+    public void setOccupancy(short occupancy) {
         this.occupancy = occupancy;
     }
 

@@ -23,11 +23,11 @@ public class GraphVisualiserPanel extends JPanel {
 
     private Graph graph;
     private AppGUI appGUI;
-    private ViewGrid viewGrid;
-    private BufferedImage imageBuffer;
+    public ViewGrid viewGrid;
+    public BufferedImage imageBuffer;
     double scaleFactor;
-    private int x = 1;
-    private int y = 1;
+    public int x = 1;
+    public int y = 1;
 
     public GraphVisualiserPanel(AppGUI appGUI) {
         this.appGUI = appGUI;
@@ -46,14 +46,14 @@ public class GraphVisualiserPanel extends JPanel {
                 Graphics2D g2d = imageBuffer.createGraphics();
                 for(int row=0; row<viewGrid.rowLength(); row++) {
                     for(int col=0; col<viewGrid.colLength(); col++) {
-                        byte value = viewGrid.getOccupancyGridValue(row,col);
-                        if(value==viewGrid.getOccupancyType("unoccupied")) {
+                        short value = viewGrid.getOccupancyGridValue(row, col);
+                        if(value==viewGrid.getOccupancyType("unoccupied").get(0)) {
                             g2d.setColor(Color.WHITE);
                         }
-                        else if(value==viewGrid.getOccupancyType("paddingOccupied")) {
+                        else if(value==viewGrid.getOccupancyType("paddingOccupied").get(0)) {
                             g2d.setColor(Color.cyan);
                         }
-                        else if(value==viewGrid.getOccupancyType("node")) {
+                        else if(value==viewGrid.getOccupancyType("node").get(0)) {
                             g2d.setColor(Color.BLUE);
                         }
                         else {
@@ -130,31 +130,5 @@ public class GraphVisualiserPanel extends JPanel {
 
     public double getScaleFactor() {
         return scaleFactor;
-    }
-
-    public void visualiseEdge(Node node1, Node node2) {
-        int edgeValue = viewGrid.getEdgeValue(node1,node2);
-        PathRouter edgePathFinder = new PathRouter((int)node1.getY(),(int)node1.getX(),
-                                                   (int)node2.getY(),(int)node2.getX(),
-                                                    new byte[]{(byte)edgeValue},viewGrid);
-
-        ArrayList<GridCell> path = (ArrayList<GridCell>) edgePathFinder.getPath();
-
-        Graphics2D g2d = imageBuffer.createGraphics();
-        g2d.setColor(Color.GREEN);
-        for(int i=path.size()-1; i>=0; i--) {
-            g2d.fillRect(path.get(i).getCol() * x, path.get(i).getRow() * y, x, y);
-            if(i==path.size()/2) {
-                revalidate();
-                repaint();
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        revalidate();
-        repaint();
     }
 }
