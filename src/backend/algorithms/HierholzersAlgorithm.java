@@ -31,8 +31,8 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
 
         if(EulerTourChecker.hasEulerTour(graph)) {
             Node currentNode = graph.getNodes().iterator().next();
+            nodePathList = new LinkedList<Node>();
             nodePathList.add(currentNode);
-            AlgorithmVisualiser.incrementNextValidIndex();
             Iterator incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
 
             int edgesCount = graph.getNumberOfEdges();
@@ -43,7 +43,6 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
             while(incidentNodesIterator.hasNext()) {
                 currentNode = (Node) incidentNodesIterator.next();
                 nodePathList.add(currentNode);
-                AlgorithmVisualiser.incrementNextValidIndex();
                 graph.removeEdge(prevNode,currentNode);
                 edgesTravelled++;
                 incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
@@ -55,13 +54,13 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
                     currentNode = nodePathList.get(insertionIndex);//try a node already in the path list for untravelled edges.
                     incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                     while(incidentNodesIterator.hasNext()) {//we pick a node which is already in the pathList but has untravelled edges
+                        prevNode = currentNode;
                         currentNode = (Node) incidentNodesIterator.next();
-                        nodePathList.add(insertionIndex,currentNode);//insert the nodes from the next cycle in between
-                        AlgorithmVisualiser.incrementNextValidIndex();
+                        nodePathList.add(insertionIndex+1, currentNode);//insert the nodes from the next cycle in between
+                        insertionIndex++;
                         graph.removeEdge(prevNode, currentNode);
                         edgesTravelled++;
                         incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
-                        prevNode = currentNode;
                     }
                     insertionIndex++;
                 }

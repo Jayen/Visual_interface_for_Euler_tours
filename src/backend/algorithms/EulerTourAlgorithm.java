@@ -12,17 +12,11 @@ import java.util.List;
  * foundation for the euler tour algorithms
  * Jayen kumar Jaentilal k1189304
  */
-public abstract class EulerTourAlgorithm implements Runnable {
+public abstract class EulerTourAlgorithm {
 
     protected Graph graph;
     protected List<Node> nodePathList;
     protected ConnectivityChecker connectivityChecker;
-
-    @Override
-    public void run() {
-        this.getEulerTour();
-        AlgorithmVisualiser.setAlgorithmFinished(true);
-    }
 
     /**
      * Get the euler tour for the current graph
@@ -31,8 +25,4 @@ public abstract class EulerTourAlgorithm implements Runnable {
      */
     public abstract List getEulerTour();
 
-
-    public void setNodePathList(List<Node> nodePathList) {
-        this.nodePathList = nodePathList;
-    }
 }

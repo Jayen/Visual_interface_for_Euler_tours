@@ -22,34 +22,28 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AlgorithmVisualiser {
 
     private static List<Node> nodePathList;
-    private static AtomicInteger nextValidIndex;
-    private static Thread algorithmThread;
-    private static Thread visualisationThread;
-    private static boolean algorithmFinished = false;
+    private static Thread AlgorithmVisualisationThread;
     private static boolean  paused = false;
     private static GraphVisualiserPanel graphVisualiserPanel;
     int currentNodeI = 1;
     private static ArrayList<Short> visualisedShortValues = new ArrayList<Short>();
 
-    public AlgorithmVisualiser(final GraphVisualiserPanel graphVisualiserPanel, EulerTourAlgorithm eulerTourAlgorithm) {
+    public AlgorithmVisualiser(final GraphVisualiserPanel graphVisualiserPanel, final EulerTourAlgorithm eulerTourAlgorithm) {
         AlgorithmVisualiser.graphVisualiserPanel = graphVisualiserPanel;
-        nextValidIndex = new AtomicInteger(0);
         if(eulerTourAlgorithm instanceof FleurysAlgorithm) {
             nodePathList = new ArrayList<Node>();
         }
         else if(eulerTourAlgorithm instanceof HierholzersAlgorithm) {
             nodePathList = new LinkedList<Node>();
         }
-        eulerTourAlgorithm.setNodePathList(nodePathList);
-        algorithmThread = new Thread(eulerTourAlgorithm);
-        algorithmThread.start();
-        visualisationThread = new Thread() {
 
+      AlgorithmVisualisationThread = new Thread() {
             @Override
             public void run() {
+                nodePathList = eulerTourAlgorithm.getEulerTour();
                 while(!this.isInterrupted()) {
                     if(!paused) {
-                        if(currentNodeI < nextValidIndex.get()) {
+                        if(currentNodeI < nodePathList.size()) {
                             AlgorithmVisualiser.visualiseNextAnimated(nodePathList.get(currentNodeI - 1), nodePathList.get(currentNodeI));
                             currentNodeI++;
                             try {
@@ -57,7 +51,7 @@ public class AlgorithmVisualiser {
                             } catch (InterruptedException e) {
                                 Thread.currentThread().interrupt();
                             }
-                            if(algorithmFinished && currentNodeI==nodePathList.size()) {
+                            if(currentNodeI==nodePathList.size()) {
                                 currentNodeI--;
                                 break;
                             }
@@ -73,14 +67,14 @@ public class AlgorithmVisualiser {
                 }
             }
         };
-        visualisationThread.start();
+        AlgorithmVisualisationThread.start();
     }
 
     /**
      * Visualise the next edge between
      * 2 nodes with animation
-     * @param Node -node1
-     * @param Node -node2
+     * @param node1 -the starting node
+     * @param node2 -the next node
      */
     public static void visualiseNextAnimated(Node node1, Node node2) {
         short edgeValue = getEdgeValueToTraverse(node1,node2);
@@ -90,8 +84,8 @@ public class AlgorithmVisualiser {
 
     /**
      * Animate the edge between 2 nodes
-     * @param Node -node1
-     * @param Node -node2
+     * @param node1 -the starting node
+     * @param node2 -the next node
      * @param edgeValue -edgeValue to animate
      * @param forward -indication for animating forward or backwards
      */
@@ -129,9 +123,9 @@ public class AlgorithmVisualiser {
     /**
      * Get the edge value to traverse with animation
      * for the given nodes
-     * @param Node -node1
-     * @param Node -node2
-     * @return
+     * @param node1 -the starting node
+     * @param node2 -the next node
+     * @return short -edge value
      */
     private static short getEdgeValueToTraverse(Node node1,Node node2) {
         ArrayList<Short> edgeValues = graphVisualiserPanel.viewGrid.getEdgeValue(node1, node2);
@@ -192,14 +186,6 @@ public class AlgorithmVisualiser {
     }
 
     public void endVisualisationThread() {
-        visualisationThread.interrupt();
-    }
-
-    public static void incrementNextValidIndex() {
-        nextValidIndex.addAndGet(1);
-    }
-
-    public static void setAlgorithmFinished(boolean algorithmFinished) {
-       AlgorithmVisualiser.algorithmFinished = algorithmFinished;
+        AlgorithmVisualisationThread.interrupt();
     }
 }

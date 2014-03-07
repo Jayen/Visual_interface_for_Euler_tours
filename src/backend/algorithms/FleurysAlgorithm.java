@@ -33,38 +33,37 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
 
         if(EulerTourChecker.hasEulerTour(graph)) {
             connectivityChecker = new ConnectivityChecker(graph);
+            nodePathList = new ArrayList<Node>();
             Node currentNode = graph.getNodes().iterator().next();
             nodePathList.add(currentNode);
-            AlgorithmVisualiser.incrementNextValidIndex();
             Iterator incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
 
-            Node prevNode = currentNode;
+            Node nextNode = null;
             int edgesCount = graph.getNumberOfEdges();
             //for loop to make sure we go through all the edges in the graph
             for(int i=0; i<edgesCount; i++) {
                 while(incidentNodesIterator.hasNext()) {
-                    currentNode = (Node) incidentNodesIterator.next();//next node we will travel to
-                    if (!this.isBridge(prevNode, currentNode)) {//travel to the node only if the edge to it is not a bridge
-                        nodePathList.add(currentNode);
-                        AlgorithmVisualiser.incrementNextValidIndex();
+                    nextNode = (Node) incidentNodesIterator.next();//next node we will travel to
+                    if (!this.isBridge(currentNode,nextNode)) {//travel to the node only if the edge to it is not a bridge
+                        nodePathList.add(nextNode);
                         break;
                     }
                     else if(!incidentNodesIterator.hasNext()) {//only take the bridge edge is there is no other edge to take
-                        nodePathList.add(currentNode);
-                        AlgorithmVisualiser.incrementNextValidIndex();
+                        nodePathList.add(nextNode);
                         break;
                     }
+                    incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                 }
-                graph.removeEdge(prevNode,currentNode);//remove the edge for the reduced graph
-                incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
+                graph.removeEdge(currentNode,nextNode);//remove the edge for the reduced graph
+                incidentNodesIterator = graph.getIncidentNodes(nextNode).iterator();
                 //we remove the vertices that are no longer reachable in the reduced graph
-                if(graph.degree(prevNode)==0) {
-                    graph.removeNode(prevNode);
-                }
                 if(graph.degree(currentNode)==0) {
                     graph.removeNode(currentNode);
                 }
-                prevNode = currentNode;
+                if(graph.degree(nextNode)==0) {
+                    graph.removeNode(nextNode);
+                }
+                currentNode = nextNode;
             }
             System.out.println(this.nodePathList);
             return this.nodePathList;
@@ -75,16 +74,16 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
     /**
      * Tests if a edge between
      * two nodes is a bridge.
-     * @param node1
-     * @param node2
-     * @return
+     * @param node1 -the starting node of the edge
+     * @param node2 -the ending node of the edge
+     * @return -boolean -true if the edge is a bridge else false
      */
     private boolean isBridge(Node node1, Node node2) {
         graph.removeEdge(node1,node2);
         connectivityChecker = new ConnectivityChecker(graph);
         //if the graph is connected then the edge is not a bridge i.e isConnected = true
         boolean isConnected = connectivityChecker.depthFirstSearch(node2);
-//        System.out.println(node1+" "+node2+" is not a bridge "+isConnected);
+//        System.out.println(node1+" "+node2+" is a bridge "+!isConnected);
         graph.addEdge(node1,node2);//add the edge back to the original graph
         return !isConnected;
     }
