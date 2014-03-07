@@ -1,8 +1,9 @@
 package frontend.gui;
 
 /**
- * User: Jayen
- * Date: 25/01/14, Time: 16:17
+ * Enum holds all the different Tasks
+ * that the user can execute
+ * @author Jayen kumar Jaentilal k1189304
  */
 public enum Task {
 

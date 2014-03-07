@@ -12,13 +12,11 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * This class implements Hierholzers algorithm
+ * This class implements Hierholzer's algorithm
  * to find a euler tour if one exists in the given graph
  * Jayen kumar Jaentilal k1189304
  */
 public class HierholzersAlgorithm extends EulerTourAlgorithm {
-
-    private Graph graph;
 
     @Override
     public List getEulerTour() {

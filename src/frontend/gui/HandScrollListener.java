@@ -6,8 +6,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * User: Jayen
- * Date: 25/02/14, Time: 11:39
+ * This class extends MouseAdapter
+ * to listen to mouse events and
+ * allows interacting with the GraphVisualiserPanel
+ *@author Jayen kumar Jaentilal k1189304
  */
 public class HandScrollListener extends MouseAdapter {
     private final Cursor defaultCursor = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);

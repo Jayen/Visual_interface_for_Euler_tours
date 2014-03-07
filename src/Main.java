@@ -1,8 +1,8 @@
 import frontend.gui.AppGUI;
 
 /**
- *@author Jayen kumar Jaentilal k1189304
  *Entry point of application
+ *@author Jayen kumar Jaentilal k1189304
  */
 public class Main {
 

@@ -14,8 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Implements Fleury's algorithm
- * to find a euler tour if it exists.
+ * This class implements Fleury's algorithm
+ * to find a euler tour if it exists in the given graph.
  * Jayen kumar Jaentilal k1189304
  */
 public class FleurysAlgorithm extends EulerTourAlgorithm {

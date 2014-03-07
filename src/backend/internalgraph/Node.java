@@ -3,7 +3,8 @@ package backend.internalgraph;
 import java.awt.geom.Point2D;
 
 /**
- * Node represents a vertex of the graph
+ * This class represents a node in the graph
+ * A Node has a name and a location
  * @author Jayen kumar Jaentilal k1189304
  */
 

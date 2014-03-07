@@ -3,7 +3,7 @@ package backend.internalgraph;
 import java.util.*;
 
 /**
-* This class represents the graph internally
+ * This class represents the graph internally
  * represented as a adjacency map
  * each node in the graph must have a unique name
  * @author Jayen kumar Jaentilal k1189304
@@ -19,12 +19,12 @@ public class Graph {
         edges = new LinkedList<Edge>();
     }
 
-    public void addNode(Node node) {
-        if(node ==null) {
+    public void addNode(Node nodeToAdd) {
+        if(nodeToAdd ==null) {
             throw new IllegalArgumentException("node cannot be null");
         }
-        if(!nodes.containsValue(node)) {
-            nodes.put(node,new LinkedList<Node>());
+        if(!nodes.containsValue(nodeToAdd)) {
+            nodes.put(nodeToAdd,new LinkedList<Node>());
         }
     }
 
@@ -51,7 +51,7 @@ public class Graph {
     }
 
     public void addEdge(Node node1, Node node2) {
-        //iterate to find the original nodes in the keyset rather than using new objects of node
+        //iterate to find the original nodes in the key set rather than using new objects of node
         Iterator<Node> keyNodesIterator = nodes.keySet().iterator();
         Node currentNode;
         while(keyNodesIterator.hasNext()) {
@@ -89,7 +89,6 @@ public class Graph {
     public boolean containsNode(Node node) {
         return nodes.containsKey(node);
     }
-
 
     public Set<Node> getNodes() {
         return nodes.keySet();

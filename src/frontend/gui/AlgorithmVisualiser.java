@@ -14,18 +14,25 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * User: Jayen
- * Date: 01/03/14, Time: 12:30
+ * This class sets up the visualisation of
+ * algorithms. The visualisation is done on a
+ * separate thread to not block the main thread
+ * @author Jayen kumar Jaentilal k1189304
  */
 public class AlgorithmVisualiser {
 
     private static List<Node> nodePathList;
     private static AtomicInteger nextValidIndex;
     private static Thread algorithmThread;
-    private static Thread visulisationThread;
+    private static Thread visualisationThread;
     private static boolean algorithmFinished = false;
+    private static boolean  paused = false;
+    private static GraphVisualiserPanel graphVisualiserPanel;
+    int currentNodeI = 1;
+    private static ArrayList<Short> visualisedShortValues = new ArrayList<Short>();
 
     public AlgorithmVisualiser(final GraphVisualiserPanel graphVisualiserPanel, EulerTourAlgorithm eulerTourAlgorithm) {
+        AlgorithmVisualiser.graphVisualiserPanel = graphVisualiserPanel;
         nextValidIndex = new AtomicInteger(0);
         if(eulerTourAlgorithm instanceof FleurysAlgorithm) {
             nodePathList = new ArrayList<Node>();
@@ -36,73 +43,156 @@ public class AlgorithmVisualiser {
         eulerTourAlgorithm.setNodePathList(nodePathList);
         algorithmThread = new Thread(eulerTourAlgorithm);
         algorithmThread.start();
-        visulisationThread = new Thread() {
+        visualisationThread = new Thread() {
 
-            int currentNodeI = 1;
-            ArrayList<Short> visualisedShortValues = new ArrayList<Short>();
             @Override
             public void run() {
                 while(!this.isInterrupted()) {
-                    if(currentNodeI < nextValidIndex.get()) {
-                        this.visualiseEdge(nodePathList.get(currentNodeI - 1), nodePathList.get(currentNodeI));
-                        currentNodeI++;
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                            Thread.currentThread().interrupt();
-                        }
-                        if(algorithmFinished && currentNodeI==nodePathList.size()) {
-                            break;
-                        }
-                    }
-                }
-            }
-
-            public void visualiseEdge(Node node1, Node node2) {
-                ArrayList<Short> edgeValues = graphVisualiserPanel.viewGrid.getEdgeValue(node1, node2);
-                short edgeValue = -1;
-                if(edgeValues.size()==1) {
-                    edgeValue = edgeValues.get(0);
-                }
-                else {
-                    for(short value:edgeValues) {
-                        if(!visualisedShortValues.contains(value)) {
-                            edgeValue = value;
+                    if(!paused) {
+                        if(currentNodeI < nextValidIndex.get()) {
+                            AlgorithmVisualiser.visualiseNextAnimated(nodePathList.get(currentNodeI - 1), nodePathList.get(currentNodeI));
+                            currentNodeI++;
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                            }
+                            if(algorithmFinished && currentNodeI==nodePathList.size()) {
+                                currentNodeI--;
+                                break;
+                            }
                         }
                     }
-                }
-                visualisedShortValues.add(edgeValue);
-                PathRouter edgePathFinder = new PathRouter((int)node1.getY(),(int)node1.getX(),
-                        (int)node2.getY(),(int)node2.getX(),
-                        new short[]{edgeValue},graphVisualiserPanel.viewGrid);
-
-                ArrayList<GridCell> path = (ArrayList<GridCell>) edgePathFinder.getPath();
-
-                Graphics2D g2d = graphVisualiserPanel.imageBuffer.createGraphics();
-                g2d.setColor(Color.GREEN);
-                for(int i=path.size()-1; i>=0; i--) {
-                    g2d.fillRect(path.get(i).getCol() * graphVisualiserPanel.x, path.get(i).getRow() * graphVisualiserPanel.y,
-                                 graphVisualiserPanel.x,graphVisualiserPanel.y);
-                    if(i==path.size()/2) {
-                        graphVisualiserPanel.revalidate();
-                        graphVisualiserPanel.repaint();
+                    else {
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            Thread.currentThread().interrupt();
                         }
                     }
                 }
-                graphVisualiserPanel.revalidate();
-                graphVisualiserPanel.repaint();
             }
         };
-        visulisationThread.start();
+        visualisationThread.start();
     }
 
-    public void endVisulisationThread() {
-        visulisationThread.interrupt();
+    /**
+     * Visualise the next edge between
+     * 2 nodes with animation
+     * @param Node -node1
+     * @param Node -node2
+     */
+    public static void visualiseNextAnimated(Node node1, Node node2) {
+        short edgeValue = getEdgeValueToTraverse(node1,node2);
+        visualisedShortValues.add(edgeValue);
+        animateEdge(node1,node2,edgeValue,true);
+    }
+
+    /**
+     * Animate the edge between 2 nodes
+     * @param Node -node1
+     * @param Node -node2
+     * @param edgeValue -edgeValue to animate
+     * @param forward -indication for animating forward or backwards
+     */
+    private static void animateEdge(Node node1,Node node2,short edgeValue,boolean forward) {
+        PathRouter edgePathFinder = new PathRouter((int)node1.getY(),(int)node1.getX(),
+                (int)node2.getY(),(int)node2.getX(),
+                new short[]{edgeValue},graphVisualiserPanel.viewGrid);
+
+        ArrayList<GridCell> path = (ArrayList<GridCell>) edgePathFinder.getPath();
+
+        Graphics2D g2d = graphVisualiserPanel.imageBuffer.createGraphics();
+        if(forward) {
+            g2d.setColor(Color.GREEN);
+        }
+        else {
+            g2d.setColor(Color.BLACK);
+        }
+        for(int i=path.size()-1; i>=0; i--) {
+            g2d.fillRect(path.get(i).getCol() * graphVisualiserPanel.x, path.get(i).getRow() * graphVisualiserPanel.y,
+                    graphVisualiserPanel.x,graphVisualiserPanel.y);
+            if(i==path.size()/2) {
+                graphVisualiserPanel.revalidate();
+                graphVisualiserPanel.repaint();
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+        graphVisualiserPanel.revalidate();
+        graphVisualiserPanel.repaint();
+    }
+
+    /**
+     * Get the edge value to traverse with animation
+     * for the given nodes
+     * @param Node -node1
+     * @param Node -node2
+     * @return
+     */
+    private static short getEdgeValueToTraverse(Node node1,Node node2) {
+        ArrayList<Short> edgeValues = graphVisualiserPanel.viewGrid.getEdgeValue(node1, node2);
+        short edgeValue = -1;
+        if(edgeValues.size()==1) {
+            edgeValue = edgeValues.get(0);
+        }
+        else {
+            for(short value:edgeValues) {
+                if(!visualisedShortValues.contains(value)) {
+                    edgeValue = value;
+                }
+            }
+        }
+        return edgeValue;
+    }
+
+    /**
+     * This methods clears the current visualisation
+     * and ends the visualisation thread.
+     */
+    public void resetVisualisation() {
+        graphVisualiserPanel.clearVisualisedPath();
+        this.endVisualisationThread();
+    }
+
+    public void undoStep() {
+        paused = true;
+        if(currentNodeI>0 && currentNodeI<nodePathList.size()) {
+            currentNodeI--;
+            Node node1 = nodePathList.get(currentNodeI);
+            Node node2 = nodePathList.get(currentNodeI + 1);
+            short edgeValue = getEdgeValueToTraverse(node1,node2);
+            visualisedShortValues.remove(new Short(edgeValue));
+            animateEdge(node1,node2,edgeValue,false);
+        }
+    }
+
+    public void nextStep() {
+        paused = true;
+        if(currentNodeI>=0 && currentNodeI<nodePathList.size()-1) {
+            currentNodeI++;
+            Node node1 = nodePathList.get(currentNodeI-1);
+            Node node2 = nodePathList.get(currentNodeI);
+            short edgeValue = getEdgeValueToTraverse(node1,node2);
+            visualisedShortValues.add(edgeValue);
+            animateEdge(node1,node2,edgeValue,true);
+        }
+    }
+
+    public void pausePlay() {
+        if(paused) {
+            paused = false;
+        }
+        else {
+            paused = true;
+        }
+    }
+
+    public void endVisualisationThread() {
+        visualisationThread.interrupt();
     }
 
     public static void incrementNextValidIndex() {

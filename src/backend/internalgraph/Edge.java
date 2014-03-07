@@ -14,6 +14,12 @@ public class Edge {
         this.n2 = n2;
     }
 
+    /**
+     * Check if the given node
+     * is part of this edge
+     * @param Node -node to check
+     * @return -boolean true if the edge contains the node else false
+     */
     public boolean contains(Node node) {
         if(n1.equals(node)) {
             return true;
@@ -28,16 +34,8 @@ public class Edge {
         return n1;
     }
 
-    public void setFirstVertex(Node v1) {
-        this.n1 = v1;
-    }
-
     public Node getSecondNode() {
         return n2;
-    }
-
-    public void setSecondVertex(Node v2) {
-        this.n2 = v2;
     }
 
     public Node getOpposite(Node sourceNode) {

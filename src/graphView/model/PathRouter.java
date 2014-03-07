@@ -96,6 +96,14 @@ public class PathRouter {
         return path;
     }
 
+    /**
+     * This method calculates the movement cost
+     * which is the cost for moving from the
+     * parent cell to the child cell
+     * @param GridCell -parentCell
+     * @param int -cost
+     * @return -int movement cost
+     */
     private int calculateMovementCost(GridCell parentCell, int cost) {
         if(smallestCostMap.get(parentCell)==null) {//if the parent cell is null then the original cell is the starting cell
             return cost;
@@ -105,12 +113,28 @@ public class PathRouter {
         }
     }
 
+    /**
+     * Calculate the heuristic cost
+     * from the current cell to the end cell
+     * @param int -currentCellRow
+     * @param int -currentCellCol
+     * @param int -endRow
+     * @param int -endCol
+     * @return int -heuristic cost
+     */
     private int calculateHeuristic(int currentCellRow, int currentCellCol, int endRow, int endCol) {
         int rowDiff = Math.abs(currentCellRow-endRow);
         int colDiff = Math.abs(currentCellCol-endCol);
         return (int) Math.sqrt(rowDiff*rowDiff+colDiff*colDiff);
     }
 
+    /**
+     * This methods add the traversable child cells
+     * of the parent cell to the unvisited queue
+     * The child cells are also given
+     * movement and heuristic cost
+     * @param parentCell
+     */
     private void addChildCellsToUnvisitedQueue(GridCell parentCell) {
         int parentsRow=parentCell.getRow();
         int parentsCol=parentCell.getCol();
@@ -182,10 +206,6 @@ public class PathRouter {
         return false;
     }
 
-    /**
-     * set the new smallest cost
-     * @param cell -The cell to backtrack from
-     */
     private void setSmallestCost(GridCell cell) {
         unvisitedQueue.remove(cell);
         smallestCostMap.put(cell,cell);
@@ -210,9 +230,9 @@ public class PathRouter {
     /**
      * Method to check if a cell
      * is diagonal to the parent cell
-     * @param cell
-     * @param parentCell
-     * @return
+     * @param GridCell -cell
+     * @param GridCell -parentCell
+     * @return boolean -true if cell is diagonal else false
      */
     private boolean cellisDiagonal(GridCell cell, GridCell parentCell) {
         //check diagonal north east
@@ -234,13 +254,6 @@ public class PathRouter {
         return false;
     }
 
-    /**
-     * Method to check if a certain
-     * cell is in the settled set
-     * @param row
-     * @param col
-     * @return true if the cell is in the settled set else false
-     */
     private boolean isSettled(int row, int col) {
         settledCells.contains(new GridCell(row,col));//contains only needs to make sure that the row and cell are equal
         return false;
@@ -249,10 +262,10 @@ public class PathRouter {
     /**
      * Method to check if a certain cell
      * is cutting a corner between 2 blocked cells
-     * @param row
-     * @param col
-     * @param parentsRow
-     * @param parentsCol
+     * @param int -row
+     * @param int -col
+     * @param int -parentsRow
+     * @param int -parentsCol
      * @return -boolean true if cutting corners else false
      */
     private boolean isCuttingCorners(int row, int col, int parentsRow, int parentsCol) {
@@ -294,5 +307,4 @@ public class PathRouter {
         }
         return false;
     }
-
 }

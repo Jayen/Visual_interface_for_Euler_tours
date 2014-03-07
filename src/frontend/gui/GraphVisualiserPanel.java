@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
+ * This class manages the actual graph drawing
  * Jayen kumar Jaentilal k1189304
  */
 public class GraphVisualiserPanel extends JPanel {
@@ -34,6 +35,10 @@ public class GraphVisualiserPanel extends JPanel {
         scaleFactor = 1.0;
     }
 
+    /**
+     * Draw a given graph on the panel
+     * @param Graph -graph
+     */
     public void drawNewGraph(final Graph graph) {
         this.graph = graph;
         viewGrid = new ViewGrid();
@@ -79,11 +84,57 @@ public class GraphVisualiserPanel extends JPanel {
                     g2d.setColor(Color.WHITE);
                     g2d.drawString(node.getNodeName(),(int)node.getX(),(int)node.getY()+5);
                 }
-                revalidate();
-                repaint();
+                GraphVisualiserPanel.this.revalidate();
+                GraphVisualiserPanel.this.repaint();
             }
         };
         loadNewGraphThread.start();
+    }
+
+    /**
+     * Clear the visualisation
+     * that has been drawn on the graph
+     * i.e reset the graph drawing
+     */
+    public void clearVisualisedPath() {
+        Graphics2D g2d = imageBuffer.createGraphics();
+        for(int row=0; row<viewGrid.rowLength(); row++) {
+            for(int col=0; col<viewGrid.colLength(); col++) {
+                short value = viewGrid.getOccupancyGridValue(row, col);
+                if(value==viewGrid.getOccupancyType("unoccupied").get(0)) {
+                    g2d.setColor(Color.WHITE);
+                }
+                else if(value==viewGrid.getOccupancyType("paddingOccupied").get(0)) {
+                    g2d.setColor(Color.cyan);
+                }
+                else if(value==viewGrid.getOccupancyType("node").get(0)) {
+                    g2d.setColor(Color.BLUE);
+                }
+                else {
+                    g2d.setColor(Color.BLACK);
+                }
+                g2d.fillRect(col * x, row * y, x, y);
+            }
+        }
+        Iterator<Node> nodeIterator = graph.getNodes().iterator();
+        g2d.setColor(Color.BLUE);
+        Node node;
+        while(nodeIterator.hasNext()) {
+            node = nodeIterator.next();
+            FontMetrics fm = g2d.getFontMetrics();
+            Rectangle2D rect = fm.getStringBounds(node.getNodeName(), g2d);
+
+            g2d.setColor(Color.BLUE);
+            g2d.fillRect((int)node.getX(),
+                    (int)node.getY() - fm.getAscent()+5,
+                    (int) rect.getWidth(),
+                    (int) rect.getHeight());
+
+            g2d.setColor(Color.WHITE);
+            g2d.drawString(node.getNodeName(),(int)node.getX(),(int)node.getY()+5);
+        }
+        GraphVisualiserPanel.this.revalidate();
+        GraphVisualiserPanel.this.repaint();
     }
 
     @Override
@@ -118,14 +169,14 @@ public class GraphVisualiserPanel extends JPanel {
 
     public void incrementScaleFactor() {
         scaleFactor++;
-        revalidate();
-        repaint();
+        GraphVisualiserPanel.this.revalidate();
+        GraphVisualiserPanel.this.repaint();
     }
 
     public void decrementScaleFactor() {
         scaleFactor--;
-        revalidate();
-        repaint();
+        GraphVisualiserPanel.this.revalidate();
+        GraphVisualiserPanel.this.repaint();
     }
 
     public double getScaleFactor() {

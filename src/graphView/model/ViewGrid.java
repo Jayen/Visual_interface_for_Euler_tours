@@ -26,6 +26,13 @@ public class ViewGrid {
         this.grid = new short[xLength][yLength];
     }
 
+    /**
+     * This method loads a new graph
+     * for the internal grid representation
+     * it uses the PathRouter class to compute
+     * the edges for the graph
+     * @param Graph -graph
+     */
     public void loadNewGraph(Graph graph) {
         occupancyType = new HashMap<String,ArrayList<Short>>();
         occupancyType.put("unoccupied",new ArrayList<Short>());
@@ -63,8 +70,6 @@ public class ViewGrid {
             else {
                 occupancyType.get(key).add(occupancyValue);
             }
-//            System.out.println("finding path for "+originNode+" to "+nextNode);
-//            System.out.println("origin node is "+originNode.getY()+" "+originNode.getX());
             router = new PathRouter((int)originNode.getY(),(int)originNode.getX(),
                                     (int)nextNode.getY(),(int)nextNode.getX(),
                                     traversableValues,this);
@@ -142,9 +147,6 @@ public class ViewGrid {
         return values;
     }
 
-    /**
-     * Print the contents of the grid
-     */
     public void printGrid() {
         for (short[] rowGrid : grid) {
             for (int col = 0; col < grid.length; col++) {

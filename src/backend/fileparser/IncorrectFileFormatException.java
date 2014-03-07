@@ -2,7 +2,7 @@ package backend.fileparser;
 
 /**
  * Exception indicating that the
- * fil format does not match the
+ * file format does not match the
  * required format.
  * @author Jayen kumar Jaentilal k1189304
  */

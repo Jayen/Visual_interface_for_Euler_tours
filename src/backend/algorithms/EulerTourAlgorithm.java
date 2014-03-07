@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Abstract class that sets up the
+ * foundation for the euler tour algorithms
  * Jayen kumar Jaentilal k1189304
  */
 public abstract class EulerTourAlgorithm implements Runnable {
@@ -22,6 +24,11 @@ public abstract class EulerTourAlgorithm implements Runnable {
         AlgorithmVisualiser.setAlgorithmFinished(true);
     }
 
+    /**
+     * Get the euler tour for the current graph
+     * @return List<Node> the list of nodes
+     * that form a euler tour
+     */
     public abstract List getEulerTour();
 
 
