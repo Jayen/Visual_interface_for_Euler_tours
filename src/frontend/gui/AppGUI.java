@@ -7,6 +7,7 @@ import com.alee.extended.filechooser.FilesSelectionListener;
 import com.alee.extended.filechooser.WebFileChooserField;
 import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.button.WebButton;
+import com.alee.laf.progressbar.WebProgressBar;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -33,6 +34,8 @@ public class AppGUI extends JFrame {
 
     private JButton runJB;
     private GraphVisualiserPanel graphVisualiserPanel;
+    private JPanel inputPanel;
+    private WebProgressBar progressBar;
 
     public AppGUI() {
         super("Euler Tours Visual Interface");
@@ -51,12 +54,12 @@ public class AppGUI extends JFrame {
     private void setupMainGUI() {
         BorderLayout mainLayout = new BorderLayout();
         this.setLayout(mainLayout);
-        JPanel inputPanel = new JPanel();
+        inputPanel = new JPanel(new BorderLayout());
 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Algorithm",createAlgorithmTab());
         tabbedPane.add("Help", createHelpTab());
-        inputPanel.add(tabbedPane);
+        inputPanel.add(tabbedPane,BorderLayout.NORTH);
         this.setupGraphVisualiser();
         this.add(inputPanel, BorderLayout.WEST);
     }
@@ -112,7 +115,6 @@ public class AppGUI extends JFrame {
         pausePlayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton button = (JButton) e.getSource();
                 algorithmVisualiser.pausePlay();
             }
         });
@@ -161,6 +163,7 @@ public class AppGUI extends JFrame {
             public void selectionChanged(List<File> files) {
                 try {
                     currentFile = files.get(0);
+                    AppGUI.this.setStaus("loading graph...");
                     graph = GraphParser.createGraphFromFile(currentFile);
                     graphVisualiserPanel.drawNewGraph(graph);
                     AppGUI.this.revalidate();
@@ -217,6 +220,22 @@ public class AppGUI extends JFrame {
         panel.add(runJB,constraints);
 
         return panel;
+    }
+
+    public void clearStatus() {
+        inputPanel.remove(progressBar);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void setStaus(String status) {
+        progressBar = new WebProgressBar();
+        progressBar.setIndeterminate(true);
+        progressBar.setStringPainted(true);
+        progressBar.setString(status);
+        inputPanel.add(progressBar,BorderLayout.SOUTH);
+        this.revalidate();
+        this.repaint();
     }
 
     /**

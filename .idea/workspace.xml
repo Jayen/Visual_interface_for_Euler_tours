@@ -68,7 +68,17 @@
     <favorites_list name="FinaYearProject" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="HierholzersAlgorithm.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="13" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.33734939" vertical-offset="524" max-vertical-offset="1296">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -90,7 +100,6 @@
         <option value="$PROJECT_DIR$/src/graphView/model/Cell.java" />
         <option value="$PROJECT_DIR$/src/graphView/model/viewGrid.java" />
         <option value="$PROJECT_DIR$/src/backend/fileparser/GraphParser.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java" />
         <option value="$PROJECT_DIR$/src/graphView/model/GridCell.java" />
@@ -98,11 +107,9 @@
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Edge.java" />
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Graph.java" />
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Node.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/HandScrollListener.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/Task.java" />
         <option value="$PROJECT_DIR$/src/graphView/model/PathRouter.java" />
         <option value="$PROJECT_DIR$/src/graphView/model/ViewGrid.java" />
@@ -111,8 +118,12 @@
         <option value="$PROJECT_DIR$/test/test5.txt" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTourAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/AlgorithmVisualiser.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
+        <option value="$PROJECT_DIR$/test/test6.txt" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java" />
       </list>
     </option>
   </component>
@@ -120,9 +131,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1365" />
-    <option name="width" value="1282" />
-    <option name="height" value="1025" />
+    <option name="x" value="-1" />
+    <option name="y" value="27" />
+    <option name="width" value="1368" />
+    <option name="height" value="742" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -331,10 +343,10 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Tests" />
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,9 +366,11 @@
     <property name="options.splitter.details.proportions" value="0.3319616" />
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="SearchEverywhereHistory" value="run" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
       <recent name="C:\Users\Jayen\IDEs Workspace\intelliJ workspace\FinalYearProject\src\lib" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
@@ -427,19 +441,6 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -465,6 +466,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -588,8 +602,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1365" y="0" width="1282" height="1025" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -597,25 +611,25 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43049327" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43021345" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854986" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29769737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29720855" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24773414" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33157098" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3923767" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28323263" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38916257" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -627,8 +641,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25597873" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21771218" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21771218" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
@@ -670,18 +684,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/graphView/model/PathRouter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="58" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="5472" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="46" selection-start="1496" selection-end="1496" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1548">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/AlgorithmVisualiser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="97" column="101" selection-start="4111" selection-end="4111" vertical-scroll-proportion="0.0" vertical-offset="1746" max-vertical-offset="2178">
@@ -697,13 +699,7 @@
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="10" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="2520">
-          <folding>
-            <element signature="e#1157#3382#0" expanded="false" />
-            <element signature="e#3371#3372#0" expanded="false" />
-            <element signature="e#6197#6198#0" expanded="false" />
-            <element signature="e#6225#6226#0" expanded="false" />
-            <element signature="e#6591#6592#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -807,14 +803,11 @@
         <state line="251" column="0" selection-start="8172" selection-end="8172" vertical-scroll-proportion="0.18416524" vertical-offset="3835" max-vertical-offset="5238" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="37" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.87607574" vertical-offset="229" max-vertical-offset="882" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="3012" selection-end="3012" vertical-scroll-proportion="0.9366197" vertical-offset="962" max-vertical-offset="1602" />
+        <state line="94" column="0" selection-start="3012" selection-end="3012" vertical-scroll-proportion="0.9366197" vertical-offset="962" max-vertical-offset="1602">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java">
@@ -827,19 +820,6 @@
         <state line="63" column="4" selection-start="1385" selection-end="1385" vertical-scroll-proportion="1.827883" vertical-offset="0" max-vertical-offset="1296" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="4" selection-start="6625" selection-end="6625" vertical-scroll-proportion="0.87323946" vertical-offset="2546" max-vertical-offset="3186">
-          <folding>
-            <element signature="e#1157#3382#0" expanded="false" />
-            <element signature="e#3371#3372#0" expanded="false" />
-            <element signature="e#6197#6198#0" expanded="false" />
-            <element signature="e#6225#6226#0" expanded="false" />
-            <element signature="e#6591#6592#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/HandScrollListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="24" selection-start="1238" selection-end="1238" vertical-scroll-proportion="0.65920824" vertical-offset="139" max-vertical-offset="792" />
@@ -848,18 +828,6 @@
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/Observable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="17" selection-start="103" selection-end="103" vertical-scroll-proportion="0.1858864" vertical-offset="0" max-vertical-offset="581" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="4" selection-start="2751" selection-end="2751" vertical-scroll-proportion="0.17605634" vertical-offset="980" max-vertical-offset="1638" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="41" selection-start="737" selection-end="737" vertical-scroll-proportion="0.03169014" vertical-offset="90" max-vertical-offset="3474">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/Task.java">
@@ -894,7 +862,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphView/model/ViewGrid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.28521127" vertical-offset="0" max-vertical-offset="2862" />
+        <state line="14" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.28521127" vertical-offset="0" max-vertical-offset="2862">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.txt">
@@ -904,16 +874,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTourAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="4" selection-start="623" selection-end="623" vertical-scroll-proportion="0.61962134" vertical-offset="0" max-vertical-offset="581">
-          <folding />
-        </state>
+        <state line="25" column="4" selection-start="623" selection-end="623" vertical-scroll-proportion="0.61962134" vertical-offset="0" max-vertical-offset="581" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1206">
-          <folding />
-        </state>
+        <state line="59" column="0" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1206" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
@@ -935,9 +901,7 @@
     </entry>
     <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="18" selection-start="10169" selection-end="10169" vertical-scroll-proportion="0.33333334" vertical-offset="3528" max-vertical-offset="9666">
-          <folding />
-        </state>
+        <state line="235" column="18" selection-start="10169" selection-end="10169" vertical-scroll-proportion="0.33333334" vertical-offset="3528" max-vertical-offset="9666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java">
@@ -947,16 +911,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java">
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AlgorithmVisualiser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="13" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.375" vertical-offset="396" max-vertical-offset="1260">
+        <state line="42" column="0" selection-start="1514" selection-end="1514" vertical-scroll-proportion="0.18518518" vertical-offset="362" max-vertical-offset="3294">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AlgorithmVisualiser.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1514" selection-end="1514" vertical-scroll-proportion="0.18518518" vertical-offset="362" max-vertical-offset="3294">
+        <state line="47" column="35" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.9382504" vertical-offset="227" max-vertical-offset="882" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="4" selection-start="3804" selection-end="3804" vertical-scroll-proportion="0.89504373" vertical-offset="1223" max-vertical-offset="1638">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="408" column="21" selection-start="13984" selection-end="13984" vertical-scroll-proportion="0.33274648" vertical-offset="6003" max-vertical-offset="86868">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="230" column="127" selection-start="8543" selection-end="8543" vertical-scroll-proportion="0.0" vertical-offset="2366" max-vertical-offset="2988">
+          <folding>
+            <element signature="method#setupGraphVisualiser#0;class#AppGUI#0" expanded="false" />
+            <element signature="e#7770#7778#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test6.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="3" selection-start="353" selection-end="353" vertical-scroll-proportion="1.5843023" vertical-offset="301" max-vertical-offset="954">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="37" selection-start="3396" selection-end="3396" vertical-scroll-proportion="-0.87009066" vertical-offset="1584" max-vertical-offset="3078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="13" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.33734939" vertical-offset="524" max-vertical-offset="1296">
           <folding />
         </state>
       </provider>

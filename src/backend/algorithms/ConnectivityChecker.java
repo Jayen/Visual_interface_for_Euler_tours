@@ -25,8 +25,8 @@ public class ConnectivityChecker {
      * Check if all the nodes in the graph
      * are reachable i.e connected from the sourceNode
      *
-     * @param sourceNode -any vertex in the graph
-     *                      will work if the graph is connected
+     * @param sourceNode -any Node in the graph
+     *                    will work if the graph is connected
      * @return true if graph is connected else false
      */
     public boolean depthFirstSearch(Node sourceNode) {

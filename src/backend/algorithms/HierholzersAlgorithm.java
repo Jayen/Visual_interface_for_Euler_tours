@@ -49,20 +49,22 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
                 prevNode = currentNode;
             }
             int insertionIndex = 0;
+            int indexToCheckFrom = 0;
             while(edgesTravelled < edgesCount) {
                 while(insertionIndex < nodePathList.size()) {
-                    currentNode = nodePathList.get(insertionIndex);//try a node already in the path list for untravelled edges.
+                    currentNode = nodePathList.get(indexToCheckFrom);//try a node already in the path list for untravelled edges.
                     incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                     while(incidentNodesIterator.hasNext()) {//we pick a node which is already in the pathList but has untravelled edges
                         prevNode = currentNode;
                         currentNode = (Node) incidentNodesIterator.next();
-                        nodePathList.add(insertionIndex+1, currentNode);//insert the nodes from the next cycle in between
+                        nodePathList.add(insertionIndex + 1, currentNode);//insert the nodes from the next cycle in between
                         insertionIndex++;
                         graph.removeEdge(prevNode, currentNode);
                         edgesTravelled++;
                         incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                     }
-                    insertionIndex++;
+                    indexToCheckFrom++;
+                    insertionIndex = indexToCheckFrom;
                 }
             }
             System.out.println(nodePathList);

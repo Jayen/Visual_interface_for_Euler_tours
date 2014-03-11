@@ -86,6 +86,7 @@ public class GraphVisualiserPanel extends JPanel {
                 }
                 GraphVisualiserPanel.this.revalidate();
                 GraphVisualiserPanel.this.repaint();
+                appGUI.clearStatus();
             }
         };
         loadNewGraphThread.start();
