@@ -2,14 +2,14 @@ package backend.algorithms;
 
 import backend.fileparser.GraphParser;
 import backend.fileparser.IncorrectFileFormatException;
-import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import frontend.gui.AlgorithmVisualiser;
 import frontend.gui.AppGUI;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This class implements Hierholzer's algorithm
@@ -19,15 +19,8 @@ import java.util.*;
 public class HierholzersAlgorithm extends EulerTourAlgorithm {
 
     @Override
-    public List getEulerTour() {
-        graph = null;
-        try {
-            graph = GraphParser.createGraphFromFile(AppGUI.currentFile);
-        } catch (IncorrectFileFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public List getEulerTour(Graph graphToCheck) {
+        graph = new Graph(graphToCheck);
 
         if(EulerTourChecker.hasEulerTour(graph)) {
             Node currentNode = graph.getNodes().iterator().next();

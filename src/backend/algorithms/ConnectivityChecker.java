@@ -18,7 +18,7 @@ public class ConnectivityChecker {
 
     public ConnectivityChecker(Graph graph) {
         this.graph = graph;
-        marked = new HashMap<Node,Node>(graph.getNumberOfNodes());
+        marked = new HashMap<Node,Node>(this.graph.getNumberOfNodes());
     }
 
     /**

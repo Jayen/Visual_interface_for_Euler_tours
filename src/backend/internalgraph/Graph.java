@@ -19,6 +19,18 @@ public class Graph {
         edges = new LinkedList<Edge>();
     }
 
+    /**
+     * Copy constructor for graph
+     * @param graph -graph to copy
+     */
+    public Graph(Graph graph) {
+        nodes = new HashMap<Node, List<Node>>();
+        edges = new LinkedList<Edge>();
+        System.out.println("copying graph");
+        this.copyNodesMap(graph.getNodesMap());
+        this.copyEdges(graph.getEdges());
+    }
+
     public void addNode(Node nodeToAdd) {
         if(nodeToAdd ==null) {
             throw new IllegalArgumentException("node cannot be null");
@@ -121,4 +133,26 @@ public class Graph {
     public int getNumberOfEdges() {
         return edges.size();
     }
+
+    public HashMap<Node,List<Node>> getNodesMap() {
+        return nodes;
+    }
+
+    public void copyNodesMap(HashMap<Node,List<Node>> nodesMap) {
+        for(Node node : nodesMap.keySet()) {
+            LinkedList<Node> nodeList = new LinkedList<Node>();
+            for(Node connectedNodes : nodesMap.get(node)) {
+                nodeList.add(new Node(connectedNodes));
+            }
+            this.nodes.put(new Node(node),nodeList);
+        }
+    }
+
+    public void copyEdges(LinkedList<Edge> edges) {
+        for(Edge edge : edges) {
+            this.edges.add(new Edge(edge));
+        }
+    }
+
+
 }

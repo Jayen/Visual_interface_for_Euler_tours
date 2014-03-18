@@ -30,10 +30,10 @@ public class AppGUI extends JFrame {
 
     public static File currentFile;
     public static Graph graph;
+    public static GraphVisualiserPanel graphVisualiserPanel;
     public static AlgorithmVisualiser algorithmVisualiser;
 
     private JButton runJB;
-    private GraphVisualiserPanel graphVisualiserPanel;
     private JPanel inputPanel;
     private WebProgressBar progressBar;
 

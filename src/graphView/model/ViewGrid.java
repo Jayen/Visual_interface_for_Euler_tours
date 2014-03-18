@@ -3,9 +3,11 @@ package graphView.model;
 import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import frontend.gui.AppGUI;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * The ViewGrid class maintains the
@@ -31,7 +33,7 @@ public class ViewGrid {
      * for the internal grid representation
      * it uses the PathRouter class to compute
      * the edges for the graph
-     * @param Graph -graph
+     * @param graph -Graph
      */
     public void loadNewGraph(Graph graph) {
         occupancyType = new HashMap<String,ArrayList<Short>>();
@@ -49,12 +51,13 @@ public class ViewGrid {
             }
         }
 
-        short[] traversableValues = new short[]{occupancyType.get("unoccupied").get(0),occupancyType.get("paddingOccupied").get(0)};
+        short[] traversableValues;
         short occupancyValue = 3;
         Node originNode;
         Node nextNode;
         String key;
         PathRouter router;
+        List<GridCell> path;
 
         Iterator<Edge> edgesIterator = graph.getEdges().iterator();
         Edge edge;
@@ -70,10 +73,33 @@ public class ViewGrid {
             else {
                 occupancyType.get(key).add(occupancyValue);
             }
+            traversableValues = new short[]{occupancyType.get("unoccupied").get(0),
+                                            occupancyType.get("paddingOccupied").get(0)};
+
             router = new PathRouter((int)originNode.getY(),(int)originNode.getX(),
                                     (int)nextNode.getY(),(int)nextNode.getX(),
                                     traversableValues,this);
-            this.markPath(router.getPath(),occupancyValue,10);
+            path = router.getPath();
+
+            if(path==null) {//path not found due to edge crossing, try to find a path with edge crossing
+                traversableValues = new short[occupancyType.size()];
+                Iterator keyIterator = occupancyType.keySet().iterator();
+                String valueKey;
+                int counter = 0;
+                while(keyIterator.hasNext()) {
+                    valueKey = (String) keyIterator.next();
+                    if(!valueKey.equals("node")) {
+                        traversableValues[counter] = occupancyType.get(valueKey).get(0);
+                    }
+                    counter++;
+                }
+                router = new PathRouter((int)originNode.getY(),(int)originNode.getX(),
+                                        (int)nextNode.getY(),(int)nextNode.getX(),
+                                        traversableValues,this);
+                path = router.getPath();
+            }
+            this.markPath(path,occupancyValue,10);
+            path = null;
             occupancyValue++;
         }
     }

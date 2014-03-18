@@ -18,6 +18,15 @@ public class Node {
         this.location = location;
     }
 
+    /**
+     * Copy constructor
+     * @param node -node to copy
+     */
+    public Node(Node node) {
+        this.nodeName = node.nodeName;
+        this.location = node.location;
+    }
+
     public String getNodeName() {
         return nodeName;
     }

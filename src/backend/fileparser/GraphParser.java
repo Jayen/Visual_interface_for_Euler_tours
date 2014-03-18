@@ -1,6 +1,5 @@
 package backend.fileparser;
 
-import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 

@@ -2,9 +2,7 @@ package backend.algorithms;
 
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import frontend.gui.AlgorithmVisualiser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +21,6 @@ public abstract class EulerTourAlgorithm {
      * @return List<Node> the list of nodes
      * that form a euler tour
      */
-    public abstract List getEulerTour();
+    public abstract List getEulerTour(Graph graphToCheck);
 
 }

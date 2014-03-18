@@ -1,13 +1,9 @@
 package frontend.gui;
 
-import backend.algorithms.EulerTourAlgorithm;
-import backend.algorithms.EulerTourChecker;
-import backend.algorithms.FleurysAlgorithm;
-import backend.algorithms.HierholzersAlgorithm;
+import backend.algorithms.*;
 import backend.internalgraph.Graph;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +21,7 @@ public class RunButtonListener implements ActionListener {
     private EulerTourAlgorithm eulerTourAlgorithm;
     private FleurysAlgorithm fleurysAlgorithm;
     private HierholzersAlgorithm hierholzersAlgorithm;
+    private EulerisationAlgorithm eulerisationAlgorithm;
 
     public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
         this.taskGroup = taskGroup;
@@ -52,6 +49,7 @@ public class RunButtonListener implements ActionListener {
                     break;
                 case EuleriseGraph:
                     System.out.println("case eulerise graph");
+                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
                     break;
                 case FleuryAlgorithm:
                     eulerTourAlgorithm = new FleurysAlgorithm();

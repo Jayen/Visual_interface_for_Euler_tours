@@ -11,7 +11,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * This class sets up the visualisation of
@@ -40,28 +39,30 @@ public class AlgorithmVisualiser {
       AlgorithmVisualisationThread = new Thread() {
             @Override
             public void run() {
-                nodePathList = eulerTourAlgorithm.getEulerTour();
-                while(!this.isInterrupted()) {
-                    if(!paused) {
-                        if(currentNodeI < nodePathList.size()) {
-                            AlgorithmVisualiser.visualiseNextAnimated(nodePathList.get(currentNodeI - 1), nodePathList.get(currentNodeI));
-                            currentNodeI++;
+                nodePathList = eulerTourAlgorithm.getEulerTour(AppGUI.graph);
+                if(nodePathList!=null) {
+                    while(!this.isInterrupted()) {
+                        if(!paused) {
+                            if(currentNodeI < nodePathList.size()) {
+                                AlgorithmVisualiser.visualiseNextAnimated(nodePathList.get(currentNodeI - 1), nodePathList.get(currentNodeI));
+                                currentNodeI++;
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    Thread.currentThread().interrupt();
+                                }
+                                if(currentNodeI==nodePathList.size()) {
+                                    currentNodeI--;
+                                    break;
+                                }
+                            }
+                        }
+                        else {
                             try {
-                                Thread.sleep(1000);
+                                Thread.sleep(500);
                             } catch (InterruptedException e) {
                                 Thread.currentThread().interrupt();
                             }
-                            if(currentNodeI==nodePathList.size()) {
-                                currentNodeI--;
-                                break;
-                            }
-                        }
-                    }
-                    else {
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
                         }
                     }
                 }
@@ -98,7 +99,7 @@ public class AlgorithmVisualiser {
 
         Graphics2D g2d = graphVisualiserPanel.imageBuffer.createGraphics();
         if(forward) {
-            g2d.setColor(Color.GREEN);
+            g2d.setColor(Color.YELLOW);
         }
         else {
             g2d.setColor(Color.BLACK);

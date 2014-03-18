@@ -15,6 +15,15 @@ public class Edge {
     }
 
     /**
+     * Copy constructor
+     * @param edge -edge to copy
+     */
+    public Edge(Edge edge) {
+        this.n1 = new Node(edge.n1);
+        this.n2 = new Node(edge.n2);
+    }
+
+    /**
      * Check if the given node
      * is part of this edge
      * @param Node -node to check

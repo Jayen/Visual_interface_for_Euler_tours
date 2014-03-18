@@ -2,18 +2,13 @@ package frontend.gui;
 
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import graphView.model.GridCell;
-import graphView.model.PathRouter;
 import graphView.model.ViewGrid;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -37,16 +32,15 @@ public class GraphVisualiserPanel extends JPanel {
 
     /**
      * Draw a given graph on the panel
-     * @param Graph -graph
+     * @param graph -Graph
      */
-    public void drawNewGraph(final Graph graph) {
+    public void drawNewGraph(Graph graph) {
         this.graph = graph;
         viewGrid = new ViewGrid();
         Thread loadNewGraphThread = new Thread() {
             @Override
             public void run() {
-                viewGrid.loadNewGraph(graph);
-//                viewGrid.printGrid();
+                viewGrid.loadNewGraph(GraphVisualiserPanel.this.graph);
                 imageBuffer = new BufferedImage(viewGrid.rowLength()*x,viewGrid.colLength()*y,BufferedImage.TYPE_INT_RGB);
                 Graphics2D g2d = imageBuffer.createGraphics();
                 for(int row=0; row<viewGrid.rowLength(); row++) {
@@ -56,7 +50,7 @@ public class GraphVisualiserPanel extends JPanel {
                             g2d.setColor(Color.WHITE);
                         }
                         else if(value==viewGrid.getOccupancyType("paddingOccupied").get(0)) {
-                            g2d.setColor(Color.cyan);
+                            g2d.setColor(Color.LIGHT_GRAY);
                         }
                         else if(value==viewGrid.getOccupancyType("node").get(0)) {
                             g2d.setColor(Color.BLUE);
@@ -67,7 +61,7 @@ public class GraphVisualiserPanel extends JPanel {
                         g2d.fillRect(col * x, row * y, x, y);
                     }
                 }
-                Iterator<Node> nodeIterator = graph.getNodes().iterator();
+                Iterator<Node> nodeIterator = GraphVisualiserPanel.this.graph.getNodes().iterator();
                 g2d.setColor(Color.BLUE);
                 Node node;
                 while(nodeIterator.hasNext()) {
@@ -106,7 +100,7 @@ public class GraphVisualiserPanel extends JPanel {
                     g2d.setColor(Color.WHITE);
                 }
                 else if(value==viewGrid.getOccupancyType("paddingOccupied").get(0)) {
-                    g2d.setColor(Color.cyan);
+                    g2d.setColor(Color.LIGHT_GRAY);
                 }
                 else if(value==viewGrid.getOccupancyType("node").get(0)) {
                     g2d.setColor(Color.BLUE);
