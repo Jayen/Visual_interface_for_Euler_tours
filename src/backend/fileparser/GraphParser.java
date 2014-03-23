@@ -28,8 +28,8 @@ public class GraphParser {
      * files content does not follow the required format,
      * Also throws IOException if the file path is invalid
      *
-     * @param graphTextFile -graph file in .txt
-     * @return Graph -LocationFixedSparseGraph created from file
+     * @param graphTextFile graph file in .txt
+     * @return Graph object created from file
      * @throws IncorrectFileFormatException
      * @throws IOException
      */
