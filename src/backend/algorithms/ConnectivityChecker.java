@@ -2,7 +2,6 @@ package backend.algorithms;
 
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -29,14 +28,14 @@ public class ConnectivityChecker {
      *                    will work if the graph is connected
      * @return true if graph is connected else false
      */
-    public boolean depthFirstSearch(Node sourceNode) {
+    public boolean isGRaphConnectedDFS(Node sourceNode) {
         marked.put(sourceNode,sourceNode);
         Iterator iterator = graph.getConnectedNodes(sourceNode).iterator();
         Node node;
         while(iterator.hasNext()) {
             node = (Node) iterator.next();
             if(marked.get(node)==null) {
-                depthFirstSearch(node);
+                isGRaphConnectedDFS(node);
             }
         }
         if(marked.size()==graph.getNumberOfNodes()) {

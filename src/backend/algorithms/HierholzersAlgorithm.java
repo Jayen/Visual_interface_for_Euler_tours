@@ -1,12 +1,7 @@
 package backend.algorithms;
 
-import backend.fileparser.GraphParser;
-import backend.fileparser.IncorrectFileFormatException;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import frontend.gui.AppGUI;
-
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,7 +23,7 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
             nodePathList.add(currentNode);
             Iterator incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
 
-            int edgesCount = graph.getNumberOfEdges();
+            int totalEdges = graph.getNumberOfEdges();
             Node prevNode = currentNode;
             int edgesTravelled = 0;
 
@@ -41,19 +36,27 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
                 incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                 prevNode = currentNode;
             }
+
             int insertionIndex = 0;
             int indexToCheckFrom = 0;
-            while(edgesTravelled < edgesCount) {
+            while(edgesTravelled < totalEdges) {
+
                 while(insertionIndex < nodePathList.size()) {
-                    currentNode = nodePathList.get(indexToCheckFrom);//try a node already in the path list for untravelled edges.
+                    //try a node already in the path list for untravelled edges.
+                    currentNode = nodePathList.get(indexToCheckFrom);
                     incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
-                    while(incidentNodesIterator.hasNext()) {//we pick a node which is already in the pathList but has untravelled edges
+
+                    //we pick a node which is already in the pathList but has untravelled edges
+                    while(incidentNodesIterator.hasNext()) {
                         prevNode = currentNode;
                         currentNode = (Node) incidentNodesIterator.next();
-                        nodePathList.add(insertionIndex + 1, currentNode);//insert the nodes from the next cycle in between
+                        //insert the nodes from the next cycle in between
+                        nodePathList.add(insertionIndex + 1, currentNode);
                         insertionIndex++;
+                        //remove edge as we have now travelled it
                         graph.removeEdge(prevNode, currentNode);
                         edgesTravelled++;
+                        //get nodes to visit from the current node
                         incidentNodesIterator = graph.getIncidentNodes(currentNode).iterator();
                     }
                     indexToCheckFrom++;

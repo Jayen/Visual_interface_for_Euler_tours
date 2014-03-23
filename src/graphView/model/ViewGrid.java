@@ -33,7 +33,7 @@ public class ViewGrid {
      * for the internal grid representation
      * it uses the PathRouter class to compute
      * the edges for the graph
-     * @param graph -Graph
+     * @param graph the Graph to load into the viewGrid
      */
     public void loadNewGraph(Graph graph) {
         occupancyType = new HashMap<String,ArrayList<Short>>();
@@ -61,11 +61,13 @@ public class ViewGrid {
 
         Iterator<Edge> edgesIterator = graph.getEdges().iterator();
         Edge edge;
+
         while (edgesIterator.hasNext()) {
             edge = edgesIterator.next();
             originNode = edge.getFirstNode();
             nextNode = edge.getSecondNode();
             key = originNode.toString()+" "+nextNode.toString();
+
             if(!occupancyType.containsKey(key)) {
                 occupancyType.put(key, new ArrayList<Short>());
                 occupancyType.get(key).add(occupancyValue);
@@ -73,6 +75,7 @@ public class ViewGrid {
             else {
                 occupancyType.get(key).add(occupancyValue);
             }
+
             traversableValues = new short[]{occupancyType.get("unoccupied").get(0),
                                             occupancyType.get("paddingOccupied").get(0)};
 
@@ -81,11 +84,13 @@ public class ViewGrid {
                                     traversableValues,this);
             path = router.getPath();
 
-            if(path==null) {//path not found due to edge crossing, try to find a path with edge crossing
+            //path not found due to edge crossing, try to find a path with edge crossing
+            if(path==null) {
                 traversableValues = new short[occupancyType.size()];
                 Iterator keyIterator = occupancyType.keySet().iterator();
                 String valueKey;
                 int counter = 0;
+
                 while(keyIterator.hasNext()) {
                     valueKey = (String) keyIterator.next();
                     if(!valueKey.equals("node")) {
@@ -93,11 +98,13 @@ public class ViewGrid {
                     }
                     counter++;
                 }
+
                 router = new PathRouter((int)originNode.getY(),(int)originNode.getX(),
                                         (int)nextNode.getY(),(int)nextNode.getX(),
                                         traversableValues,this);
                 path = router.getPath();
             }
+
             this.markPath(path,occupancyValue,10);
             path = null;
             occupancyValue++;
@@ -107,9 +114,9 @@ public class ViewGrid {
     /**
      * Method to mark a certain a path which is a edge
      * with a certain occupancy value with a set layer padding
-     * @param path -the path to mark
-     * @param occupancyValue -the value to mark with
-     * @param layers -number of layers
+     * @param path the path to mark
+     * @param occupancyValue the value to mark with
+     * @param layers number of layers padding around the path
      */
     private void markPath(List<GridCell> path, short occupancyValue,int layers) {
         if(path==null) {
@@ -162,7 +169,14 @@ public class ViewGrid {
         return grid[0].length;
     }
 
-    public ArrayList<Short> getEdgeValue(Node node1, Node node2) {
+    /**
+     * Get the edge values that are used to represent
+     * the edge between the 2 given nodes
+     * @param node1 first node
+     * @param node2 second node
+     * @return edge values associated with the edges between node1 and node2
+     */
+    public ArrayList<Short> getEdgeValues(Node node1, Node node2) {
         ArrayList<Short> values = null;
         if(occupancyType.get(node1.toString()+" "+node2.toString())!=null) {
             values = occupancyType.get(node1.toString()+" "+node2.toString());

@@ -37,35 +37,35 @@ public class GraphParser {
 
         graph = new Graph();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(graphTextFile));
-        String line = bufferedReader.readLine();
+        String currentLine = bufferedReader.readLine();
 
-        if(line.equals("#nodes")) {
-            line = bufferedReader.readLine();
+        if(currentLine.equals("#nodes")) {
+            currentLine = bufferedReader.readLine();
         }
         else {
-            throw new IncorrectFileFormatException();
+            throw new IncorrectFileFormatException("The file should start with #nodes");
         }
 
         Node node;
         Point2D location;
         Pattern pattern = Pattern.compile("([A-z|0-9]+)\\s\\((\\d+)[,](\\d+)\\)");
         Matcher matcher;
-        while(!line.isEmpty()) {
-            matcher = pattern.matcher(line);
+        while(!currentLine.isEmpty()) {
+            matcher = pattern.matcher(currentLine);
             if(matcher.matches()) {
                 location = new Point(Integer.parseInt(matcher.group(2)),Integer.parseInt(matcher.group(3)));
                 node = new Node(matcher.group(1),location);
                 graph.addNode(node);
             }
             else {
-                throw new IncorrectFileFormatException();
+                throw new IncorrectFileFormatException(currentLine+"does not match the node format");
             }
-            line = bufferedReader.readLine();
+            currentLine = bufferedReader.readLine();
         }
-        line = bufferedReader.readLine();
+        currentLine = bufferedReader.readLine();
 
-        if(line.equals("#edges")) {
-            line = bufferedReader.readLine();
+        if(currentLine.equals("#edges")) {
+            currentLine = bufferedReader.readLine();
         }
         else {
             throw new IncorrectFileFormatException();
@@ -74,8 +74,8 @@ public class GraphParser {
         pattern = Pattern.compile("([A-z|0-9]+)[-]([A-z|0-9]+)");
         Node node1;
         Node node2;
-        while(line!=null) {
-            matcher = pattern.matcher(line);
+        while(currentLine!=null) {
+            matcher = pattern.matcher(currentLine);
             if(matcher.matches()) {
                 node1 = new Node(matcher.group(1),null);
                 node2 = new Node(matcher.group(2),null);
@@ -86,7 +86,7 @@ public class GraphParser {
                     throw new IncorrectFileFormatException("the node specified in edges does not exist in graph");
                 }
             }
-            line = bufferedReader.readLine();
+            currentLine = bufferedReader.readLine();
         }
         return graph;
     }

@@ -3,7 +3,6 @@ package backend.algorithms;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 import frontend.gui.AppGUI;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,7 +14,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
 
     public NearestNeighbourAlgorithm(Graph graph) {
         super.graph = graph;
-        super.subGraphs = new HashSet<Node[]>();
+        super.subGraphs = new HashMap<String, Node[]>();
         super.nodes = new HashMap<Node, Node>();
         super.putAllNodes(nodes);
         if(graph.getNumberOfEdges()!=0) {
@@ -76,6 +75,74 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
     }
 
     private void nearestNeighbourSubGraphs() {
+        if(subGraphs.size()>1) {
+            HashMap<Node, Node> oddNodes = new HashMap<Node, Node>();
+            super.putAllOddNodes(oddNodes);
+            if(oddNodes.size()==0) {
+                connectSubGraphsEvenDegree();//we have multiple sub-graphs all with even degree
+            }
+        }
+    }
 
+    private void connectSubGraphsEvenDegree() {
+        HashSet<String> connectedSubGraphKeys = new HashSet<String>();
+        connectedSubGraphKeys.add("subGraph0");
+        Node[] connectedSubGraph;
+        Node[] unconnectedSubGraph;
+
+        Iterator subGraphsKeyIterator = subGraphs.keySet().iterator();
+        String subGraphKey;
+        Node sourceNode = null;
+        double minDist = Double.MAX_VALUE;
+        Node minNode = null;
+        Node nextNode;
+        double dist;
+
+        //for loop makes sure we ad at least n-1 edges between n sub-graphs
+        for(int edgesAdded=0; edgesAdded<subGraphs.size(); edgesAdded++) {
+
+            while(subGraphsKeyIterator.hasNext()) {//go through every subgraph
+                subGraphKey = (String) subGraphsKeyIterator.next();
+
+                if(!connectedSubGraphKeys.contains(subGraphKey)) {
+                    unconnectedSubGraph = subGraphs.get(subGraphKey);
+
+                    for (String connectedSubGraphKey : connectedSubGraphKeys) {
+                        connectedSubGraph = subGraphs.get(connectedSubGraphKey);
+                        for (Node node : connectedSubGraph) {
+                            //find the nearest node in the unconnected sub graph
+                            nextNode = nextNearestNodeInSubGraph(node, unconnectedSubGraph);
+                            dist = super.computeDistance(node, nextNode);
+                            if (dist < minDist) {
+                                minDist = dist;
+                                sourceNode = node;
+                                minNode = nextNode;
+                            }
+                        }
+                    }
+                    connectedSubGraphKeys.add(subGraphKey);//add the unconnected subGraph to the connected set
+                    //add 2 edges between the 2 closest neighbours
+                    //we add 2 since we cannot have odd edges for Euler tours
+                    graph.addEdge(sourceNode,minNode);
+                    graph.addEdge(sourceNode,minNode);
+                }
+            }
+        }
+    }
+
+    private Node nextNearestNodeInSubGraph(Node sourceNode, Node[] nodesToSearch) {
+        double minDistance = Double.MAX_VALUE;
+        double currentDistance;
+        Node minNode = null;
+        for (Node nextNode : nodesToSearch) {
+            if(nextNode!=sourceNode) {
+                currentDistance = computeDistance(sourceNode, nextNode);
+                if (currentDistance < minDistance) {
+                    minDistance = currentDistance;
+                    minNode = nextNode;
+                }
+            }
+        }
+        return minNode;
     }
 }

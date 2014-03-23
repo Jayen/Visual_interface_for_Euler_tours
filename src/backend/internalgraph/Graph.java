@@ -26,7 +26,6 @@ public class Graph {
     public Graph(Graph graph) {
         nodes = new HashMap<Node, List<Node>>();
         edges = new LinkedList<Edge>();
-        System.out.println("copying graph");
         this.copyNodesMap(graph.getNodesMap());
         this.copyEdges(graph.getEdges());
     }
@@ -154,5 +153,18 @@ public class Graph {
         }
     }
 
-
+    public void printGraph() {
+        Iterator nodesIterator = nodes.keySet().iterator();
+        Node sourceNode;
+        List<Node> connectedNodes;
+        while(nodesIterator.hasNext()) {
+            sourceNode = (Node) nodesIterator.next();
+            System.out.print("sourceNode is: "+sourceNode+" reachable nodes: ");
+            connectedNodes = nodes.get(sourceNode);
+            for(Node node : connectedNodes) {
+                System.out.print(" "+node);
+            }
+            System.out.println();
+        }
+    }
 }

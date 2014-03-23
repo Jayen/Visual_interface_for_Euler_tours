@@ -3,7 +3,6 @@ package frontend.gui;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 import graphView.model.ViewGrid;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -43,6 +42,8 @@ public class GraphVisualiserPanel extends JPanel {
                 viewGrid.loadNewGraph(GraphVisualiserPanel.this.graph);
                 imageBuffer = new BufferedImage(viewGrid.rowLength()*x,viewGrid.colLength()*y,BufferedImage.TYPE_INT_RGB);
                 Graphics2D g2d = imageBuffer.createGraphics();
+
+                //draw the grid
                 for(int row=0; row<viewGrid.rowLength(); row++) {
                     for(int col=0; col<viewGrid.colLength(); col++) {
                         short value = viewGrid.getOccupancyGridValue(row, col);
@@ -61,6 +62,8 @@ public class GraphVisualiserPanel extends JPanel {
                         g2d.fillRect(col * x, row * y, x, y);
                     }
                 }
+
+                //draw the nodes
                 Iterator<Node> nodeIterator = GraphVisualiserPanel.this.graph.getNodes().iterator();
                 g2d.setColor(Color.BLUE);
                 Node node;
@@ -111,6 +114,7 @@ public class GraphVisualiserPanel extends JPanel {
                 g2d.fillRect(col * x, row * y, x, y);
             }
         }
+
         Iterator<Node> nodeIterator = graph.getNodes().iterator();
         g2d.setColor(Color.BLUE);
         Node node;

@@ -31,7 +31,7 @@ public class RunButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Task task = getTask(taskGroup,algorithmJCB);
+        Task task = getSelectedTask(taskGroup, algorithmJCB);
         if(task!=null) {
             Graph graph = graphVisualiserPanel.getCurrentGraph();
             fleurysAlgorithm = new FleurysAlgorithm();
@@ -65,7 +65,7 @@ public class RunButtonListener implements ActionListener {
         }
     }
 
-    private Task getTask(ButtonGroup taskGroup, JComboBox<String> algorithmJCB) {
+    private Task getSelectedTask(ButtonGroup taskGroup, JComboBox<String> algorithmJCB) {
         try {
             String actionCommand = taskGroup.getSelection().getActionCommand();
             if(actionCommand.equals(Task.FindEulerTour.getName())) {

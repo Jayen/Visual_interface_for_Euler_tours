@@ -8,7 +8,6 @@ import com.alee.extended.filechooser.WebFileChooserField;
 import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.button.WebButton;
 import com.alee.laf.progressbar.WebProgressBar;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -29,11 +28,11 @@ import java.util.List;
 public class AppGUI extends JFrame {
 
     public static File currentFile;
-    public static Graph graph;
     public static GraphVisualiserPanel graphVisualiserPanel;
     public static AlgorithmVisualiser algorithmVisualiser;
-
     private JButton runJB;
+
+    private Graph graph;
     private JPanel inputPanel;
     private WebProgressBar progressBar;
 
@@ -222,18 +221,24 @@ public class AppGUI extends JFrame {
         return panel;
     }
 
-    public void clearStatus() {
-        inputPanel.remove(progressBar);
-        this.revalidate();
-        this.repaint();
-    }
-
+    /**
+     * Set the status of the application
+     * Used to indicate to the user what is happening
+     * through a progress bar
+     * @param status
+     */
     public void setStaus(String status) {
         progressBar = new WebProgressBar();
         progressBar.setIndeterminate(true);
         progressBar.setStringPainted(true);
         progressBar.setString(status);
         inputPanel.add(progressBar,BorderLayout.SOUTH);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void clearStatus() {
+        inputPanel.remove(progressBar);
         this.revalidate();
         this.repaint();
     }

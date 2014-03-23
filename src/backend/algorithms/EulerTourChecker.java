@@ -15,7 +15,8 @@ public class EulerTourChecker {
 
     public static boolean hasEulerTour(Graph graph) {
         ConnectivityChecker connectivityChecker = new ConnectivityChecker(graph);
-        if(connectivityChecker.depthFirstSearch(graph.getNodes().iterator().next()) && hasNoOddDegreeVetices(graph)) {
+        if(connectivityChecker.isGRaphConnectedDFS(graph.getNodes().iterator().next())
+           && hasNoOddDegreeVertices(graph)) {
             return true;
         }
         return false;
@@ -27,7 +28,7 @@ public class EulerTourChecker {
      * @param graph -Graph
      * @return boolean -false if there is a vertex with odd degree else true
      */
-    private static boolean hasNoOddDegreeVetices(Graph graph) {
+    private static boolean hasNoOddDegreeVertices(Graph graph) {
         Collection nodes = graph.getNodes();
         Iterator nodeIterator = nodes.iterator();
         Node node;

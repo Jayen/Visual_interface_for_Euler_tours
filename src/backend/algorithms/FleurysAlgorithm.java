@@ -1,12 +1,7 @@
 package backend.algorithms;
 
-import backend.fileparser.GraphParser;
-import backend.fileparser.IncorrectFileFormatException;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import frontend.gui.AppGUI;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -72,9 +67,7 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
     private boolean isBridge(Node node1, Node node2) {
         graph.removeEdge(node1,node2);
         connectivityChecker = new ConnectivityChecker(graph);
-        //if the graph is connected then the edge is not a bridge i.e isConnected = true
-        boolean isConnected = connectivityChecker.depthFirstSearch(node2);
-//        System.out.println(node1+" "+node2+" is a bridge "+!isConnected);
+        boolean isConnected = connectivityChecker.isGRaphConnectedDFS(node2);
         graph.addEdge(node1,node2);//add the edge back to the original graph
         return !isConnected;
     }
