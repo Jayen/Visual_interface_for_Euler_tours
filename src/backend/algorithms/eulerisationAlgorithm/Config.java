@@ -17,7 +17,7 @@ public class Config implements Configuration {
     private double cost;
     private ArrayList<Edge> edgesConfig;
     private Random random;
-    private HashMap<String,HashSet<Node>> subGraphs;
+    private HashMap<String,HashMap<Integer,Node>> subGraphs;
     private int randomIndex1;
     private int randomIndex2;
     private Edge randomEdge1;
@@ -31,9 +31,16 @@ public class Config implements Configuration {
         subGraphs = new HashMap<String, Node[]>();
         Iterator keysIterator = subGraphs.keySet().iterator();
         String key;
+        HashMap<Integer,Node> subGraph;
+        Node[] subGraphArray;
         while(keysIterator.hasNext()) {
             key = (String) keysIterator.next();
-            this.subGraphs.put(key, new HashSet<Node>(Arrays.asList(subGraphs.get(key))));
+            subGraph = new HashMap<Integer, Node>();
+            subGraphArray = subGraphs.get(key);
+            for(int i=0; i<subGraphArray.length; i++) {
+                subGraph.put(i,subGraphArray[i]);
+            }
+            this.subGraphs.put(key, subGraph);
         }
         computeCost();
     }
@@ -50,7 +57,27 @@ public class Config implements Configuration {
     public double generateNeighbouringConfig() {
         randomIndex1 = random.nextInt(edgesConfig.size());
         randomIndex2 = random.nextInt(edgesConfig.size());
-        return 0;
+        randomEdge1 = edgesConfig.get(randomIndex1);
+        randomEdge2 = edgesConfig.get(randomIndex2);
+        Node node = getCommonNodeBetweenEdges(randomEdge1,randomEdge2);
+        if(node!=null) { 
+
+        }
+        else {
+
+        }
+        computeCost();
+        return cost;
+    }
+
+    private Node getCommonNodeBetweenEdges(Edge edge1, Edge edge2) {
+        if(edge1.contains(edge2.getFirstNode())) {
+            return edge2.getFirstNode();
+        }
+        else if(edge1.contains(edge2.getSecondNode())) {
+            return edge2.getSecondNode();
+        }
+        return null;
     }
 
     @Override

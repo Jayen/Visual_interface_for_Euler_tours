@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
+ *
  * Jayen kumar Jaentilal k1189304
  */
 public abstract class EulerisationAlgorithm {
@@ -84,5 +85,6 @@ public abstract class EulerisationAlgorithm {
     }
 
     public void euleriseGraph(boolean visualise) {
+
     }
 }
