@@ -105,7 +105,7 @@ public class ViewGrid {
                 path = router.getPath();
             }
 
-            this.markPath(path,occupancyValue,10);
+            this.markPath(path,occupancyValue,5);
             path = null;
             occupancyValue++;
         }

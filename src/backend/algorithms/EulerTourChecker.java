@@ -15,7 +15,7 @@ public class EulerTourChecker {
 
     public static boolean hasEulerTour(Graph graph) {
         ConnectivityChecker connectivityChecker = new ConnectivityChecker(graph);
-        if(connectivityChecker.isGRaphConnectedDFS(graph.getNodes().iterator().next())
+        if(connectivityChecker.isGraphConnectedDFS(graph.getNodes().iterator().next())
            && hasNoOddDegreeVertices(graph)) {
             return true;
         }

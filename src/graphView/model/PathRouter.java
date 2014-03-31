@@ -30,6 +30,7 @@ public class PathRouter {
 
     private static int straightCost = 10;
     private static int diagonalCost = 14;
+    private static int paddingCost = 50;
 
     public PathRouter(int startRow,int startCol, int endRow, int endCol, short[] traversableValue,ViewGrid viewGrid) {
         this.startRow = startRow;
@@ -179,14 +180,14 @@ public class PathRouter {
                             if(cellisDiagonal(cell, parentCell)) {
                                 movementCost = calculateMovementCost(parentCell, diagonalCost);
                                 if(this.isPadding(viewGrid.getOccupancyGridValue(row,col))) {
-                                    movementCost = movementCost+100;
+                                    movementCost = movementCost+paddingCost;
                                 }
                                 cell.setMovementCost(movementCost);
                             }
                             else {
                                 movementCost = calculateMovementCost(parentCell,straightCost);
                                 if(this.isPadding(viewGrid.getOccupancyGridValue(row,col))) {
-                                    movementCost = movementCost+100;
+                                    movementCost = movementCost+paddingCost;
                                 }
                                 cell.setMovementCost(movementCost);
                             }

@@ -1,8 +1,8 @@
 package frontend.gui;
 
-import backend.algorithms.EulerTourAlgorithm;
-import backend.algorithms.FleurysAlgorithm;
-import backend.algorithms.HierholzersAlgorithm;
+import backend.algorithms.eulerTourAlgorithms.EulerTourAlgorithm;
+import backend.algorithms.eulerTourAlgorithms.FleurysAlgorithm;
+import backend.algorithms.eulerTourAlgorithms.HierholzersAlgorithm;
 import backend.internalgraph.Node;
 import graphView.model.GridCell;
 import graphView.model.PathRouter;

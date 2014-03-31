@@ -1,7 +1,10 @@
-package backend.algorithms;
+package backend.algorithms.eulerTourAlgorithms;
 
+import backend.algorithms.ConnectivityChecker;
+import backend.algorithms.EulerTourChecker;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -67,7 +70,7 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
     private boolean isBridge(Node node1, Node node2) {
         graph.removeEdge(node1,node2);
         connectivityChecker = new ConnectivityChecker(graph);
-        boolean isConnected = connectivityChecker.isGRaphConnectedDFS(node2);
+        boolean isConnected = connectivityChecker.isGraphConnectedDFS(node2);
         graph.addEdge(node1,node2);//add the edge back to the original graph
         return !isConnected;
     }

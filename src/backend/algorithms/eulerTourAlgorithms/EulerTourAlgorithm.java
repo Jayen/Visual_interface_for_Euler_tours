@@ -1,5 +1,6 @@
-package backend.algorithms;
+package backend.algorithms.eulerTourAlgorithms;
 
+import backend.algorithms.ConnectivityChecker;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 

@@ -1,6 +1,12 @@
 package frontend.gui;
 
-import backend.algorithms.*;
+import backend.algorithms.EulerTourChecker;
+import backend.algorithms.eulerTourAlgorithms.EulerTourAlgorithm;
+import backend.algorithms.eulerTourAlgorithms.FleurysAlgorithm;
+import backend.algorithms.eulerTourAlgorithms.HierholzersAlgorithm;
+import backend.algorithms.eulerisationAlgorithm.EulerisationAlgorithm;
+import backend.algorithms.eulerisationAlgorithm.NearestNeighbourAlgorithm;
+import backend.algorithms.eulerisationAlgorithm.SimulatedAnnealing;
 import backend.internalgraph.Graph;
 
 import javax.swing.*;
@@ -15,6 +21,7 @@ import java.awt.event.ActionListener;
  */
 public class RunButtonListener implements ActionListener {
 
+    private AppGUI appGUI;
     private ButtonGroup taskGroup;
     private JComboBox<String> algorithmJCB;
     private GraphVisualiserPanel graphVisualiserPanel;
@@ -23,7 +30,8 @@ public class RunButtonListener implements ActionListener {
     private HierholzersAlgorithm hierholzersAlgorithm;
     private EulerisationAlgorithm eulerisationAlgorithm;
 
-    public RunButtonListener(ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
+    public RunButtonListener(AppGUI appGUI,ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
+        this.appGUI = appGUI;
         this.taskGroup = taskGroup;
         this.algorithmJCB = algorithmJCB;
         this.graphVisualiserPanel = graphVisualiserPanel;
@@ -48,18 +56,18 @@ public class RunButtonListener implements ActionListener {
                     }
                     break;
                 case EuleriseGraph:
-                    System.out.println("case eulerise graph");
-                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+                    appGUI.setStatus("Eulerising graph");
+//                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+                    eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
+                    eulerisationAlgorithm.euleriseGraph(true);
                     break;
                 case FleuryAlgorithm:
                     eulerTourAlgorithm = new FleurysAlgorithm();
                     AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
-                    System.out.println("case fleury algorithm");
                     break;
                 case HierholzersAlgorithm:
                     eulerTourAlgorithm = new HierholzersAlgorithm();
                     AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
-                    System.out.println("case hierholzers algorithm");
                     break;
             }
         }
@@ -76,6 +84,7 @@ public class RunButtonListener implements ActionListener {
                     return Task.HierholzersAlgorithm;
                 }
             }
+
             else if(actionCommand.equals(Task.EulerTourCheck.getName())) {
                 return Task.EulerTourCheck;
             }

@@ -1,8 +1,10 @@
-package backend.algorithms;
+package backend.algorithms.eulerisationAlgorithm;
 
+import backend.algorithms.Heuristics;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 import frontend.gui.AppGUI;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,17 +26,20 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         if(graph.getNumberOfEdges()!=0) {
             super.findSubGraphs();//there may be subGraphs if there are some edges
         }
-        this.nearestNeighbourEuleriseGraph();
     }
 
-    public void nearestNeighbourEuleriseGraph() {
-        if(subGraphs.size()==0) {
+    public void euleriseGraph(boolean visualise) {
+        if(graph.getNumberOfEdges()==0) {
             tspNearestNeighbour();
-            AppGUI.graphVisualiserPanel.drawNewGraph(graph);
+            if(visualise) {
+                AppGUI.graphVisualiserPanel.drawNewGraph(graph);
+            }
         }
         else {
             nearestNeighbourSubGraphs();
-            AppGUI.graphVisualiserPanel.drawNewGraph(graph);
+            if(visualise) {
+                AppGUI.graphVisualiserPanel.drawNewGraph(graph);
+            }
         }
     }
 
@@ -67,7 +72,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
             Node minNode = null;
             for (Node nextNode : unvisitedNodes.keySet()) {
                 if(nextNode!=startNode) {
-                    currentDistance = computeDistance(prevNode, nextNode);
+                    currentDistance = Heuristics.computeEuclideanDistance(prevNode, nextNode);
                     if (currentDistance < minDistance) {
                         minDistance = currentDistance;
                         minNode = nextNode;
@@ -114,7 +119,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
             if(nextNode!=sourceNode) {
                 if(foundOddNode) {
                     if(graph.degree(nextNode)%2!=0) {
-                        currentDistance = computeDistance(sourceNode,nextNode);
+                        currentDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
                         if(currentDistance < minDistance) {
                             minDistance = currentDistance;
                             minNode = nextNode;
@@ -125,11 +130,11 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
                 else {
                     if(graph.degree(nextNode)%2!=0) {
                         foundOddNode = true;
-                        minDistance = computeDistance(sourceNode, nextNode);
+                        minDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
                         minNode = nextNode;
                     }
                     else {
-                        currentDistance = computeDistance(sourceNode,nextNode);
+                        currentDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
                         if(currentDistance < minDistance) {
                             minDistance = currentDistance;
                             minNode = nextNode;
@@ -179,11 +184,11 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
                     //add the unconnected subGraph to the connected set
                     connectedSubGraphKeys.add(subGraphKey);
                     graph.addEdge(sourceNode, minNode);
-                    if(currentConnectionType.equals("evenToEven")) {
-                        //add 2 edges between the 2 closest neighbours
-                        //we add 2 since we cannot have odd edges for Euler tours
-                        graph.addEdge(sourceNode, minNode);
-                    }
+                    //add 2 edges between the 2 closest neighbours
+                    //we add 2 since we cannot have odd edges for Euler tours
+//                    if(currentConnectionType.equals("evenToEven")) {
+//                        graph.addEdge(sourceNode, minNode);
+//                    }
                 }
             }
             edgesAdded++;
@@ -247,7 +252,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
     }
 
     private void updateDistAndNodes(Node node, Node nextNode,boolean greedyUpdate) {
-        double dist = super.computeDistance(node, nextNode);
+        double dist = Heuristics.computeEuclideanDistance(node, nextNode);
         if(greedyUpdate) {
             currentMinDist = dist;
             sourceNode = node;

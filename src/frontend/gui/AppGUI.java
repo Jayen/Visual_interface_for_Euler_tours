@@ -8,6 +8,7 @@ import com.alee.extended.filechooser.WebFileChooserField;
 import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.button.WebButton;
 import com.alee.laf.progressbar.WebProgressBar;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -162,14 +163,12 @@ public class AppGUI extends JFrame {
             public void selectionChanged(List<File> files) {
                 try {
                     currentFile = files.get(0);
-                    AppGUI.this.setStaus("loading graph...");
+                    AppGUI.this.setStatus("loading graph...");
                     graph = GraphParser.createGraphFromFile(currentFile);
                     graphVisualiserPanel.drawNewGraph(graph);
-                    AppGUI.this.revalidate();
-                    AppGUI.this.repaint();
-                } catch (IncorrectFileFormatException e1) {
-                } catch (IOException e1) {
-                } catch (IndexOutOfBoundsException e1) {
+                } catch (IncorrectFileFormatException ignored) {
+                } catch (IOException ignored) {
+                } catch (IndexOutOfBoundsException ignored) {
                 }
             }
         });
@@ -213,7 +212,7 @@ public class AppGUI extends JFrame {
         panel.add(algorithmPanel,constraints);
 
         runJB = new JButton("Run Task");
-        runJB.addActionListener(new RunButtonListener(taskGroup, algorithmJCB, graphVisualiserPanel));
+        runJB.addActionListener(new RunButtonListener(this,taskGroup, algorithmJCB, graphVisualiserPanel));
         constraints.gridy++;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(runJB,constraints);
@@ -227,7 +226,7 @@ public class AppGUI extends JFrame {
      * through a progress bar
      * @param status
      */
-    public void setStaus(String status) {
+    public void setStatus(String status) {
         progressBar = new WebProgressBar();
         progressBar.setIndeterminate(true);
         progressBar.setStringPainted(true);

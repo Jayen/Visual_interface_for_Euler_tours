@@ -1,33 +1,24 @@
-package backend.algorithms;
+package backend.algorithms.eulerisationAlgorithm;
 
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * User: jayen
- * Date: 15/03/14, Time: 17:42
+ * Jayen kumar Jaentilal k1189304
  */
-public class EulerisationAlgorithm {
+public abstract class EulerisationAlgorithm {
 
     /* A graph may contain many sub-graphs which need to be connected up
-     * and in the worst case all nodes are unconnected meaning for n node there will be n sub-graphs
-     * The HashSet represents each sub-graph the HashSet contains a list
+     * and in the worst case all nodes are unconnected meaning for n nodes there will be n sub-graphs
+     * The HashMap represents each sub-graph the HashMap contains a list
      * of nodes that are in that particular sub-graph
      */
     public HashMap<String,Node[]> subGraphs;
-
     public Graph graph;
     public HashMap<Node,Node> nodes;
-
-    public double computeDistance(Node currentNode, Node nextNode) {
-        //euclidean distance (pythagoras)
-        return Math.sqrt((currentNode.getX()-nextNode.getX())*(currentNode.getX()-nextNode.getX())
-                +(currentNode.getY()-nextNode.getY())*(currentNode.getY()-nextNode.getY()));
-    }
 
     public void findSubGraphs() {
         HashMap<Node,Node> marked = new HashMap<Node,Node>();
@@ -88,5 +79,8 @@ public class EulerisationAlgorithm {
             }
             System.out.println();
         }
+    }
+
+    public void euleriseGraph(boolean visualise) {
     }
 }

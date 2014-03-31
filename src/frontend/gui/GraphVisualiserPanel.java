@@ -3,6 +3,7 @@ package frontend.gui;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 import graphView.model.ViewGrid;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -39,6 +40,7 @@ public class GraphVisualiserPanel extends JPanel {
         Thread loadNewGraphThread = new Thread() {
             @Override
             public void run() {
+                System.out.println("drawing graph");
                 viewGrid.loadNewGraph(GraphVisualiserPanel.this.graph);
                 imageBuffer = new BufferedImage(viewGrid.rowLength()*x,viewGrid.colLength()*y,BufferedImage.TYPE_INT_RGB);
                 Graphics2D g2d = imageBuffer.createGraphics();
@@ -74,9 +76,9 @@ public class GraphVisualiserPanel extends JPanel {
 
                     g2d.setColor(Color.BLUE);
                     g2d.fillRect((int)node.getX(),
-                                (int)node.getY() - fm.getAscent()+5,
-                                (int) rect.getWidth(),
-                                (int) rect.getHeight());
+                                 (int)node.getY() - fm.getAscent()+5,
+                                 (int) rect.getWidth(),
+                                 (int) rect.getHeight());
 
                     g2d.setColor(Color.WHITE);
                     g2d.drawString(node.getNodeName(),(int)node.getX(),(int)node.getY()+5);
@@ -84,6 +86,7 @@ public class GraphVisualiserPanel extends JPanel {
                 GraphVisualiserPanel.this.revalidate();
                 GraphVisualiserPanel.this.repaint();
                 appGUI.clearStatus();
+                System.out.println("done drawing graph");
             }
         };
         loadNewGraphThread.start();

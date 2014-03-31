@@ -1,7 +1,9 @@
-package backend.algorithms;
+package backend.algorithms.eulerTourAlgorithms;
 
+import backend.algorithms.EulerTourChecker;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
