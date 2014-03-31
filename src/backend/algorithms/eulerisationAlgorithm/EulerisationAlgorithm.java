@@ -23,12 +23,14 @@ public abstract class EulerisationAlgorithm {
     public void findSubGraphs() {
         HashMap<Node,Node> marked = new HashMap<Node,Node>();
         Node[] nodeKeys = nodes.keySet().toArray(new Node[marked.size()]);
-        int counter = 0;//also used as a id for sub-graph names
+        int counter = 0;
+        int subGraphCounter = 0;//also used as a id for sub-graph names
         while(counter<nodeKeys.length) {
             if(nodes.get(nodeKeys[counter])!=null) {
                 connectedNodesDFS(nodes.get(nodeKeys[counter]), marked);
-                subGraphs.put("subGraph" + counter, marked.values().toArray(new Node[marked.size()]));
+                subGraphs.put("subGraph" + subGraphCounter, marked.values().toArray(new Node[marked.size()]));
                 marked = new HashMap<Node, Node>();
+                subGraphCounter++;
             }
             counter++;
         }

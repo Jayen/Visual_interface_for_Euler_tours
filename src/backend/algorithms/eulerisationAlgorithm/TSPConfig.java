@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * Jayen kumar Jaentilal k1189304
  */
-public class TSPConfig implements Configruation {
+public class TSPConfig implements Configuration {
 
     private double cost;
     private ArrayList<Node> pathNodes;
@@ -28,7 +28,7 @@ public class TSPConfig implements Configruation {
 
     public TSPConfig(TSPConfig config) {
         this.pathNodes = new ArrayList<Node>();
-        for(int i=0; i<config.getNumberOfEdgesAdded(); i++) {
+        for(int i=0; i<config.getPathSize(); i++) {
             this.pathNodes.add(config.getPathNodes().get(i));
         }
         computeCost();
@@ -91,7 +91,7 @@ public class TSPConfig implements Configruation {
         return cost;
     }
 
-    public int getNumberOfEdgesAdded() {
+    public int getPathSize() {
         return pathNodes.size();
     }
 

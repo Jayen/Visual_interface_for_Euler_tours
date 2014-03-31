@@ -4,6 +4,11 @@
     <list default="true" id="450e4d76-e2a3-47ce-8632-bc7745b85703" name="Default" comment="" />
     <ignored path="FinaYearProject.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/SimulatedAnnealing.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396281828709" ignored="false" />
+    <file path="/Config.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396281593127" ignored="false" />
+    <file path="/TSPConfig.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396270231855" ignored="false" />
+    <file path="/EulerisationAlgorithm.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396273088152" ignored="false" />
+    <file path="/NearestNeighbourAlgorithm.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396279341226" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,8 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -59,10 +66,64 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configuration.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="16" column="17" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="6" column="26" selection-start="187" selection-end="187" vertical-scroll-proportion="0.08256881">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="RunButtonListener.java" pinned="false" current="true" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="63" column="87" selection-start="2734" selection-end="2734" vertical-scroll-proportion="0.38718662">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="TSPConfig.java" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="29" column="47" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
+                    <folding>
+                      <element signature="method#updateCost#0;class#TSPConfig#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -70,46 +131,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SimulatedAnnealing.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EulerisationAlgorithm.java" pinned="false" current="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="48" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.7254902">
+              <folding>
+                <element signature="e#764#775#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NearestNeighbourAlgorithm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/NearestNeighbourAlgorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="54" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1594#1606#0" expanded="true" />
+                <element signature="e#3958#3970#0" expanded="true" />
+                <element signature="e#7197#7205#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimulatedAnnealing.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="65" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.49769586" vertical-offset="414" max-vertical-offset="3960">
+            <state line="40" column="39" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2729#2735#0" expanded="true" />
-                <element signature="e#2997#3005#0" expanded="true" />
-                <element signature="e#6572#6578#0" expanded="true" />
-                <element signature="e#7965#7971#0" expanded="true" />
+                <element signature="e#2899#2905#0" expanded="true" />
+                <element signature="e#3192#3200#0" expanded="true" />
+                <element signature="e#6509#6515#0" expanded="true" />
+                <element signature="e#7902#7908#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="24" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TSPConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="8" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="1746">
-              <folding>
-                <element signature="method#updateCost#0;class#TSPConfig#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Configruation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configruation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="33" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -124,57 +179,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/frontend/gui/GraphModel.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/HuffmanCodeAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTour.java" />
-        <option value="$PROJECT_DIR$/src/backend/internalgraph/Vertex.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/ConstantReferences.java" />
-        <option value="$PROJECT_DIR$/src/graphView/model/Cell.java" />
-        <option value="$PROJECT_DIR$/src/graphView/model/viewGrid.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiser.java" />
-        <option value="$PROJECT_DIR$/src/graphView/model/GridCell.java" />
-        <option value="$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/HandScrollListener.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/OpenFileActionListener.java" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/Task.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/test/test.txt" />
-        <option value="$PROJECT_DIR$/test/test5.txt" />
-        <option value="$PROJECT_DIR$/test/test6.txt" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTourAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/internalgraph/Node.java" />
-        <option value="$PROJECT_DIR$/test/noOddEdges.txt" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/FleurysAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/HierholzersAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/fileparser/GraphParser.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java" />
-        <option value="$PROJECT_DIR$/test/noEdges.txt" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/AlgorithmVisualiser.java" />
-        <option value="$PROJECT_DIR$/src/backend/internalgraph/Graph.java" />
-        <option value="$PROJECT_DIR$/src/backend/internalgraph/Edge.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/Heuristics.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/NearestNeighbourAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/EulerisationAlgorithm.java" />
-        <option value="$PROJECT_DIR$/test/test7.txt" />
-        <option value="$PROJECT_DIR$/src/graphView/model/PathRouter.java" />
-        <option value="$PROJECT_DIR$/test/test8.txt" />
-        <option value="$PROJECT_DIR$/src/graphView/model/ViewGrid.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/Configruation.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/SimulatedAnnealing.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/NearestNeighbourAlgorithm.java" />
         <option value="$PROJECT_DIR$/test/noOddDegree.txt" />
         <option value="$PROJECT_DIR$/test/noOddDegree2.txt" />
         <option value="$PROJECT_DIR$/test/disconnectedGraph.txt" />
         <option value="$PROJECT_DIR$/test/noEdges2.txt" />
-        <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configruation.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/NearestNeighbourAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java" />
+        <option value="$PROJECT_DIR$/src/backend/internalgraph/Graph.java" />
+        <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
       </list>
     </option>
   </component>
@@ -182,9 +202,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="27" />
-    <option name="width" value="1366" />
-    <option name="height" value="741" />
+    <option name="x" value="2795" />
+    <option name="width" value="1039" />
+    <option name="height" value="1185" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -192,6 +212,9 @@
         <expanded-state>
           <State>
             <id />
+          </State>
+          <State>
+            <id>General</id>
           </State>
           <State>
             <id>Javadoc issues</id>
@@ -205,7 +228,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>SpellCheckingInspection</id>
+            <id>SillyAssignment</id>
           </State>
         </selected-state>
       </profile-state>
@@ -243,9 +266,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Tests" />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,7 +280,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -270,7 +290,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -284,7 +304,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -298,7 +318,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -316,7 +336,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -334,7 +354,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -356,7 +376,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -378,7 +398,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -400,33 +420,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algorithms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eulerTourAlgorithms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FinalYearProject" />
+              <option name="myItemId" value="FinaYearProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -448,29 +442,32 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Tests" />
+      </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="preferences.keymap" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="SearchEverywhereHistory" value="run&#10;app&#10;Euler&#10;App&#10;Con&#10;Run&#10;DFS&#10;Graph&#10;System" />
     <property name="last_opened_file_path" value="$USER_HOME$/GitHub/StockAppPro" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.3319616" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistory" value="run&#10;app&#10;Euler&#10;App&#10;Con&#10;Run&#10;DFS&#10;Graph&#10;System" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.3319616" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -511,7 +508,7 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="GraphDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="GraphDemo" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="edu.uci.ics.jung.samples.GraphDemo" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -535,7 +532,6 @@
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -544,7 +540,19 @@
       <option name="NETWORK_SPEED" value="full" />
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -572,19 +580,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -626,9 +621,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -637,7 +630,6 @@
       <option name="NETWORK_SPEED" value="full" />
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <list size="2">
@@ -708,62 +700,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1366" height="741" extended-state="0" />
+    <frame x="2795" y="0" width="1039" height="1185" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42825112" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.68653846" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1838565" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854986" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29596412" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2951923" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24773414" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2193646" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24013157" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21725889" sideWeight="0.7605769" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23942308" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32550335" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854986" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1838565" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854986" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22205438" sideWeight="0.6900648" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24466339" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25365853" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32550335" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42825112" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2955665" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24773414" sideWeight="0.7497169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -774,9 +739,58 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
     </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -790,319 +804,131 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/java/lang/Object.java">
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="18" selection-start="10169" selection-end="10169" vertical-scroll-proportion="0.33293697" vertical-offset="3536" max-vertical-offset="9666" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="962" column="55" selection-start="32920" selection-end="32920" vertical-scroll-proportion="0.27419356" vertical-offset="16713" max-vertical-offset="21114">
-          <folding>
-            <element signature="e#28508#28509#0" expanded="false" />
-            <element signature="e#28542#28543#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/laf/scroll/WebScrollPaneUI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/managers/focus/DefaultFocusTracker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="19" selection-start="611" selection-end="611" vertical-scroll-proportion="0.39608803" vertical-offset="0" max-vertical-offset="818" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/laf/panel/WebPanelUI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1818" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/managers/focus/FocusManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="666" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/laf/filechooser/WebFileChooserPanel.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="55" selection-start="0" selection-end="1429" vertical-scroll-proportion="0.5928854" vertical-offset="0" max-vertical-offset="4590" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/laf/filechooser/WebFileChooserUI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1242" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/extended/filechooser/WebFileChooserField.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1620" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/utils/SwingUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="34" selection-start="4236" selection-end="4236" vertical-scroll-proportion="-5.92" vertical-offset="1292" max-vertical-offset="6030" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/laf/button/WebButtonUI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4014" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerTourAlgorithms/FleurysAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.08440797" vertical-offset="0" max-vertical-offset="1440" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/fileparser/IncorrectFileFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="7" selection-start="127" selection-end="127" vertical-scroll-proportion="0.12471132" vertical-offset="0" max-vertical-offset="866" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="52" selection-start="383" selection-end="383" vertical-scroll-proportion="0.27020785" vertical-offset="0" max-vertical-offset="866" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphView/model/GridCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.7090069" vertical-offset="520" max-vertical-offset="1386" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="120" selection-end="120" vertical-scroll-proportion="0.12471132" vertical-offset="0" max-vertical-offset="866" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="41" selection-start="2641" selection-end="2641" vertical-scroll-proportion="0.39794168" vertical-offset="1190" max-vertical-offset="1782">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerTourAlgorithms/HierholzersAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="16" selection-start="2751" selection-end="2751" vertical-scroll-proportion="0.67741936" vertical-offset="684" max-vertical-offset="1314">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/noEdges.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="102" selection-start="209" selection-end="209" vertical-scroll-proportion="0.5866209" vertical-offset="0" max-vertical-offset="583" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/ConnectivityChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="281" selection-end="281" vertical-scroll-proportion="0.27787307" vertical-offset="0" max-vertical-offset="882" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/EulerTourChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="599" selection-end="599" vertical-scroll-proportion="0.31182796" vertical-offset="96" max-vertical-offset="810" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerTourAlgorithms/EulerTourAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="14" selection-start="331" selection-end="331" vertical-scroll-proportion="0.38709676" vertical-offset="0" max-vertical-offset="558">
+        <state line="36" column="16" selection-start="847" selection-end="847" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/Heuristics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="18" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/lib/weblaf_1.25_library.jar!/com/alee/laf/progressbar/WebProgressBar.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="466" selection-end="466" vertical-scroll-proportion="0.20769231" vertical-offset="0" max-vertical-offset="2610" />
+        <state line="12" column="0" selection-start="273" selection-end="273" vertical-scroll-proportion="0.23529412">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="36" selection-start="540" selection-end="540" vertical-scroll-proportion="0.5338078" vertical-offset="0" max-vertical-offset="1638">
+        <state line="16" column="0" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test7.txt">
+    <entry file="file://$PROJECT_DIR$/src/backend/fileparser/GraphParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="3" selection-start="157" selection-end="157" vertical-scroll-proportion="0.54895663" vertical-offset="0" max-vertical-offset="623" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test8.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="3" selection-start="106" selection-end="106" vertical-scroll-proportion="0.22916667" vertical-offset="0" max-vertical-offset="864" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="466" column="19" selection-start="16866" selection-end="16866" vertical-scroll-proportion="0.6041667" vertical-offset="7452" max-vertical-offset="20790">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="475" column="9" selection-start="21397" selection-end="21397" vertical-scroll-proportion="0.5208333" vertical-offset="7686" max-vertical-offset="10494" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_51/src.zip!/javax/swing/JComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3319" column="0" selection-start="126407" selection-end="126407" vertical-scroll-proportion="0.0" vertical-offset="58334" max-vertical-offset="99108" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.7.0_51/jre/lib/rt.jar!/sun/misc/Unsafe.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="327" column="23" selection-start="10259" selection-end="10259" vertical-scroll-proportion="0.6367713" vertical-offset="5584" max-vertical-offset="6030" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphView/model/PathRouter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="0" selection-start="6910" selection-end="6910" vertical-scroll-proportion="0.68688524" vertical-offset="2785" max-vertical-offset="5904" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test4.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="7" selection-end="77" vertical-scroll-proportion="0.028892456" vertical-offset="0" max-vertical-offset="623" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="0" selection-start="3148" selection-end="3148" vertical-scroll-proportion="0.0" vertical-offset="1724" max-vertical-offset="3096">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.0" vertical-offset="873" max-vertical-offset="1404">
-          <folding>
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AlgorithmVisualiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="4233" selection-end="4233" vertical-scroll-proportion="0.44082126" vertical-offset="1345" max-vertical-offset="3402">
+        <state line="20" column="13" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphView/model/ViewGrid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3546" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/HandScrollListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="24" selection-start="1238" selection-end="1238" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="792">
+        <state line="32" column="84" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/graphView/model/PathRouter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="33" selection-start="3025" selection-end="3025" vertical-scroll-proportion="0.5688525" vertical-offset="931" max-vertical-offset="3240">
-          <folding>
-            <element signature="e#974#3436#0" expanded="true" />
-            <element signature="e#3425#3426#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/AppGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="49" selection-start="6136" selection-end="6136" vertical-scroll-proportion="0.0" vertical-offset="2080" max-vertical-offset="3888">
+        <state line="10" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.13761468">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/noOddDegree.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="3" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/noOddDegree2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="12" selection-start="96" selection-end="96" vertical-scroll-proportion="0.20833333" vertical-offset="0" max-vertical-offset="864" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/disconnectedGraph.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.3456" vertical-offset="0" max-vertical-offset="625" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/noEdges2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="10" selection-start="86" selection-end="86" vertical-scroll-proportion="0.21649484" vertical-offset="0" max-vertical-offset="582">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="1584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/NearestNeighbourAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4824">
-          <folding>
-            <element signature="e#5480#5488#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configruation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="33" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+        <state line="21" column="8" selection-start="170" selection-end="170" vertical-scroll-proportion="0.28899083">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="8" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="1746">
+        <state line="29" column="47" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="method#updateCost#0;class#TSPConfig#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="24" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+        <state line="16" column="17" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="64" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.12826604" vertical-offset="828" max-vertical-offset="1728">
+        <state line="29" column="57" selection-start="749" selection-end="749" vertical-scroll-proportion="0.30612245">
+          <folding>
+            <element signature="e#3594#3600#0" expanded="true" />
+            <element signature="e#4226#4232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="26" selection-start="187" selection-end="187" vertical-scroll-proportion="0.08256881">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="65" selection-start="736" selection-end="736" vertical-scroll-proportion="0.5325444">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="65" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.49769586" vertical-offset="414" max-vertical-offset="3960">
+        <state line="40" column="39" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2729#2735#0" expanded="true" />
-            <element signature="e#2997#3005#0" expanded="true" />
-            <element signature="e#6572#6578#0" expanded="true" />
-            <element signature="e#7965#7971#0" expanded="true" />
+            <element signature="e#2899#2905#0" expanded="true" />
+            <element signature="e#3192#3200#0" expanded="true" />
+            <element signature="e#6509#6515#0" expanded="true" />
+            <element signature="e#7902#7908#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/NearestNeighbourAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="54" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1594#1606#0" expanded="true" />
+            <element signature="e#3958#3970#0" expanded="true" />
+            <element signature="e#7197#7205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="48" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.7254902">
+          <folding>
+            <element signature="e#764#775#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="87" selection-start="2734" selection-end="2734" vertical-scroll-proportion="0.38718662">
+          <folding />
         </state>
       </provider>
     </entry>

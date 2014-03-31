@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
+ * This class implements the nearest neighbour
+ * algorithm to eulerise a graph
  * Jayen kumar Jaentilal k1189304
  */
 public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
@@ -43,25 +45,39 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * This method implements the
+     * nearest neighbour algorithm for
+     * the TSP problem when there are no
+     * edges in the graph
+     */
     private void tspNearestNeighbour() {
         HashMap<Node,Node> unvisitedNodes = new HashMap<Node, Node>(graph.getNumberOfNodes());
         super.putAllNodes(unvisitedNodes);
         Node startNode = graph.getNodes().iterator().next();
         Node prevNode = startNode;
         Node currentNode;
-        currentNode = nextNearestUnvistedNode(startNode,prevNode,unvisitedNodes);
+        currentNode = nextNearestUnvisitedNode(startNode, prevNode, unvisitedNodes);
         super.graph.addEdge(prevNode,currentNode);
         unvisitedNodes.remove(currentNode);
         prevNode = currentNode;
         while(unvisitedNodes.size()!=0) {
-            currentNode = nextNearestUnvistedNode(startNode,prevNode,unvisitedNodes);
+            currentNode = nextNearestUnvisitedNode(startNode, prevNode, unvisitedNodes);
             super.graph.addEdge(prevNode,currentNode);
             unvisitedNodes.remove(currentNode);
             prevNode = currentNode;
         }
     }
 
-    private Node nextNearestUnvistedNode(Node startNode, Node prevNode, HashMap<Node, Node> unvisitedNodes) {
+    /**
+     * Get the next nearest node that
+     * has not been visited
+     * @param startNode the starting node for the algorithm
+     * @param prevNode  the last node the algorithm visited
+     * @param unvisitedNodes the set of nodes that are yet to be visited
+     * @return nearest node to the prevNode or the startNode if unvisitedNode is empty.
+     */
+    private Node nextNearestUnvisitedNode(Node startNode, Node prevNode, HashMap<Node, Node> unvisitedNodes) {
         //don't go back to the start node until the very end
         if(unvisitedNodes.size()==1) {
             return startNode;
@@ -83,6 +99,11 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * This method implements the nearest neighbour algorithm
+     * for instances where there are multiple sub graphs in the main graph
+     * which means they need to be connected up before eulerisation
+     */
     private void nearestNeighbourSubGraphs() {
         if(subGraphs.size()>1) {
             //we have multiple sub-graphs all with even degree
@@ -95,6 +116,10 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * This method eulerises a connected graph with odd nodes
+     * @param oddNodes nodes which have odd degree
+     */
     private void euleriseGraphWithOddNodes(HashMap<Node, Node> oddNodes) {
         Iterator oddNodesIterator = oddNodes.keySet().iterator();
         Node sourceOddNode;
@@ -109,7 +134,20 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * This methods gives the next best node
+     * to connect from a sourceNode and the set of nodes to connect (nodesToSearch)
+     * @param sourceNode -the node to connect from
+     * @param nodesToSearch -the set of nodes that the sourceNode could connect to
+     * @return node -best node to connect as defined by this method
+     */
     private Node nextBestNodeToConnect(Node sourceNode, Node[] nodesToSearch) {
+        /*
+         Best node to connect as defined by this method
+         smallest distance and degree odd node is the best
+         next best is any odd degree node
+         and lastly the shortest distance node with even degree
+        */
         double minDistance = Double.MAX_VALUE;
         double currentDistance;
         Node minNode = null;
@@ -146,6 +184,12 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         return minNode;
     }
 
+    /**
+     * This method connects up
+     * all the subgraph such that at then end
+     * the graph is connected and there are
+     * no disconnected components
+     */
     private void connectTheSubGraphs() {
         HashSet<String> connectedSubGraphKeys = new HashSet<String>();
         connectedSubGraphKeys.add("subGraph0");
@@ -162,7 +206,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
 
         //loop makes sure we add at least n-1 edges between n sub-graphs
         int edgesAdded = 0;
-        while(edgesAdded<subGraphs.size()) {
+        while(edgesAdded<subGraphs.size()-1) {
 
             while(subGraphsKeyIterator.hasNext()) {//go through every subgraph
                 subGraphKey = (String) subGraphsKeyIterator.next();
@@ -184,17 +228,21 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
                     //add the unconnected subGraph to the connected set
                     connectedSubGraphKeys.add(subGraphKey);
                     graph.addEdge(sourceNode, minNode);
-                    //add 2 edges between the 2 closest neighbours
-                    //we add 2 since we cannot have odd edges for Euler tours
-//                    if(currentConnectionType.equals("evenToEven")) {
-//                        graph.addEdge(sourceNode, minNode);
-//                    }
                 }
             }
             edgesAdded++;
         }
     }
 
+    /**
+     * This method adds the edge depending
+     * on the current connection type and the
+     * connection type that the node and nextNode have
+     * @param node node to connect from
+     * @param nextNode node to connect to
+     * @param currentConnectionType the current connection type that exists
+     * @return
+     */
     private String addEdgeBasedOnConnectionType(Node node, Node nextNode, String currentConnectionType) {
         if(graph.degree(node)%2!=0) {//node has odd degree
             if(graph.degree(nextNode)%2!=0) {//nextNode has odd degree
@@ -251,6 +299,13 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         return currentConnectionType;
     }
 
+    /**
+     * update the distance and the nodes the connection is made to
+     * @param node node to connect from
+     * @param nextNode node to connect to
+     * @param greedyUpdate force connection update -use when giving a certain connection type priority
+     *                     like odd to odd connection over odd to even connection
+     */
     private void updateDistAndNodes(Node node, Node nextNode,boolean greedyUpdate) {
         double dist = Heuristics.computeEuclideanDistance(node, nextNode);
         if(greedyUpdate) {

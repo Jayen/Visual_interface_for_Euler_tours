@@ -57,8 +57,8 @@ public class RunButtonListener implements ActionListener {
                     break;
                 case EuleriseGraph:
                     appGUI.setStatus("Eulerising graph");
-//                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
-                    eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
+                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+//                    eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
                     eulerisationAlgorithm.euleriseGraph(true);
                     break;
                 case FleuryAlgorithm:

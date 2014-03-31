@@ -6,7 +6,7 @@ import backend.internalgraph.Graph;
  * User: jayen
  * Date: 31/03/14, Time: 13:03
  */
-public interface Configruation {
+public interface Configuration {
 
     public double generateNeighbouringConfig();
 
