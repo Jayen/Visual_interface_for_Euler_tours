@@ -4,11 +4,12 @@
     <list default="true" id="450e4d76-e2a3-47ce-8632-bc7745b85703" name="Default" comment="" />
     <ignored path="FinaYearProject.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/SimulatedAnnealing.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396281828709" ignored="false" />
-    <file path="/Config.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396281593127" ignored="false" />
-    <file path="/TSPConfig.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396270231855" ignored="false" />
+    <file path="/SimulatedAnnealing.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396282777823" ignored="false" />
+    <file path="/Config.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396286663214" ignored="false" />
+    <file path="/TSPConfig.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396283874103" ignored="false" />
     <file path="/EulerisationAlgorithm.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396273088152" ignored="false" />
     <file path="/NearestNeighbourAlgorithm.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396279341226" ignored="false" />
+    <file path="/Configuration.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396283859220" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,72 +70,16 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configuration.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="16" column="17" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="6" column="26" selection-start="187" selection-end="187" vertical-scroll-proportion="0.08256881">
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="RunButtonListener.java" pinned="false" current="true" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="63" column="87" selection-start="2734" selection-end="2734" vertical-scroll-proportion="0.38718662">
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="TSPConfig.java" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="29" column="47" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
-                    <folding>
-                      <element signature="method#updateCost#0;class#TSPConfig#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="FinaYearProject" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EulerisationAlgorithm.java" pinned="false" current="false" current-in-tab="true">
+      <file leaf-file-name="EulerisationAlgorithm.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="48" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.7254902">
+            <state line="25" column="47" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#764#775#0" expanded="true" />
               </folding>
@@ -155,15 +100,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimulatedAnnealing.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SimulatedAnnealing.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="39" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
+            <state line="133" column="62" selection-start="5323" selection-end="5323" vertical-scroll-proportion="0.57100594">
               <folding>
                 <element signature="e#2899#2905#0" expanded="true" />
-                <element signature="e#3192#3200#0" expanded="true" />
-                <element signature="e#6509#6515#0" expanded="true" />
-                <element signature="e#7902#7908#0" expanded="true" />
+                <element signature="e#3202#3210#0" expanded="true" />
+                <element signature="e#6449#6455#0" expanded="true" />
+                <element signature="e#7842#7848#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/backend/algorithms/Configruation.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/AppGUI.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/GraphVisualiserPanel.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/SimulatedAnnealing.java" />
@@ -188,13 +132,14 @@
         <option value="$PROJECT_DIR$/test/disconnectedGraph.txt" />
         <option value="$PROJECT_DIR$/test/noEdges2.txt" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configruation.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/NearestNeighbourAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java" />
-        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java" />
         <option value="$PROJECT_DIR$/src/backend/internalgraph/Graph.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java" />
         <option value="$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java" />
+        <option value="$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java" />
       </list>
     </option>
   </component>
@@ -701,7 +646,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2795" y="0" width="1039" height="1185" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.7497169" order="4" side_tool="false" content_ui="tabs" />
@@ -717,7 +662,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.7497169" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21725889" sideWeight="0.7605769" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23942308" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23942308" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -853,22 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="47" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#updateCost#0;class#TSPConfig#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="17" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="57" selection-start="749" selection-end="749" vertical-scroll-proportion="0.30612245">
@@ -879,29 +808,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="26" selection-start="187" selection-end="187" vertical-scroll-proportion="0.08256881">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/internalgraph/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="65" selection-start="736" selection-end="736" vertical-scroll-proportion="0.5325444">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="39" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#2899#2905#0" expanded="true" />
-            <element signature="e#3192#3200#0" expanded="true" />
-            <element signature="e#6509#6515#0" expanded="true" />
-            <element signature="e#7902#7908#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,16 +828,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/EulerisationAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="48" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.7254902">
+        <state line="25" column="47" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#764#775#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="62" selection-start="5323" selection-end="5323" vertical-scroll-proportion="0.57100594">
+          <folding>
+            <element signature="e#2899#2905#0" expanded="true" />
+            <element signature="e#3202#3210#0" expanded="true" />
+            <element signature="e#6449#6455#0" expanded="true" />
+            <element signature="e#7842#7848#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/gui/RunButtonListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="87" selection-start="2734" selection-end="2734" vertical-scroll-proportion="0.38718662">
+        <state line="22" column="79" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/TSPConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="99" selection-start="687" selection-end="687" vertical-scroll-proportion="0.27522936">
+          <folding>
+            <element signature="method#updateCost#0;class#TSPConfig#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="58" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.44954127">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="79" selection-start="807" selection-end="807" vertical-scroll-proportion="0.4678899">
           <folding />
         </state>
       </provider>

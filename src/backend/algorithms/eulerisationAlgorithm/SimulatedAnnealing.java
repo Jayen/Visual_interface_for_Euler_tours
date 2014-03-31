@@ -80,7 +80,7 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
             ArrayList<Edge> edgesConfig = new ArrayList<Edge>();
             connectTheSubGraphs(edgesConfig);
             euleriseTheGraph(edgesConfig);
-            return new Config(edgesConfig,graph);
+            return new Config(edgesConfig,graph,subGraphs);
         }
     }
 
@@ -131,8 +131,6 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
                     }
                 }
             }
-            oddDegreeNode1 = null;
-            oddDegreeNode2 = null;
         }
     }
 

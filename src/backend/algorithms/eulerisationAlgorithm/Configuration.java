@@ -3,16 +3,36 @@ package backend.algorithms.eulerisationAlgorithm;
 import backend.internalgraph.Graph;
 
 /**
- * User: jayen
- * Date: 31/03/14, Time: 13:03
+ * Interface that defines what Configruation is
+ * and what methods it should support
+ * @author Jayen kumar Jaentilal k1189304
  */
 public interface Configuration {
 
+    /**
+     * Method to generate a neighbouring
+     * configuration from the current config
+     * @return the cost of the neighbouring configuration
+     */
     public double generateNeighbouringConfig();
 
+
+    /**
+     * Undo the last configuration
+     * that was generated
+     */
     public void undoLastGeneration();
 
+    /**
+     * Get the cost of the configuration
+     * @return
+     */
     public double getCost();
 
+    /**
+     * Get the graph that represents
+     * this configuration
+     * @return graph represting this configuration
+     */
     public Graph getGraph();
 }

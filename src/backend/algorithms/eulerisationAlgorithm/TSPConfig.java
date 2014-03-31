@@ -23,6 +23,7 @@ public class TSPConfig implements Configuration {
 
     public TSPConfig(ArrayList<Node> eulerPath) {
         this.pathNodes = eulerPath;
+        random = new Random();
         computeCost();
     }
 
@@ -42,7 +43,6 @@ public class TSPConfig implements Configuration {
     }
 
     private void twoOptSwap() {
-        random = new Random();
         //avoid swapping the first and the last node as they are fixed for the tour
         //so we only generate numbers from 1 to path size-2
         randomIndex1 = random.nextInt(pathNodes.size() - 2)+1;

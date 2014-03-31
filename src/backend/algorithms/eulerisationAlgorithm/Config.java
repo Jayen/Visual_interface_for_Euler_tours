@@ -3,9 +3,9 @@ package backend.algorithms.eulerisationAlgorithm;
 import backend.algorithms.Heuristics;
 import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
+import backend.internalgraph.Node;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 /**
  * User: jayen
@@ -17,11 +17,24 @@ public class Config implements Configuration {
     private double cost;
     private ArrayList<Edge> edgesConfig;
     private Random random;
+    private HashMap<String,HashSet<Node>> subGraphs;
+    private int randomIndex1;
+    private int randomIndex2;
+    private Edge randomEdge1;
+    private Edge randomEdge2;
 
 
-    public Config(ArrayList<Edge> edgesConfig,Graph graph) {
+    public Config(ArrayList<Edge> edgesConfig,Graph graph,HashMap<String,Node[]> subGraphs) {
         this.edgesConfig = edgesConfig;
         this.graph = graph;
+        random = new Random();
+        subGraphs = new HashMap<String, Node[]>();
+        Iterator keysIterator = subGraphs.keySet().iterator();
+        String key;
+        while(keysIterator.hasNext()) {
+            key = (String) keysIterator.next();
+            this.subGraphs.put(key, new HashSet<Node>(Arrays.asList(subGraphs.get(key))));
+        }
         computeCost();
     }
 
@@ -35,7 +48,8 @@ public class Config implements Configuration {
 
     @Override
     public double generateNeighbouringConfig() {
-
+        randomIndex1 = random.nextInt(edgesConfig.size());
+        randomIndex2 = random.nextInt(edgesConfig.size());
         return 0;
     }
 
