@@ -11,7 +11,10 @@ public enum Task {
     EuleriseGraph("Eulerise the graph"),
     FindEulerTour("Find Euler Tour"),
     FleuryAlgorithm("Fleury's Algorithm"),
-    HierholzersAlgorithm("Hierholzer's Algorithm");
+    HierholzersAlgorithm("Hierholzer's Algorithm"),
+    NearestNeighbour("Nearest Neighbour"),
+    LocalSearch("Local Search"),
+    SimulatedAnnealing("Simulated Annealing");
 
     private final String name;
 

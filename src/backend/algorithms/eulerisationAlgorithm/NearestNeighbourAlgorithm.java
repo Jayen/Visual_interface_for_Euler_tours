@@ -19,6 +19,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
     private Node sourceNode;
     private Node minNode;
     private double currentMinDist;
+    private double cost;
 
     public NearestNeighbourAlgorithm(Graph graph) {
         super.graph = graph;
@@ -52,21 +53,24 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
      * edges in the graph
      */
     private void tspNearestNeighbour() {
-        HashMap<Node,Node> unvisitedNodes = new HashMap<Node, Node>(graph.getNumberOfNodes());
+        HashMap<Node, Node> unvisitedNodes = new HashMap<Node, Node>(graph.getNumberOfNodes());
         super.putAllNodes(unvisitedNodes);
         Node startNode = graph.getNodes().iterator().next();
         Node prevNode = startNode;
         Node currentNode;
         currentNode = nextNearestUnvisitedNode(startNode, prevNode, unvisitedNodes);
-        super.graph.addEdge(prevNode,currentNode);
+        super.graph.addEdge(prevNode, currentNode);
+        cost = Heuristics.computeEuclideanDistance(prevNode,currentNode);
         unvisitedNodes.remove(currentNode);
         prevNode = currentNode;
-        while(unvisitedNodes.size()!=0) {
+        while (unvisitedNodes.size() != 0) {
             currentNode = nextNearestUnvisitedNode(startNode, prevNode, unvisitedNodes);
-            super.graph.addEdge(prevNode,currentNode);
+            super.graph.addEdge(prevNode, currentNode);
+            cost = cost + Heuristics.computeEuclideanDistance(prevNode,currentNode);
             unvisitedNodes.remove(currentNode);
             prevNode = currentNode;
         }
+        AppGUI.updateCostPanel(this.getCost(),super.graph.getNumberOfNodes());
     }
 
     /**
@@ -320,5 +324,9 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
                 minNode = nextNode;
             }
         }
+    }
+
+    public double getCost() {
+        return cost;
     }
 }

@@ -124,7 +124,10 @@ public class Graph {
         }
         return connectedNodes;
     }
-
+                                                       /**
+ * User: jayen
+ * Date: 31/03/14, Time: 13:08
+ */
     public LinkedList<Edge> getEdges() {
         return edges;
     }

@@ -30,7 +30,7 @@ public class TSPConfig implements Configuration {
     public TSPConfig(TSPConfig config) {
         this.pathNodes = new ArrayList<Node>();
         for(int i=0; i<config.getPathSize(); i++) {
-            this.pathNodes.add(config.getPathNodes().get(i));
+            this.pathNodes.add(config.getConfig().get(i));
         }
         computeCost();
     }
@@ -43,8 +43,11 @@ public class TSPConfig implements Configuration {
     }
 
     private void twoOptSwap() {
-        //avoid swapping the first and the last node as they are fixed for the tour
-        //so we only generate numbers from 1 to path size-2
+        /*
+         Avoid swapping the first and the last node as they are fixed for the tour
+         and swapping them will generate a invalid tour
+         so we only generate numbers from 1 to path size-2
+        */
         randomIndex1 = random.nextInt(pathNodes.size() - 2)+1;
         randomIndex2 = random.nextInt(pathNodes.size() - 2)+1;
         randomNode1 = pathNodes.get(randomIndex1);
@@ -80,6 +83,7 @@ public class TSPConfig implements Configuration {
     public void undoLastGeneration() {
         pathNodes.set(randomIndex1, randomNode1);
         pathNodes.set(randomIndex2, randomNode2);
+        computeCost();
     }
 
     public void setEdges(ArrayList<Node> edges) {
@@ -95,7 +99,7 @@ public class TSPConfig implements Configuration {
         return pathNodes.size();
     }
 
-    public ArrayList<Node> getPathNodes() {
+    public ArrayList<Node> getConfig() {
         return pathNodes;
     }
 

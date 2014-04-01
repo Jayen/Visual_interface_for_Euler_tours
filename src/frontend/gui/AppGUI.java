@@ -10,6 +10,8 @@ import com.alee.laf.button.WebButton;
 import com.alee.laf.progressbar.WebProgressBar;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,8 +36,10 @@ public class AppGUI extends JFrame {
     private JButton runJB;
 
     private Graph graph;
-    private JPanel inputPanel;
+    private JPanel mainPanel;
     private WebProgressBar progressBar;
+    private static JLabel edgesCost;
+    private static JLabel numberOfEdges;
 
     public AppGUI() {
         super("Euler Tours Visual Interface");
@@ -54,14 +58,47 @@ public class AppGUI extends JFrame {
     private void setupMainGUI() {
         BorderLayout mainLayout = new BorderLayout();
         this.setLayout(mainLayout);
-        inputPanel = new JPanel(new BorderLayout());
+        mainPanel = new JPanel(new BorderLayout());
 
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Algorithm",createAlgorithmTab());
+        tabbedPane.addTab("Algorithm", createAlgorithmTab());
         tabbedPane.add("Help", createHelpTab());
-        inputPanel.add(tabbedPane,BorderLayout.NORTH);
+        mainPanel.add(tabbedPane, BorderLayout.NORTH);
+        mainPanel.add(createCostPanel(), BorderLayout.CENTER);
         this.setupGraphVisualiser();
-        this.add(inputPanel, BorderLayout.WEST);
+        this.add(mainPanel, BorderLayout.WEST);
+    }
+
+    private Component createCostPanel() {
+        JPanel costPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+        constraints.insets = new Insets(2,0,2,0);
+        JLabel edgesCostLabel = new JLabel("Edges Added Cost: ");
+        constraints.gridx++;
+        edgesCost = new JLabel();
+        constraints.gridx--;
+        constraints.gridy++;
+        JLabel edgesAddedLabel = new JLabel("Edges Added: ");
+        constraints.gridx++;
+        numberOfEdges = new JLabel();
+        costPanel.add(edgesCostLabel);
+        costPanel.add(edgesCost);
+        costPanel.add(edgesAddedLabel);
+        costPanel.add(numberOfEdges);
+        return costPanel;
+    }
+
+    /**
+     * Method to update the cost panel
+     * @param cost cost of the edges added
+     * @param numberOfEdgesAdded the number of edges added to the system
+     */
+    public static void updateCostPanel(double cost, int numberOfEdgesAdded) {
+        edgesCost.setText(Double.toString(cost));
+        numberOfEdges.setText(Integer.toString(numberOfEdgesAdded));
     }
 
     /**
@@ -126,12 +163,12 @@ public class AppGUI extends JFrame {
             }
         });
 
-        JPanel visulisationButtonPanel = new JPanel(new GridLayout(1,4));
-        visulisationButtonPanel.add(clearButton);
-        visulisationButtonPanel.add(backButton);
-        visulisationButtonPanel.add(pausePlayButton);
-        visulisationButtonPanel.add(nextButton);
-        graphViewPanel.add(visulisationButtonPanel,BorderLayout.SOUTH);
+        JPanel visualisationButtonPanel = new JPanel(new GridLayout(1,4));
+        visualisationButtonPanel.add(clearButton);
+        visualisationButtonPanel.add(backButton);
+        visualisationButtonPanel.add(pausePlayButton);
+        visualisationButtonPanel.add(nextButton);
+        graphViewPanel.add(visualisationButtonPanel,BorderLayout.SOUTH);
 
         this.add(graphViewPanel,BorderLayout.CENTER);
     }
@@ -180,7 +217,42 @@ public class AppGUI extends JFrame {
         panel.add(taskLabel,constraints);
 
         JRadioButton eulerTourCheckRB = new JRadioButton(Task.EulerTourCheck.getName());
-        JRadioButton euleriseGraphRB = new JRadioButton(Task.EuleriseGraph.getName());
+        final JRadioButton euleriseGraphRB = new JRadioButton(Task.EuleriseGraph.getName());
+
+        JLabel eulerisationAlgoJL = new JLabel("Algorithm: ");
+        final JRadioButton nearestNeighbourRB = new JRadioButton(Task.NearestNeighbour.getName());
+        final JRadioButton localSearchRB = new JRadioButton(Task.LocalSearch.getName());
+        final JRadioButton simulatedAnnealing = new JRadioButton(Task.SimulatedAnnealing.getName());
+
+        nearestNeighbourRB.setActionCommand(Task.NearestNeighbour.getName());
+        localSearchRB.setActionCommand(Task.LocalSearch.getName());
+        simulatedAnnealing.setActionCommand(Task.SimulatedAnnealing.getName());
+
+        euleriseGraphRB.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if(euleriseGraphRB.isSelected()) {
+                    nearestNeighbourRB.setEnabled(true);
+                    localSearchRB.setEnabled(true);
+                    simulatedAnnealing.setEnabled(true);
+                }
+                else {
+                    nearestNeighbourRB.setEnabled(false);
+                    localSearchRB.setEnabled(false);
+                    simulatedAnnealing.setEnabled(false);
+                }
+            }
+        });
+
+        ButtonGroup eulerisationAlgorithmGroup = new ButtonGroup();
+        eulerisationAlgorithmGroup.add(nearestNeighbourRB);
+        eulerisationAlgorithmGroup.add(localSearchRB);
+        eulerisationAlgorithmGroup.add(simulatedAnnealing);
+
+        nearestNeighbourRB.setEnabled(false);
+        localSearchRB.setEnabled(false);
+        simulatedAnnealing.setEnabled(false);
+
         JRadioButton findEulerTourRB = new JRadioButton(Task.FindEulerTour.getName());
         eulerTourCheckRB.setActionCommand(Task.EulerTourCheck.getName());
         euleriseGraphRB.setActionCommand(Task.EuleriseGraph.getName());
@@ -191,12 +263,23 @@ public class AppGUI extends JFrame {
         taskGroup.add(euleriseGraphRB);
         taskGroup.add(findEulerTourRB);
 
+
         constraints.gridy++;
         panel.add(taskLabel,constraints);
         constraints.gridy++;
         panel.add(eulerTourCheckRB,constraints);
         constraints.gridy++;
         panel.add(euleriseGraphRB,constraints);
+
+        constraints.gridy++;
+        panel.add(eulerisationAlgoJL,constraints);
+        constraints.gridy++;
+        panel.add(nearestNeighbourRB,constraints);
+        constraints.gridy++;
+        panel.add(localSearchRB,constraints);
+        constraints.gridy++;
+        panel.add(simulatedAnnealing,constraints);
+
         constraints.gridy++;
         panel.add(findEulerTourRB,constraints);
 
@@ -212,7 +295,7 @@ public class AppGUI extends JFrame {
         panel.add(algorithmPanel,constraints);
 
         runJB = new JButton("Run Task");
-        runJB.addActionListener(new RunButtonListener(this,taskGroup, algorithmJCB, graphVisualiserPanel));
+        runJB.addActionListener(new RunButtonListener(this,taskGroup,eulerisationAlgorithmGroup, algorithmJCB, graphVisualiserPanel));
         constraints.gridy++;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(runJB,constraints);
@@ -231,13 +314,13 @@ public class AppGUI extends JFrame {
         progressBar.setIndeterminate(true);
         progressBar.setStringPainted(true);
         progressBar.setString(status);
-        inputPanel.add(progressBar,BorderLayout.SOUTH);
+        mainPanel.add(progressBar, BorderLayout.SOUTH);
         this.revalidate();
         this.repaint();
     }
 
     public void clearStatus() {
-        inputPanel.remove(progressBar);
+        mainPanel.remove(progressBar);
         this.revalidate();
         this.repaint();
     }

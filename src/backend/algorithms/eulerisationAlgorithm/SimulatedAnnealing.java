@@ -27,8 +27,8 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         if(graph.getNumberOfEdges()!=0) {
             super.findSubGraphs();//there may be subGraphs if there are some edges
         }
-        numberOfPhases = 5000;
-        numberOfTransitions = 1000;
+        numberOfPhases = 6000;
+        numberOfTransitions = 500;
         temperature = 150.0;
         isTSP = graph.getNumberOfEdges()==0;
         currentConfig = initialiseConfig();
@@ -47,8 +47,12 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         double nextConfigCost;
         for(int phase = 0; phase<numberOfPhases; phase++) {
             for (int transition = 0; transition< numberOfTransitions; transition++) {
+                System.out.println("phase "+phase+" transition "+transition);
+                System.out.println("generating next config");
                 nextConfigCost = currentConfig.generateNeighbouringConfig();
+                System.out.println("done generating next config");
                 if(nextConfigCost<bestConfig.getCost()) {
+                    System.out.println("improving");
                     bestConfig = new TSPConfig((TSPConfig)currentConfig);
                     prevConfigCost = nextConfigCost;
                 }
@@ -59,10 +63,13 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
                     else {
                         if((Math.exp((prevConfigCost-nextConfigCost)/temperature) > Math.random())) {
                             //chance that we do want to accept a lower solution
+                            System.out.println("degrading solution");
                             prevConfigCost = nextConfigCost;
                         }
                         else {
+                            System.out.println("undoing to last config");
                             currentConfig.undoLastGeneration();
+                            System.out.println("done");
                         }
                     }
                 }

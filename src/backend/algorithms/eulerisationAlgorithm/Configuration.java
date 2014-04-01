@@ -2,6 +2,8 @@ package backend.algorithms.eulerisationAlgorithm;
 
 import backend.internalgraph.Graph;
 
+import java.util.ArrayList;
+
 /**
  * Interface that defines what Configruation is
  * and what methods it should support
@@ -35,4 +37,6 @@ public interface Configuration {
      * @return graph represting this configuration
      */
     public Graph getGraph();
+
+    public ArrayList getConfig();
 }

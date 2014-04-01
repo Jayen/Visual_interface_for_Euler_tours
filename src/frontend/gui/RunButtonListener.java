@@ -23,6 +23,7 @@ public class RunButtonListener implements ActionListener {
 
     private AppGUI appGUI;
     private ButtonGroup taskGroup;
+    private ButtonGroup algorithmGroup;
     private JComboBox<String> algorithmJCB;
     private GraphVisualiserPanel graphVisualiserPanel;
     private EulerTourAlgorithm eulerTourAlgorithm;
@@ -30,16 +31,17 @@ public class RunButtonListener implements ActionListener {
     private HierholzersAlgorithm hierholzersAlgorithm;
     private EulerisationAlgorithm eulerisationAlgorithm;
 
-    public RunButtonListener(AppGUI appGUI,ButtonGroup taskGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
+    public RunButtonListener(AppGUI appGUI,ButtonGroup taskGroup,ButtonGroup algorithmGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
         this.appGUI = appGUI;
         this.taskGroup = taskGroup;
+        this.algorithmGroup = algorithmGroup;
         this.algorithmJCB = algorithmJCB;
         this.graphVisualiserPanel = graphVisualiserPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Task task = getSelectedTask(taskGroup, algorithmJCB);
+        Task task = getSelectedTask(taskGroup,algorithmGroup,algorithmJCB);
         if(task!=null) {
             Graph graph = graphVisualiserPanel.getCurrentGraph();
             fleurysAlgorithm = new FleurysAlgorithm();
@@ -55,9 +57,19 @@ public class RunButtonListener implements ActionListener {
                         System.out.println("euler tour does not exist");
                     }
                     break;
-                case EuleriseGraph:
+                case NearestNeighbour:
                     appGUI.setStatus("Eulerising graph");
-//                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+                    System.out.println("nearest neighbour algo eulerisation");
+                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+                    eulerisationAlgorithm.euleriseGraph(true);
+                    break;
+                case LocalSearch:
+                    appGUI.setStatus("Eulerising graph");
+                    eulerisationAlgorithm = new SimulatedAnnealing(graph,true);
+                    eulerisationAlgorithm.euleriseGraph(true);
+                    break;
+                case SimulatedAnnealing:
+                    appGUI.setStatus("Eulerising graph");
                     eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
                     eulerisationAlgorithm.euleriseGraph(true);
                     break;
@@ -73,7 +85,7 @@ public class RunButtonListener implements ActionListener {
         }
     }
 
-    private Task getSelectedTask(ButtonGroup taskGroup, JComboBox<String> algorithmJCB) {
+    private Task getSelectedTask(ButtonGroup taskGroup, ButtonGroup algorithmGroup, JComboBox<String> algorithmJCB) {
         try {
             String actionCommand = taskGroup.getSelection().getActionCommand();
             if(actionCommand.equals(Task.FindEulerTour.getName())) {
@@ -89,10 +101,20 @@ public class RunButtonListener implements ActionListener {
                 return Task.EulerTourCheck;
             }
             else if(actionCommand.equals(Task.EuleriseGraph.getName())) {
-                return Task.EuleriseGraph;
+                String algorithmCommand = algorithmGroup.getSelection().getActionCommand();
+                if(algorithmCommand.equals(Task.NearestNeighbour.getName())) {
+                    return Task.NearestNeighbour;
+                }
+                else if(algorithmCommand.equals(Task.LocalSearch.getName())) {
+                    return Task.LocalSearch;
+                }
+                else if(algorithmCommand.equals(Task.SimulatedAnnealing.getName())) {
+                    return Task.SimulatedAnnealing;
+                }
             }
         }
         catch (NullPointerException e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null,"No task selected","No task",JOptionPane.INFORMATION_MESSAGE);
 
         }
