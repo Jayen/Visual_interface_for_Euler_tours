@@ -13,7 +13,6 @@ import java.util.*;
  */
 public class Config implements Configuration {
 
-//    private Graph graph;
     private double cost;
     private ArrayList<Edge> edgesConfig;
     private Random random;
@@ -28,7 +27,6 @@ public class Config implements Configuration {
 
     public Config(ArrayList<Edge> edgesConfig,Graph graph,HashMap<String,Node[]> subGraphs) {
         this.edgesConfig = edgesConfig;
-//        this.graph = graph;
         random = new Random();
         this.subGraphs = new HashMap<String, HashMap<Integer, Node>>();
         Iterator keysIterator = subGraphs.keySet().iterator();
@@ -48,7 +46,6 @@ public class Config implements Configuration {
     }
 
     public Config(Config config) {
-//        this.graph = config.getGraph();
         this.edgesConfig = new ArrayList<Edge>();
         for (int i = 0; i < config.getNumberOfEdgesAdded(); i++) {
             this.edgesConfig.add((Edge) config.getConfig().get(i));
@@ -71,16 +68,16 @@ public class Config implements Configuration {
         //since there is a common node the best move is to change the common node
         //as changing the other nodes will not make a difference to the config
         if(node!=null) {
-            changeCommonNode(randomIndex1,randomIndex2,randomEdge1,randomEdge2,node);
+            changeCommonNode(node);
         }
         else {
-            twoOptEdgeSwap(randomIndex1,randomIndex2,randomEdge1,randomEdge2);
+            twoOptEdgeSwap();
         }
         computeCost();
         return cost;
     }
 
-    private void changeCommonNode(int edge1Index,int edge2Index,Edge edge1, Edge edge2, Node commonNode) {
+    private void changeCommonNode(Node commonNode) {
         /*
          find which sub-graph the commonNode is in
          we only want to change the common node with a node in the same sub-graph
@@ -102,28 +99,79 @@ public class Config implements Configuration {
         while(true) {
             node = subGraph.get(random.nextInt(subGraph.size()));
             if(!node.equals(commonNode) ) {
-//                this.graph.removeEdge(edge1.getFirstNode(),edge1.getSecondNode());
-//                this.graph.removeEdge(edge2.getFirstNode(),edge2.getSecondNode());
-                newEdge1 = new Edge(edge1.getOpposite(commonNode),node);
-                newEdge2 = new Edge(edge2.getOpposite(commonNode),node);
-                edgesConfig.set(edge1Index,newEdge1);
-                edgesConfig.set(edge2Index,newEdge2);
-//                this.graph.addEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
-//                this.graph.addEdge(newEdge2.getFirstNode(),newEdge2.getSecondNode());
+                newEdge1 = new Edge(randomEdge1.getOpposite(commonNode),node);
+                newEdge2 = new Edge(randomEdge2.getOpposite(commonNode),node);
+                edgesConfig.set(randomIndex1,newEdge1);
+                edgesConfig.set(randomIndex2,newEdge2);
                 break;
             }
         }
     }
 
-    private void twoOptEdgeSwap(int edge1Index,int edge2Index,Edge edge1, Edge edge2) {
-//        this.graph.removeEdge(edge1.getFirstNode(),edge1.getSecondNode());
-//        this.graph.removeEdge(edge2.getFirstNode(),edge2.getSecondNode());
-        newEdge1 = new Edge(edge2.getFirstNode(),edge1.getSecondNode());
-        newEdge2 = new Edge(edge1.getFirstNode(),edge2.getSecondNode());
-        edgesConfig.set(edge1Index,newEdge1);
-        edgesConfig.set(edge2Index,newEdge2);
-//        this.graph.addEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
-//        this.graph.addEdge(newEdge2.getFirstNode(),newEdge2.getSecondNode());
+    private void twoOptEdgeSwap() {
+        String edge1Node1SubGraph = getContainingSubGraphKey(randomEdge1.getFirstNode());
+        String edge1Node2SubGraph = getContainingSubGraphKey(randomEdge1.getSecondNode());
+
+        String edge2Node1SubGraph = getContainingSubGraphKey(randomEdge2.getFirstNode());
+        String edge2Node2SubGraph = getContainingSubGraphKey(randomEdge2.getSecondNode());
+
+        int crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge1Node2SubGraph,
+                                                                   edge2Node1SubGraph,edge2Node2SubGraph);
+
+        if(crossingCount==2) {
+            newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
+            newEdge2 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
+            edgesConfig.set(randomIndex1,newEdge1);
+            edgesConfig.set(randomIndex2,newEdge2);
+            return;
+        }
+
+        crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node2SubGraph,
+                                                                edge1Node2SubGraph,edge2Node1SubGraph);
+
+        if(crossingCount==2) {
+            newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
+            newEdge2 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
+            edgesConfig.set(randomIndex1,newEdge1);
+            edgesConfig.set(randomIndex2,newEdge2);
+            return;
+        }
+        else {
+
+        }
+    }
+
+    private int getEdgesCrossingCount(String set1Key1, String set1Key2, String set2Key1, String set2Key2) {
+        String edgeKey1;
+        String edgeKey2;
+        int edgeCrossCount = 0;
+        for(Edge edge : edgesConfig) {
+            edgeKey1 = getContainingSubGraphKey(edge.getFirstNode());
+            edgeKey2 = getContainingSubGraphKey(edge.getSecondNode());
+            if(edgeKey1.equals(set1Key1) || edgeKey1.equals(set1Key2)) {
+                if(edgeKey2.equals(set2Key1) || edgeKey2.equals(set2Key2)) {
+                    edgeCrossCount++;
+                }
+            }
+            if(edgeKey1.equals(set2Key1) || edgeKey1.equals(set2Key2)) {
+                if(edgeKey2.equals(set1Key1) || edgeKey2.equals(set1Key2)) {
+                    edgeCrossCount++;
+                }
+            }
+        }
+        return edgeCrossCount;
+    }
+
+    private String getContainingSubGraphKey(Node nodeToSearch) {
+        Iterator subGraphKeysIterator = subGraphs.keySet().iterator();
+        String key;
+        while(subGraphKeysIterator.hasNext()) {
+            key = (String) subGraphKeysIterator.next();
+            if(subGraphs.get(key).containsValue(nodeToSearch)) {
+                return key;
+            }
+        }
+        return null;
     }
 
     private Node getCommonNodeBetweenEdges(Edge edge1, Edge edge2) {
@@ -138,12 +186,8 @@ public class Config implements Configuration {
 
     @Override
     public void undoLastGeneration() {
-//        this.graph.removeEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
-//        this.graph.removeEdge(newEdge2.getSecondNode(),newEdge2.getSecondNode());
         edgesConfig.set(randomIndex1,randomEdge1);
         edgesConfig.set(randomIndex2,randomEdge2);
-//        this.graph.addEdge(randomEdge1.getFirstNode(),randomEdge1.getSecondNode());
-//        this.graph.addEdge(randomEdge2.getFirstNode(),randomEdge2.getSecondNode());
         computeCost();
     }
 
@@ -176,8 +220,4 @@ public class Config implements Configuration {
     public int getNumberOfEdgesAdded() {
         return edgesConfig.size();
     }
-
-//    public Graph getGraph() {
-//        return graph;
-//    }
 }

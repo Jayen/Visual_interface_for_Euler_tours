@@ -4,7 +4,7 @@
     <list default="true" id="450e4d76-e2a3-47ce-8632-bc7745b85703" name="Default" comment="" />
     <ignored path="FinaYearProject.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Config.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396450666613" ignored="false" />
+    <file path="/Config.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396456079945" ignored="false" />
     <file path="/TSPConfig.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396356617936" ignored="false" />
     <file path="/SimulatedAnnealing.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396445448887" ignored="false" />
     <file path="/Configuration.java" changelist="450e4d76-e2a3-47ce-8632-bc7745b85703" time="1396439163403" ignored="false" />
@@ -78,11 +78,13 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="true">
+            <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="102" column="63" selection-start="3622" selection-end="3622" vertical-scroll-proportion="0.27509654">
-                    <folding />
+                  <state line="125" column="25" selection-start="4670" selection-end="4670" vertical-scroll-proportion="0.26061776">
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -109,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimulatedAnnealing.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SimulatedAnnealing.java" pinned="false" current="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="92" column="108" selection-start="3588" selection-end="3588" vertical-scroll-proportion="0.505618">
@@ -832,19 +834,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="63" selection-start="3622" selection-end="3622" vertical-scroll-proportion="0.27509654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/SimulatedAnnealing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="92" column="108" selection-start="3588" selection-end="3588" vertical-scroll-proportion="0.505618">
           <folding>
             <element signature="e#3707#3713#0" expanded="true" />
             <element signature="e#4284#4292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backend/algorithms/eulerisationAlgorithm/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="25" selection-start="4670" selection-end="4670" vertical-scroll-proportion="0.26061776">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
