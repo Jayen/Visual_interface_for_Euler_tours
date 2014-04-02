@@ -36,13 +36,13 @@ public class TSPConfig implements Configuration {
     }
 
     public double generateNeighbouringConfig() {
-        twoOptSwap();
+        tourImprovementAlgorithm();
         computeCost();
         return cost;
 
     }
 
-    private void twoOptSwap() {
+    private void tourImprovementAlgorithm() {
         /*
          Avoid swapping the first and the last node as they are fixed for the tour
          and swapping them will generate a invalid tour
@@ -54,30 +54,6 @@ public class TSPConfig implements Configuration {
         randomNode2 = pathNodes.get(randomIndex2);
         pathNodes.set(randomIndex1, randomNode2);
         pathNodes.set(randomIndex2, randomNode1);
-    }
-
-    private void updateCost() {
-        //we only need to add and remove cost of some edges after a 2 opt swap
-        //no need to recalculate the full cost again
-        cost = cost - Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex1 - 1),
-                pathNodes.get(randomIndex1));
-        cost = cost - Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex1),
-                pathNodes.get(randomIndex1+1));
-
-        cost = cost - Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex2-1),
-                pathNodes.get(randomIndex2));
-        cost = cost - Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex2),
-                pathNodes.get(randomIndex2+1));
-
-        cost = cost + Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex1-1),
-                pathNodes.get(randomIndex1));
-        cost = cost + Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex1),
-                pathNodes.get(randomIndex1+1));
-
-        cost = cost + Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex2-1),
-                pathNodes.get(randomIndex2));
-        cost = cost + Heuristics.computeEuclideanDistance(pathNodes.get(randomIndex2),
-                pathNodes.get(randomIndex2+1));
     }
 
     public void undoLastGeneration() {

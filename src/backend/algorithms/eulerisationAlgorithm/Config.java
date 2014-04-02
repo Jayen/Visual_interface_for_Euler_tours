@@ -115,10 +115,10 @@ public class Config implements Configuration {
         String edge2Node1SubGraph = getContainingSubGraphKey(randomEdge2.getFirstNode());
         String edge2Node2SubGraph = getContainingSubGraphKey(randomEdge2.getSecondNode());
 
-        int crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge1Node2SubGraph,
-                                                                   edge2Node1SubGraph,edge2Node2SubGraph);
+        int crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node1SubGraph,
+                                                  edge1Node1SubGraph,edge2Node2SubGraph);
 
-        if(crossingCount==2) {
+        if(crossingCount<=2) {
             newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
             newEdge2 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
             edgesConfig.set(randomIndex1,newEdge1);
@@ -127,17 +127,20 @@ public class Config implements Configuration {
         }
 
         crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node2SubGraph,
-                                                                edge1Node2SubGraph,edge2Node1SubGraph);
+                                              edge1Node2SubGraph,edge2Node1SubGraph);
 
-        if(crossingCount==2) {
-            newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
-            newEdge2 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
+        if(crossingCount<=2) {
+            newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
+            newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
             edgesConfig.set(randomIndex1,newEdge1);
             edgesConfig.set(randomIndex2,newEdge2);
             return;
         }
         else {
-
+//            newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
+//            newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
+//            edgesConfig.set(randomIndex1,newEdge1);
+//            edgesConfig.set(randomIndex2,newEdge2);
         }
     }
 
@@ -186,8 +189,8 @@ public class Config implements Configuration {
 
     @Override
     public void undoLastGeneration() {
-        edgesConfig.set(randomIndex1,randomEdge1);
-        edgesConfig.set(randomIndex2,randomEdge2);
+        edgesConfig.set(randomIndex1, randomEdge1);
+        edgesConfig.set(randomIndex2, randomEdge2);
         computeCost();
     }
 

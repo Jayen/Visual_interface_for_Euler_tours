@@ -85,7 +85,8 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
             AppGUI.updateCostPanel(bestConfig.getCost(),bestConfig.getConfig().size()-1);
         }
         else {
-            AppGUI.updateCostPanel(bestConfig.getCost(),bestConfig.getConfig().size());
+            System.out.println(bestConfig.getConfig());
+            AppGUI.updateCostPanel(bestConfig.getCost(), bestConfig.getConfig().size());
         }
     }
 
