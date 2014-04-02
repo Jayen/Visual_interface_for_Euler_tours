@@ -59,7 +59,6 @@ public class RunButtonListener implements ActionListener {
                     break;
                 case NearestNeighbour:
                     appGUI.setStatus("Eulerising graph");
-                    System.out.println("nearest neighbour algo eulerisation");
                     eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
                     eulerisationAlgorithm.euleriseGraph(true);
                     break;

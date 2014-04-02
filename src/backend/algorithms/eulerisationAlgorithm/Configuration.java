@@ -34,9 +34,9 @@ public interface Configuration {
     /**
      * Get the graph that represents
      * this configuration
-     * @return graph represting this configuration
+     * @return graph representing this configuration
      */
-    public Graph getGraph();
+    public Graph getGraphWithNewEdges();
 
     public ArrayList getConfig();
 }

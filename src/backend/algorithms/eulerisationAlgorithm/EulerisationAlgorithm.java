@@ -35,7 +35,6 @@ public abstract class EulerisationAlgorithm {
             }
             counter++;
         }
-        this.printSubGraphs();
     }
 
     public void connectedNodesDFS(Node sourceNode,HashMap<Node,Node> marked) {

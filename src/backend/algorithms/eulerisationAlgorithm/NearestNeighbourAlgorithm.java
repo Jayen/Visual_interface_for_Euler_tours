@@ -19,12 +19,14 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
     private Node sourceNode;
     private Node minNode;
     private double currentMinDist;
+    private int edgesAdded;
     private double cost;
 
     public NearestNeighbourAlgorithm(Graph graph) {
         super.graph = graph;
         super.subGraphs = new HashMap<String, Node[]>();
         super.nodes = new HashMap<Node, Node>();
+        edgesAdded = 0;
         super.putAllNodes(nodes);
         if(graph.getNumberOfEdges()!=0) {
             super.findSubGraphs();//there may be subGraphs if there are some edges
@@ -118,6 +120,11 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         if(oddNodes.size()>0) {
             euleriseGraphWithOddNodes(oddNodes);
         }
+        AppGUI.updateCostPanel(this.getCost(),this.numberOfEdgesAdded());
+    }
+
+    private int numberOfEdgesAdded() {
+        return edgesAdded;
     }
 
     /**
@@ -132,6 +139,8 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
             sourceOddNode = (Node) oddNodesIterator.next();
             nextNodeToConnect = nextBestNodeToConnect(sourceOddNode,oddNodes.values().toArray(new Node[oddNodes.size()]));
             graph.addEdge(sourceOddNode,nextNodeToConnect);
+            cost = cost + Heuristics.computeEuclideanDistance(sourceOddNode,nextNodeToConnect);
+            edgesAdded++;
             oddNodes.remove(sourceOddNode);
             oddNodes.remove(nextNodeToConnect);
             oddNodesIterator = oddNodes.keySet().iterator();
@@ -190,7 +199,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
 
     /**
      * This method connects up
-     * all the subgraph such that at then end
+     * all the sub-graphs such that at then end
      * the graph is connected and there are
      * no disconnected components
      */
@@ -232,6 +241,8 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
                     //add the unconnected subGraph to the connected set
                     connectedSubGraphKeys.add(subGraphKey);
                     graph.addEdge(sourceNode, minNode);
+                    cost = cost + Heuristics.computeEuclideanDistance(sourceNode,minNode);
+                    this.edgesAdded++;
                 }
             }
             edgesAdded++;

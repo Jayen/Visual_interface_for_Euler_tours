@@ -4,6 +4,7 @@ import backend.algorithms.Heuristics;
 import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
+import frontend.gui.AppGUI;
 
 import java.util.*;
 
@@ -12,7 +13,7 @@ import java.util.*;
  */
 public class Config implements Configuration {
 
-    private Graph graph;
+//    private Graph graph;
     private double cost;
     private ArrayList<Edge> edgesConfig;
     private Random random;
@@ -27,7 +28,7 @@ public class Config implements Configuration {
 
     public Config(ArrayList<Edge> edgesConfig,Graph graph,HashMap<String,Node[]> subGraphs) {
         this.edgesConfig = edgesConfig;
-        this.graph = graph;
+//        this.graph = graph;
         random = new Random();
         this.subGraphs = new HashMap<String, HashMap<Integer, Node>>();
         Iterator keysIterator = subGraphs.keySet().iterator();
@@ -47,11 +48,12 @@ public class Config implements Configuration {
     }
 
     public Config(Config config) {
-        this.graph = config.getGraph();
+//        this.graph = config.getGraph();
         this.edgesConfig = new ArrayList<Edge>();
-        for(int i=0; i<config.getNumberOfEdgesAdded(); i++) {
+        for (int i = 0; i < config.getNumberOfEdgesAdded(); i++) {
             this.edgesConfig.add((Edge) config.getConfig().get(i));
         }
+        computeCost();
     }
 
     @Override
@@ -100,28 +102,28 @@ public class Config implements Configuration {
         while(true) {
             node = subGraph.get(random.nextInt(subGraph.size()));
             if(!node.equals(commonNode) ) {
-                this.graph.removeEdge(edge1.getFirstNode(),edge1.getSecondNode());
-                this.graph.removeEdge(edge2.getFirstNode(),edge2.getSecondNode());
+//                this.graph.removeEdge(edge1.getFirstNode(),edge1.getSecondNode());
+//                this.graph.removeEdge(edge2.getFirstNode(),edge2.getSecondNode());
                 newEdge1 = new Edge(edge1.getOpposite(commonNode),node);
                 newEdge2 = new Edge(edge2.getOpposite(commonNode),node);
                 edgesConfig.set(edge1Index,newEdge1);
                 edgesConfig.set(edge2Index,newEdge2);
-                this.graph.addEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
-                this.graph.addEdge(newEdge2.getFirstNode(),newEdge2.getSecondNode());
+//                this.graph.addEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
+//                this.graph.addEdge(newEdge2.getFirstNode(),newEdge2.getSecondNode());
                 break;
             }
         }
     }
 
     private void twoOptEdgeSwap(int edge1Index,int edge2Index,Edge edge1, Edge edge2) {
-        this.graph.removeEdge(edge1.getFirstNode(),edge1.getSecondNode());
-        this.graph.removeEdge(edge2.getFirstNode(),edge2.getSecondNode());
+//        this.graph.removeEdge(edge1.getFirstNode(),edge1.getSecondNode());
+//        this.graph.removeEdge(edge2.getFirstNode(),edge2.getSecondNode());
         newEdge1 = new Edge(edge2.getFirstNode(),edge1.getSecondNode());
         newEdge2 = new Edge(edge1.getFirstNode(),edge2.getSecondNode());
         edgesConfig.set(edge1Index,newEdge1);
         edgesConfig.set(edge2Index,newEdge2);
-        this.graph.addEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
-        this.graph.addEdge(newEdge2.getFirstNode(),newEdge2.getSecondNode());
+//        this.graph.addEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
+//        this.graph.addEdge(newEdge2.getFirstNode(),newEdge2.getSecondNode());
     }
 
     private Node getCommonNodeBetweenEdges(Edge edge1, Edge edge2) {
@@ -136,12 +138,12 @@ public class Config implements Configuration {
 
     @Override
     public void undoLastGeneration() {
-        this.graph.removeEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
-        this.graph.removeEdge(newEdge2.getSecondNode(),newEdge2.getSecondNode());
+//        this.graph.removeEdge(newEdge1.getFirstNode(),newEdge1.getSecondNode());
+//        this.graph.removeEdge(newEdge2.getSecondNode(),newEdge2.getSecondNode());
         edgesConfig.set(randomIndex1,randomEdge1);
         edgesConfig.set(randomIndex2,randomEdge2);
-        this.graph.addEdge(randomEdge1.getFirstNode(),randomEdge1.getSecondNode());
-        this.graph.addEdge(randomEdge2.getFirstNode(),randomEdge2.getSecondNode());
+//        this.graph.addEdge(randomEdge1.getFirstNode(),randomEdge1.getSecondNode());
+//        this.graph.addEdge(randomEdge2.getFirstNode(),randomEdge2.getSecondNode());
         computeCost();
     }
 
@@ -151,8 +153,12 @@ public class Config implements Configuration {
     }
 
     @Override
-    public Graph getGraph() {
-        return graph;
+    public Graph getGraphWithNewEdges() {
+        System.out.println(edgesConfig.size()+"edges added");
+        for(Edge edge : edgesConfig) {
+            AppGUI.graphVisualiserPanel.getCurrentGraph().addEdge(edge.getFirstNode(), edge.getSecondNode());
+        }
+        return AppGUI.graphVisualiserPanel.getCurrentGraph();
     }
 
     @Override
@@ -170,4 +176,8 @@ public class Config implements Configuration {
     public int getNumberOfEdgesAdded() {
         return edgesConfig.size();
     }
+
+//    public Graph getGraph() {
+//        return graph;
+//    }
 }

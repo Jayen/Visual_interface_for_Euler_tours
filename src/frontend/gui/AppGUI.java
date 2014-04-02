@@ -64,7 +64,7 @@ public class AppGUI extends JFrame {
         tabbedPane.addTab("Algorithm", createAlgorithmTab());
         tabbedPane.add("Help", createHelpTab());
         mainPanel.add(tabbedPane, BorderLayout.NORTH);
-        mainPanel.add(createCostPanel(), BorderLayout.CENTER);
+        mainPanel.add(createCostPanel(), BorderLayout.WEST);
         this.setupGraphVisualiser();
         this.add(mainPanel, BorderLayout.WEST);
     }
@@ -77,17 +77,18 @@ public class AppGUI extends JFrame {
         constraints.anchor = GridBagConstraints.FIRST_LINE_START;
         constraints.insets = new Insets(2,0,2,0);
         JLabel edgesCostLabel = new JLabel("Edges Added Cost: ");
-        constraints.gridx++;
         edgesCost = new JLabel();
+        JLabel edgesAddedLabel = new JLabel("Edges Added: ");
+        numberOfEdges = new JLabel();
+
+        costPanel.add(edgesCostLabel,constraints);
+        constraints.gridx++;
+        costPanel.add(edgesCost,constraints);
         constraints.gridx--;
         constraints.gridy++;
-        JLabel edgesAddedLabel = new JLabel("Edges Added: ");
+        costPanel.add(edgesAddedLabel,constraints);
         constraints.gridx++;
-        numberOfEdges = new JLabel();
-        costPanel.add(edgesCostLabel);
-        costPanel.add(edgesCost);
-        costPanel.add(edgesAddedLabel);
-        costPanel.add(numberOfEdges);
+        costPanel.add(numberOfEdges,constraints);
         return costPanel;
     }
 

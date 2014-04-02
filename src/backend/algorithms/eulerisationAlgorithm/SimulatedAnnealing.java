@@ -38,7 +38,6 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         else {
             bestConfig = new Config((Config)currentConfig);
         }
-//        AppGUI.graphVisualiserPanel.drawNewGraph(bestConfig.getGraph());
         this.simulatedAnnealing(localSearch);
     }
 
@@ -53,7 +52,12 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
                 System.out.println("done generating next config");
                 if(nextConfigCost<bestConfig.getCost()) {
                     System.out.println("improving");
-                    bestConfig = new TSPConfig((TSPConfig)currentConfig);
+                    if(isTSP) {
+                        bestConfig = new TSPConfig((TSPConfig)currentConfig);
+                    }
+                    else {
+                        bestConfig = new Config((Config)currentConfig);
+                    }
                     prevConfigCost = nextConfigCost;
                 }
                 else {
@@ -76,7 +80,13 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
             }
             temperature=temperature-0.35;
         }
-        AppGUI.graphVisualiserPanel.drawNewGraph(bestConfig.getGraph());
+        AppGUI.graphVisualiserPanel.drawNewGraph(bestConfig.getGraphWithNewEdges());
+        if(isTSP) {
+            AppGUI.updateCostPanel(bestConfig.getCost(),bestConfig.getConfig().size()-1);
+        }
+        else {
+            AppGUI.updateCostPanel(bestConfig.getCost(),bestConfig.getConfig().size());
+        }
     }
 
     private Configuration initialiseConfig() {
@@ -87,7 +97,14 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
             ArrayList<Edge> edgesConfig = new ArrayList<Edge>();
             connectTheSubGraphs(edgesConfig);
             euleriseTheGraph(edgesConfig);
-            return new Config(edgesConfig,graph,subGraphs);
+            removeTheEdgesAddedToTheGraph(edgesConfig);
+            return new Config(edgesConfig,super.graph,subGraphs);
+        }
+    }
+
+    private void removeTheEdgesAddedToTheGraph(ArrayList<Edge> edgesConfig) {
+        for(Edge edge : edgesConfig) {
+            super.graph.removeEdge(edge.getFirstNode(),edge.getSecondNode());
         }
     }
 
@@ -121,7 +138,7 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
 
     private void euleriseTheGraph(ArrayList<Edge> edgesConfig) {
         Node oddDegreeNode1;
-        Node oddDegreeNode2 = null;
+        Node oddDegreeNode2;
         Iterator nodesIterator = super.graph.getNodes().iterator();
         Node tempNode;
         Node tempNode2;
@@ -135,6 +152,7 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
                         oddDegreeNode2 = tempNode2;
                         edgesConfig.add(new Edge(oddDegreeNode1,oddDegreeNode2));
                         super.graph.addEdge(oddDegreeNode1,oddDegreeNode2);
+                        break;
                     }
                 }
             }

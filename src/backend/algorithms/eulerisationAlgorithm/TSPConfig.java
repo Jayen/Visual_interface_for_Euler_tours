@@ -116,7 +116,7 @@ public class TSPConfig implements Configuration {
         }
     }
 
-    public Graph getGraph() {
+    public Graph getGraphWithNewEdges() {
         int counter = 0;
         while(counter<pathNodes.size()-1) {
             AppGUI.graphVisualiserPanel.getCurrentGraph().addEdge(pathNodes.get(counter), pathNodes.get(counter+1));
