@@ -63,7 +63,6 @@ public class Config implements Configuration {
         randomEdge1 = edgesConfig.get(randomIndex1);
         randomEdge2 = edgesConfig.get(randomIndex2);
 
-
         Node node = getCommonNodeBetweenEdges(randomEdge1,randomEdge2);
         //since there is a common node the best move is to change the common node
         //as changing the other nodes will not make a difference to the config
@@ -116,7 +115,7 @@ public class Config implements Configuration {
         String edge2Node2SubGraph = getContainingSubGraphKey(randomEdge2.getSecondNode());
 
         int crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node1SubGraph,
-                                                  edge1Node1SubGraph,edge2Node2SubGraph);
+                                                  edge1Node2SubGraph,edge2Node2SubGraph);
 
         if(crossingCount<=2) {
             newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
@@ -137,10 +136,10 @@ public class Config implements Configuration {
             return;
         }
         else {
-//            newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
-//            newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
-//            edgesConfig.set(randomIndex1,newEdge1);
-//            edgesConfig.set(randomIndex2,newEdge2);
+            newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
+            newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
+            edgesConfig.set(randomIndex1,newEdge1);
+            edgesConfig.set(randomIndex2,newEdge2);
         }
     }
 
@@ -156,7 +155,7 @@ public class Config implements Configuration {
                     edgeCrossCount++;
                 }
             }
-            if(edgeKey1.equals(set2Key1) || edgeKey1.equals(set2Key2)) {
+            else if(edgeKey1.equals(set2Key1) || edgeKey1.equals(set2Key2)) {
                 if(edgeKey2.equals(set1Key1) || edgeKey2.equals(set1Key2)) {
                     edgeCrossCount++;
                 }
