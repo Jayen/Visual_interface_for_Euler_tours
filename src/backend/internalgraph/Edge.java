@@ -8,12 +8,10 @@ package backend.internalgraph;
 public class Edge {
 
     private Node n1, n2;
-    private boolean fixed;
 
     public Edge(Node n1, Node n2) {
         this.n1 = n1;
         this.n2 = n2;
-        fixed = false;
     }
 
     /**
@@ -23,14 +21,13 @@ public class Edge {
     public Edge(Edge edge) {
         this.n1 = new Node(edge.n1);
         this.n2 = new Node(edge.n2);
-        this.fixed = edge.isFixed();
     }
 
     /**
      * Check if the given node
      * is part of this edge
-     * @param Node -node to check
-     * @return -boolean true if the edge contains the node else false
+     * @param node node to check
+     * @return true if the edge contains the node else false
      */
     public boolean contains(Node node) {
         if(n1.equals(node)) {
@@ -78,14 +75,6 @@ public class Edge {
     @Override
     public String toString() {
         return n1.toString()+ n2.toString();
-    }
-
-    public boolean isFixed() {
-        return fixed;
-    }
-
-    public void setFixed() {
-        fixed = true;
     }
 }
 
