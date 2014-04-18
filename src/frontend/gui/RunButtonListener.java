@@ -30,6 +30,8 @@ public class RunButtonListener implements ActionListener {
     private FleurysAlgorithm fleurysAlgorithm;
     private HierholzersAlgorithm hierholzersAlgorithm;
     private EulerisationAlgorithm eulerisationAlgorithm;
+    private Thread eulerisationThread;
+    private Graph graph;
 
     public RunButtonListener(AppGUI appGUI,ButtonGroup taskGroup, JComboBox<String> eulerisationAlgorithmJCB, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
         this.appGUI = appGUI;
@@ -43,7 +45,7 @@ public class RunButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Task task = getSelectedTask(taskGroup, eulerisationAlgorithmJCB,algorithmJCB);
         if(task!=null) {
-            Graph graph = graphVisualiserPanel.getCurrentGraph();
+            graph = graphVisualiserPanel.getCurrentGraph();
             fleurysAlgorithm = new FleurysAlgorithm();
             hierholzersAlgorithm = new HierholzersAlgorithm();
             switch(task) {
@@ -57,18 +59,36 @@ public class RunButtonListener implements ActionListener {
                     break;
                 case NearestNeighbour:
                     appGUI.setStatus("Eulerising graph");
-                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
-                    eulerisationAlgorithm.euleriseGraph(true);
+                    eulerisationThread = new Thread() {
+                        @Override
+                        public void run() {
+                            eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+                            eulerisationAlgorithm.euleriseGraph(true);
+                        }
+                    };
+                    eulerisationThread.start();
                     break;
                 case LocalSearch:
                     appGUI.setStatus("Eulerising graph");
-                    eulerisationAlgorithm = new SimulatedAnnealing(graph,true);
-                    eulerisationAlgorithm.euleriseGraph(true);
+                    eulerisationThread = new Thread() {
+                        @Override
+                        public void run() {
+                            eulerisationAlgorithm = new SimulatedAnnealing(graph,true);
+                            eulerisationAlgorithm.euleriseGraph(true);
+                        }
+                    };
+                    eulerisationThread.start();
                     break;
                 case SimulatedAnnealing:
                     appGUI.setStatus("Eulerising graph");
-                    eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
-                    eulerisationAlgorithm.euleriseGraph(true);
+                    eulerisationThread = new Thread() {
+                        @Override
+                        public void run() {
+                            eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
+                            eulerisationAlgorithm.euleriseGraph(true);
+                        }
+                    };
+                    eulerisationThread.start();
                     break;
                 case FleuryAlgorithm:
                     eulerTourAlgorithm = new FleurysAlgorithm();
