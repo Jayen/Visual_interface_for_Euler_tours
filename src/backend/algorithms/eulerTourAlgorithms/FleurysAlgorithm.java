@@ -32,12 +32,15 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
             //for loop to make sure we go through all the edges in the graph
             for(int i=0; i<edgesCount; i++) {
                 while(incidentNodesIterator.hasNext()) {
-                    nextNode = (Node) incidentNodesIterator.next();//next node we will travel to
-                    if (!this.isBridge(currentNode,nextNode)) {//travel to the node only if the edge to it is not a bridge
+                    nextNode = (Node) incidentNodesIterator.next();
+                    //next node we may travel to
+                    if (!this.isBridge(currentNode,nextNode)) {
+                        //travel to the node only if the edge to it is not a bridge
                         nodePathList.add(nextNode);
                         break;
                     }
-                    else if(!incidentNodesIterator.hasNext()) {//only take the bridge edge is there is no other edge to take
+                    else if(!incidentNodesIterator.hasNext()) {
+                        //only take the bridge edge is there is no other edge to take
                         nodePathList.add(nextNode);
                         break;
                     }
@@ -63,15 +66,16 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
     /**
      * Tests if a edge between
      * two nodes is a bridge.
-     * @param node1 -the starting node of the edge
-     * @param node2 -the ending node of the edge
-     * @return -boolean -true if the edge is a bridge else false
+     * @param node1 the starting node of the edge
+     * @param node2 the ending node of the edge
+     * @return true if the edge is a bridge else false
      */
     private boolean isBridge(Node node1, Node node2) {
         graph.removeEdge(node1,node2);
         connectivityChecker = new ConnectivityChecker(graph);
         boolean isConnected = connectivityChecker.isGraphConnectedDFS(node2);
-        graph.addEdge(node1,node2);//add the edge back to the original graph
+        //add the edge back to the original graph
+        graph.addEdge(node1,node2);
         return !isConnected;
     }
 }

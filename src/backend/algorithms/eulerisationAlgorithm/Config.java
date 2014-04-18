@@ -16,7 +16,7 @@ public class Config implements Configuration {
     private double cost;
     private ArrayList<Edge> edgesConfig;
     private Random random;
-    private HashMap<String,HashMap<Integer,Node>> subGraphs;
+    private HashMap<String,Node[]> subGraphs;
     private int randomIndex1;
     private int randomIndex2;
     private Edge randomEdge1;
@@ -25,20 +25,20 @@ public class Config implements Configuration {
     private Edge newEdge2;
 
 
-    public Config(ArrayList<Edge> edgesConfig,Graph graph,HashMap<String,Node[]> subGraphs) {
+    public Config(ArrayList<Edge> edgesConfig,HashMap<String,Node[]> subGraphs) {
         this.edgesConfig = edgesConfig;
         random = new Random();
-        this.subGraphs = new HashMap<String, HashMap<Integer, Node>>();
+        this.subGraphs = new HashMap<String, Node[]>();
         Iterator keysIterator = subGraphs.keySet().iterator();
         String key;
-        HashMap<Integer,Node> subGraph;
+        Node[] subGraph;
         Node[] subGraphArray;
         while(keysIterator.hasNext()) {
             key = (String) keysIterator.next();
-            subGraph = new HashMap<Integer, Node>();
             subGraphArray = subGraphs.get(key);
+            subGraph = new Node[subGraphArray.length];
             for(int i=0; i<subGraphArray.length; i++) {
-                subGraph.put(i,subGraphArray[i]);
+                subGraph[i]=subGraphArray[i];
             }
             this.subGraphs.put(key, subGraph);
         }
@@ -55,24 +55,27 @@ public class Config implements Configuration {
 
     @Override
     public double generateNeighbouringConfig() {
-        randomIndex1 = random.nextInt(edgesConfig.size());
-        randomIndex2 = random.nextInt(edgesConfig.size());
-        while(randomIndex1==randomIndex2) {
+        //cannot generate config if there is only 1 edge
+        if(edgesConfig.size()!=1) {
+            randomIndex1 = random.nextInt(edgesConfig.size());
             randomIndex2 = random.nextInt(edgesConfig.size());
-        }
-        randomEdge1 = edgesConfig.get(randomIndex1);
-        randomEdge2 = edgesConfig.get(randomIndex2);
+            while(randomIndex1==randomIndex2) {
+                randomIndex2 = random.nextInt(edgesConfig.size());
+            }
+            randomEdge1 = edgesConfig.get(randomIndex1);
+            randomEdge2 = edgesConfig.get(randomIndex2);
 
-        Node node = getCommonNodeBetweenEdges(randomEdge1,randomEdge2);
-        //since there is a common node the best move is to change the common node
-        //as changing the other nodes will not make a difference to the config
-        if(node!=null) {
-            changeCommonNode(node);
+            Node node = getCommonNodeBetweenEdges(randomEdge1,randomEdge2);
+            //since there is a common node the best move is to change the common node
+            //as changing the other nodes will not make a difference to the config
+            if(node!=null) {
+                changeCommonNode(node);
+            }
+            else {
+                twoOptEdgeSwap();
+            }
+            computeCost();
         }
-        else {
-            twoOptEdgeSwap();
-        }
-        computeCost();
         return cost;
     }
 
@@ -80,24 +83,25 @@ public class Config implements Configuration {
         /*
          find which sub-graph the commonNode is in
          we only want to change the common node with a node in the same sub-graph
-         that also has even degree
         */
         Iterator subGraphIterator = subGraphs.keySet().iterator();
-        HashMap<Integer,Node> subGraph = null;
+        Node[] subGraph = null;
         while(subGraphIterator.hasNext()) {
             subGraph = subGraphs.get(subGraphIterator.next());
-            if(subGraph.containsValue(commonNode)) {
-                break;
+            for(int i=0; i<subGraph.length; i++) {
+                if(subGraph[i].equals(commonNode)) {
+                    break;
+                }
             }
         }
-        if(subGraph.size()==1) {
+        if(subGraph.length==1) {
             return;//if only 1 node in the sub-graph then cannot make any changes
         }
         Node node;
         //choose a random valid node to change to
         while(true) {
-            node = subGraph.get(random.nextInt(subGraph.size()));
-            if(!node.equals(commonNode) ) {
+            node = subGraph[random.nextInt(subGraph.length)];
+            if(!node.equals(commonNode)) {
                 newEdge1 = new Edge(randomEdge1.getOpposite(commonNode),node);
                 newEdge2 = new Edge(randomEdge2.getOpposite(commonNode),node);
                 edgesConfig.set(randomIndex1,newEdge1);
@@ -114,32 +118,45 @@ public class Config implements Configuration {
         String edge2Node1SubGraph = getContainingSubGraphKey(randomEdge2.getFirstNode());
         String edge2Node2SubGraph = getContainingSubGraphKey(randomEdge2.getSecondNode());
 
-        int crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node1SubGraph,
-                                                  edge1Node2SubGraph,edge2Node2SubGraph);
-
-        if(crossingCount<=2) {
-            newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
-            newEdge2 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
-            edgesConfig.set(randomIndex1,newEdge1);
-            edgesConfig.set(randomIndex2,newEdge2);
-            return;
-        }
-
-        crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node2SubGraph,
-                                              edge1Node2SubGraph,edge2Node1SubGraph);
-
-        if(crossingCount<=2) {
-            newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
-            newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
-            edgesConfig.set(randomIndex1,newEdge1);
-            edgesConfig.set(randomIndex2,newEdge2);
-            return;
+        //if the edge is in the same sub graph just do
+        // a  random swap as connectivity is not affected
+        if(edge1Node1SubGraph.equals(edge1Node2SubGraph) ||
+                edge2Node1SubGraph.equals(edge2Node2SubGraph)) {
+            if(random.nextInt(100)>50) {
+                newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
+                newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
+                edgesConfig.set(randomIndex1,newEdge1);
+                edgesConfig.set(randomIndex2,newEdge2);
+            }
+            else {
+                newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
+                newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getFirstNode());
+                edgesConfig.set(randomIndex1,newEdge1);
+                edgesConfig.set(randomIndex2,newEdge2);
+            }
         }
         else {
-            newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
-            newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
-            edgesConfig.set(randomIndex1,newEdge1);
-            edgesConfig.set(randomIndex2,newEdge2);
+            int crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node1SubGraph,
+                    edge1Node2SubGraph,edge2Node2SubGraph);
+
+            if(crossingCount==2) {
+                newEdge1 = new Edge(randomEdge2.getFirstNode(),randomEdge1.getSecondNode());
+                newEdge2 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getSecondNode());
+                edgesConfig.set(randomIndex1,newEdge1);
+                edgesConfig.set(randomIndex2,newEdge2);
+                return;
+            }
+
+            crossingCount = getEdgesCrossingCount(edge1Node1SubGraph,edge2Node2SubGraph,
+                    edge1Node2SubGraph,edge2Node1SubGraph);
+
+            if(crossingCount==2) {
+                newEdge1 = new Edge(randomEdge1.getFirstNode(),randomEdge2.getFirstNode());
+                newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
+                edgesConfig.set(randomIndex1,newEdge1);
+                edgesConfig.set(randomIndex2,newEdge2);
+                return;
+            }
         }
     }
 
@@ -167,10 +184,14 @@ public class Config implements Configuration {
     private String getContainingSubGraphKey(Node nodeToSearch) {
         Iterator subGraphKeysIterator = subGraphs.keySet().iterator();
         String key;
+        Node[] subGraph;
         while(subGraphKeysIterator.hasNext()) {
             key = (String) subGraphKeysIterator.next();
-            if(subGraphs.get(key).containsValue(nodeToSearch)) {
-                return key;
+            subGraph = subGraphs.get(key);
+            for(int i=0; i<subGraph.length; i++) {
+                if(subGraph[i].equals(nodeToSearch)) {
+                    return key;
+                }
             }
         }
         return null;
@@ -200,7 +221,6 @@ public class Config implements Configuration {
 
     @Override
     public Graph getGraphWithNewEdges() {
-        System.out.println(edgesConfig.size()+"edges added");
         for(Edge edge : edgesConfig) {
             AppGUI.graphVisualiserPanel.getCurrentGraph().addEdge(edge.getFirstNode(), edge.getSecondNode());
         }

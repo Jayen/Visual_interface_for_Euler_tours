@@ -51,7 +51,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
     /**
      * This method implements the
      * nearest neighbour algorithm for
-     * the TSP problem when there are no
+     * the TSP when there are no
      * edges in the graph
      */
     private void tspNearestNeighbour() {
@@ -150,9 +150,9 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
     /**
      * This methods gives the next best node
      * to connect from a sourceNode and the set of nodes to connect (nodesToSearch)
-     * @param sourceNode -the node to connect from
-     * @param nodesToSearch -the set of nodes that the sourceNode could connect to
-     * @return node -best node to connect as defined by this method
+     * @param sourceNode the node to connect from
+     * @param nodesToSearch the set of nodes that the sourceNode could connect to
+     * @return node best node to connect
      */
     private Node nextBestNodeToConnect(Node sourceNode, Node[] nodesToSearch) {
         /*
@@ -163,7 +163,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         */
         double minDistance = Double.MAX_VALUE;
         double currentDistance;
-        Node minNode = null;
+        Node bestNode = null;
         boolean foundOddNode = false;
 
         for (Node nextNode : nodesToSearch) {
@@ -173,28 +173,27 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
                         currentDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
                         if(currentDistance < minDistance) {
                             minDistance = currentDistance;
-                            minNode = nextNode;
+                            bestNode = nextNode;
                         }
                     }
-
                 }
                 else {
                     if(graph.degree(nextNode)%2!=0) {
                         foundOddNode = true;
                         minDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
-                        minNode = nextNode;
+                        bestNode = nextNode;
                     }
                     else {
                         currentDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
                         if(currentDistance < minDistance) {
                             minDistance = currentDistance;
-                            minNode = nextNode;
+                            bestNode = nextNode;
                         }
                     }
                 }
             }
         }
-        return minNode;
+        return bestNode;
     }
 
     /**
@@ -221,7 +220,7 @@ public class NearestNeighbourAlgorithm extends EulerisationAlgorithm {
         int edgesAdded = 0;
         while(edgesAdded<subGraphs.size()-1) {
 
-            while(subGraphsKeyIterator.hasNext()) {//go through every subgraph
+            while(subGraphsKeyIterator.hasNext()) {//go through every sub-graph
                 subGraphKey = (String) subGraphsKeyIterator.next();
 
                 if(!connectedSubGraphKeys.contains(subGraphKey)) {

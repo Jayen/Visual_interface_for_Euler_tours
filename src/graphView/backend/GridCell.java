@@ -1,4 +1,4 @@
-package graphView.model;
+package graphView.backend;
 
 /**
  * A GridCell holds the data for each cell

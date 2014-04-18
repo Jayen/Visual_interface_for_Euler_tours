@@ -13,4 +13,10 @@ public class Heuristics {
         return Math.sqrt((currentNode.getX()-nextNode.getX())*(currentNode.getX()-nextNode.getX())
                 +(currentNode.getY()-nextNode.getY())*(currentNode.getY()-nextNode.getY()));
     }
+
+    public static double computeManhattanDistance(Node currentNode, Node nextNode) {
+        double xDiff = Math.abs(currentNode.getX() - nextNode.getX());
+        double yDiff = Math.abs(currentNode.getY() - nextNode.getY());
+        return xDiff+yDiff;
+    }
 }

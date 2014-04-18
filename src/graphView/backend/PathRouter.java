@@ -1,4 +1,4 @@
-package graphView.model;
+package graphView.backend;
 
 import java.util.*;
 
@@ -54,7 +54,7 @@ public class PathRouter {
                         gridCell2.getMovementCost()+gridCell2.getHeuristicValue());
             }
         };
-        unvisitedQueue = new PriorityQueue<GridCell>(50,gridCellComparator);
+        unvisitedQueue = new PriorityQueue<GridCell>(150,gridCellComparator);
         settledCells = new HashSet<GridCell>(150);
         smallestCostMap = new HashMap<GridCell, GridCell>(150);
     }

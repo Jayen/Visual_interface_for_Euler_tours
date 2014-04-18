@@ -23,7 +23,7 @@ public class RunButtonListener implements ActionListener {
 
     private AppGUI appGUI;
     private ButtonGroup taskGroup;
-    private ButtonGroup algorithmGroup;
+    private JComboBox eulerisationAlgorithmJCB;
     private JComboBox<String> algorithmJCB;
     private GraphVisualiserPanel graphVisualiserPanel;
     private EulerTourAlgorithm eulerTourAlgorithm;
@@ -31,30 +31,28 @@ public class RunButtonListener implements ActionListener {
     private HierholzersAlgorithm hierholzersAlgorithm;
     private EulerisationAlgorithm eulerisationAlgorithm;
 
-    public RunButtonListener(AppGUI appGUI,ButtonGroup taskGroup,ButtonGroup algorithmGroup, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
+    public RunButtonListener(AppGUI appGUI,ButtonGroup taskGroup, JComboBox<String> eulerisationAlgorithmJCB, JComboBox<String> algorithmJCB,GraphVisualiserPanel graphVisualiserPanel) {
         this.appGUI = appGUI;
         this.taskGroup = taskGroup;
-        this.algorithmGroup = algorithmGroup;
+        this.eulerisationAlgorithmJCB = eulerisationAlgorithmJCB;
         this.algorithmJCB = algorithmJCB;
         this.graphVisualiserPanel = graphVisualiserPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Task task = getSelectedTask(taskGroup,algorithmGroup,algorithmJCB);
+        Task task = getSelectedTask(taskGroup, eulerisationAlgorithmJCB,algorithmJCB);
         if(task!=null) {
             Graph graph = graphVisualiserPanel.getCurrentGraph();
             fleurysAlgorithm = new FleurysAlgorithm();
             hierholzersAlgorithm = new HierholzersAlgorithm();
             switch(task) {
                 case EulerTourCheck:
-                    //TODO show result on GUI
-                    System.out.println("case euler tour check");
                     if(EulerTourChecker.hasEulerTour(graph)) {
-                        System.out.println("euler tour exists");
+                        JOptionPane.showMessageDialog(null,"This graph has a Euler tour","Info",JOptionPane.INFORMATION_MESSAGE);
                     }
                     else {
-                        System.out.println("euler tour does not exist");
+                        JOptionPane.showMessageDialog(null,"This graph has no Euler tour","Info",JOptionPane.INFORMATION_MESSAGE);
                     }
                     break;
                 case NearestNeighbour:
@@ -84,7 +82,7 @@ public class RunButtonListener implements ActionListener {
         }
     }
 
-    private Task getSelectedTask(ButtonGroup taskGroup, ButtonGroup algorithmGroup, JComboBox<String> algorithmJCB) {
+    private Task getSelectedTask(ButtonGroup taskGroup, JComboBox eulerisationAlgorithmJCB, JComboBox<String> algorithmJCB) {
         try {
             String actionCommand = taskGroup.getSelection().getActionCommand();
             if(actionCommand.equals(Task.FindEulerTour.getName())) {
@@ -100,14 +98,13 @@ public class RunButtonListener implements ActionListener {
                 return Task.EulerTourCheck;
             }
             else if(actionCommand.equals(Task.EuleriseGraph.getName())) {
-                String algorithmCommand = algorithmGroup.getSelection().getActionCommand();
-                if(algorithmCommand.equals(Task.NearestNeighbour.getName())) {
+                if(eulerisationAlgorithmJCB.getSelectedItem().equals(Task.NearestNeighbour.getName())) {
                     return Task.NearestNeighbour;
                 }
-                else if(algorithmCommand.equals(Task.LocalSearch.getName())) {
+                else if(eulerisationAlgorithmJCB.getSelectedItem().equals(Task.LocalSearch.getName())) {
                     return Task.LocalSearch;
                 }
-                else if(algorithmCommand.equals(Task.SimulatedAnnealing.getName())) {
+                else if(eulerisationAlgorithmJCB.getSelectedItem().equals(Task.SimulatedAnnealing.getName())) {
                     return Task.SimulatedAnnealing;
                 }
             }

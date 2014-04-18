@@ -13,8 +13,7 @@ import java.util.Iterator;
 public abstract class EulerisationAlgorithm {
 
     /* A graph may contain many sub-graphs which need to be connected up
-     * and in the worst case all nodes are unconnected meaning for n nodes there will be n sub-graphs
-     * The HashMap represents each sub-graph the HashMap contains a list
+     * The HashMap represents each sub-graph the HashMap contains a array
      * of nodes that are in that particular sub-graph
      */
     public HashMap<String,Node[]> subGraphs;
@@ -30,7 +29,7 @@ public abstract class EulerisationAlgorithm {
             if(nodes.get(nodeKeys[counter])!=null) {
                 connectedNodesDFS(nodes.get(nodeKeys[counter]), marked);
                 subGraphs.put("subGraph" + subGraphCounter, marked.values().toArray(new Node[marked.size()]));
-                marked = new HashMap<Node, Node>();
+                marked.clear();
                 subGraphCounter++;
             }
             counter++;

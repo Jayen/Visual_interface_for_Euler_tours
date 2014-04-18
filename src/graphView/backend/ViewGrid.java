@@ -1,4 +1,4 @@
-package graphView.model;
+package graphView.backend;
 
 import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
@@ -105,7 +105,7 @@ public class ViewGrid {
                 path = router.getPath();
             }
 
-            this.markPath(path,occupancyValue,5);
+            this.markPath(path,occupancyValue,7);
             path = null;
             occupancyValue++;
         }

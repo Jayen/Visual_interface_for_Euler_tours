@@ -13,6 +13,11 @@ import java.util.Iterator;
  */
 public class EulerTourChecker {
 
+    /**
+     * Check if a graph has a Euler tour
+     * @param graph graph to check
+     * @return true if there is a Euler tour else false
+     */
     public static boolean hasEulerTour(Graph graph) {
         ConnectivityChecker connectivityChecker = new ConnectivityChecker(graph);
         if(connectivityChecker.isGraphConnectedDFS(graph.getNodes().iterator().next())

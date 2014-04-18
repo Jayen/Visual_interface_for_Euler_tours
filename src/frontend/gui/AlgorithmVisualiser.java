@@ -4,8 +4,8 @@ import backend.algorithms.eulerTourAlgorithms.EulerTourAlgorithm;
 import backend.algorithms.eulerTourAlgorithms.FleurysAlgorithm;
 import backend.algorithms.eulerTourAlgorithms.HierholzersAlgorithm;
 import backend.internalgraph.Node;
-import graphView.model.GridCell;
-import graphView.model.PathRouter;
+import graphView.backend.GridCell;
+import graphView.backend.PathRouter;
 
 import java.awt.*;
 import java.util.ArrayList;

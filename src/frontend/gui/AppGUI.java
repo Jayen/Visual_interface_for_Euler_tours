@@ -108,7 +108,7 @@ public class AppGUI extends JFrame {
      */
     private void setupGraphVisualiser() {
         JPanel graphViewPanel = new JPanel(new BorderLayout());
-
+        graphViewPanel.setBorder(BorderFactory.createTitledBorder("Graph visualiser"));
         JScrollPane jsp = new JScrollPane(graphVisualiserPanel);
         HandScrollListener handScrollListener = new HandScrollListener(graphVisualiserPanel);
         jsp.getViewport().addMouseMotionListener(handScrollListener);
@@ -204,7 +204,9 @@ public class AppGUI extends JFrame {
                     AppGUI.this.setStatus("loading graph...");
                     graph = GraphParser.createGraphFromFile(currentFile);
                     graphVisualiserPanel.drawNewGraph(graph);
-                } catch (IncorrectFileFormatException ignored) {
+                } catch (IncorrectFileFormatException e) {
+                    JOptionPane.showMessageDialog(null,"The files content is not correctly formatted","Incorrect file",JOptionPane.INFORMATION_MESSAGE);
+                    AppGUI.this.clearStatus();
                 } catch (IOException ignored) {
                 } catch (IndexOutOfBoundsException ignored) {
                 }
@@ -219,40 +221,6 @@ public class AppGUI extends JFrame {
 
         JRadioButton eulerTourCheckRB = new JRadioButton(Task.EulerTourCheck.getName());
         final JRadioButton euleriseGraphRB = new JRadioButton(Task.EuleriseGraph.getName());
-
-        JLabel eulerisationAlgoJL = new JLabel("Algorithm: ");
-        final JRadioButton nearestNeighbourRB = new JRadioButton(Task.NearestNeighbour.getName());
-        final JRadioButton localSearchRB = new JRadioButton(Task.LocalSearch.getName());
-        final JRadioButton simulatedAnnealing = new JRadioButton(Task.SimulatedAnnealing.getName());
-
-        nearestNeighbourRB.setActionCommand(Task.NearestNeighbour.getName());
-        localSearchRB.setActionCommand(Task.LocalSearch.getName());
-        simulatedAnnealing.setActionCommand(Task.SimulatedAnnealing.getName());
-
-        euleriseGraphRB.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if(euleriseGraphRB.isSelected()) {
-                    nearestNeighbourRB.setEnabled(true);
-                    localSearchRB.setEnabled(true);
-                    simulatedAnnealing.setEnabled(true);
-                }
-                else {
-                    nearestNeighbourRB.setEnabled(false);
-                    localSearchRB.setEnabled(false);
-                    simulatedAnnealing.setEnabled(false);
-                }
-            }
-        });
-
-        ButtonGroup eulerisationAlgorithmGroup = new ButtonGroup();
-        eulerisationAlgorithmGroup.add(nearestNeighbourRB);
-        eulerisationAlgorithmGroup.add(localSearchRB);
-        eulerisationAlgorithmGroup.add(simulatedAnnealing);
-
-        nearestNeighbourRB.setEnabled(false);
-        localSearchRB.setEnabled(false);
-        simulatedAnnealing.setEnabled(false);
 
         JRadioButton findEulerTourRB = new JRadioButton(Task.FindEulerTour.getName());
         eulerTourCheckRB.setActionCommand(Task.EulerTourCheck.getName());
@@ -272,14 +240,17 @@ public class AppGUI extends JFrame {
         constraints.gridy++;
         panel.add(euleriseGraphRB,constraints);
 
+        JPanel eulerisationAlgoPanel = new JPanel();
+        JLabel eulerisationAlgoJL = new JLabel("Algorithm: ");
+        JComboBox<String> eulerisationAlgoJCB = new JComboBox<String>();
+        eulerisationAlgoJCB.addItem(Task.NearestNeighbour.getName());
+        eulerisationAlgoJCB.addItem(Task.LocalSearch.getName());
+        eulerisationAlgoJCB.addItem(Task.SimulatedAnnealing.getName());
+        eulerisationAlgoPanel.add(eulerisationAlgoJL);
+        eulerisationAlgoPanel.add(eulerisationAlgoJCB);
+
         constraints.gridy++;
-        panel.add(eulerisationAlgoJL,constraints);
-        constraints.gridy++;
-        panel.add(nearestNeighbourRB,constraints);
-        constraints.gridy++;
-        panel.add(localSearchRB,constraints);
-        constraints.gridy++;
-        panel.add(simulatedAnnealing,constraints);
+        panel.add(eulerisationAlgoPanel,constraints);
 
         constraints.gridy++;
         panel.add(findEulerTourRB,constraints);
@@ -296,7 +267,7 @@ public class AppGUI extends JFrame {
         panel.add(algorithmPanel,constraints);
 
         runJB = new JButton("Run Task");
-        runJB.addActionListener(new RunButtonListener(this,taskGroup,eulerisationAlgorithmGroup, algorithmJCB, graphVisualiserPanel));
+        runJB.addActionListener(new RunButtonListener(this,taskGroup,eulerisationAlgoJCB, algorithmJCB, graphVisualiserPanel));
         constraints.gridy++;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(runJB,constraints);
@@ -331,6 +302,24 @@ public class AppGUI extends JFrame {
      * @return JPanel
      */
     private Component createHelpTab() {
-        return new JPanel();
+        JPanel helpPanel = new JPanel();
+        JLabel label = new JLabel("<html>The file format is:<br>" +
+                "#nodes (special identifier for nodes)<br>" +
+                "list of nodes in format: Node name[space](x, y)<br>" +
+                "(where x, y are the Cartesian coordinates).<br>" +
+                "[New line]\n<br>" +
+                "#edges (special identifier for edges)<br>" +
+                "list of edges in the format: Node name–Node name<br>" +
+                "<br>example file<br>"+
+                "#nodes<br>" +
+                "A (0,0)<br>" +
+                "B (12,10)<br>" +
+                "C (5,5)<br>" +
+                "<br>" +
+                "#edges<br>" +
+                "A—B<br>" +
+                "B—C<br>");
+        helpPanel.add(label);
+        return helpPanel;
     }
 }

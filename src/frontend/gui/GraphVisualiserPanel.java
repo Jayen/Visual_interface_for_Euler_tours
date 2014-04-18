@@ -2,7 +2,7 @@ package frontend.gui;
 
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
-import graphView.model.ViewGrid;
+import graphView.backend.ViewGrid;
 
 import javax.swing.*;
 import java.awt.*;
