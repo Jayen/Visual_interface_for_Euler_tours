@@ -57,7 +57,6 @@ public class FleurysAlgorithm extends EulerTourAlgorithm {
                 }
                 currentNode = nextNode;
             }
-            System.out.println(this.nodePathList);
             return this.nodePathList;
         }
         return null;

@@ -1,6 +1,5 @@
 package backend.algorithms.eulerisationAlgorithm;
 
-import backend.algorithms.Heuristics;
 import backend.internalgraph.Edge;
 import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
@@ -12,12 +11,6 @@ import java.util.*;
  * Jayen kumar Jaentilal k1189304
  */
 public class SimulatedAnnealing extends EulerisationAlgorithm {
-
-    private Node sourceNode;
-    private Node minNode;
-    private double currentMinDist;
-    private int edgesAdded = 0;
-    private double cost = 0.0;
 
     private int numberOfPhases;
     private double temperature;
@@ -39,7 +32,6 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         temperature = 1500.0;
         isTSP = graph.getNumberOfEdges()==0;
         currentConfig = initialiseConfig();
-        System.out.println(currentConfig.getConfig());
         if(isTSP) {
             bestConfig = new TSPConfig((TSPConfig)currentConfig);
         }
@@ -57,7 +49,6 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
                 System.out.println("phase "+phase+" transition "+transition);
                 nextConfigCost = currentConfig.generateNeighbouringConfig();
                 if(nextConfigCost<bestConfig.getCost()) {
-                    System.out.println("improving");
                     if(isTSP) {
                         bestConfig = new TSPConfig((TSPConfig)currentConfig);
                     }
@@ -81,7 +72,7 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
                     }
                 }
             }
-            temperature=temperature-0.15;
+            temperature=temperature-0.35;
         }
         AppGUI.graphVisualiserPanel.drawNewGraph(bestConfig.getGraphWithNewEdges());
         if(isTSP) {
@@ -100,11 +91,6 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         else {
             ArrayList<Edge> edgesConfig = new ArrayList<Edge>();
             connectTheSubGraphs(edgesConfig);
-//            HashMap<Node, Node> oddNodes = new HashMap<Node, Node>();
-//            super.putAllOddNodes(oddNodes);
-//            if(oddNodes.size()>0) {
-//                euleriseGraphWithOddNodes(oddNodes,edgesConfig);
-//            }
             euleriseTheGraph(edgesConfig);
             removeTheEdgesAddedToTheGraph(edgesConfig);
             return new Config(edgesConfig,subGraphs);
@@ -187,16 +173,16 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
     private Node getAUnconnectedNode(String subGraphKeyToConnect) {
         List<Node> nodesList = Arrays.asList(super.subGraphs.get(subGraphKeyToConnect));
 
-    Node node = null;
-    Iterator listIterator = nodesList.listIterator();
-    while(listIterator.hasNext()) {
-        node = (Node) listIterator.next();
-        if(super.graph.degree(node)%2!=0 || super.graph.degree(node)==0) {
-            return node;
+        Node node = null;
+        Iterator listIterator = nodesList.listIterator();
+        while(listIterator.hasNext()) {
+            node = (Node) listIterator.next();
+            if(super.graph.degree(node)%2!=0 || super.graph.degree(node)==0) {
+                return node;
+            }
         }
+        return node;
     }
-    return node;
-}
 
     private TSPConfig randomTSPConfig() {
         ArrayList<Node> tspPath = new ArrayList<Node>();
@@ -238,218 +224,4 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         }
         return nodes;
     }
-
-
-
-
-//    /**
-//     * This method connects up
-//     * all the sub-graphs such that at then end
-//     * the graph is connected and there are
-//     * no disconnected components
-//     */
-//    private void connectTheSubGraphs(ArrayList<Edge> edgesConfig) {
-//        HashSet<String> connectedSubGraphKeys = new HashSet<String>();
-//        connectedSubGraphKeys.add("subGraph0");
-//        Node[] connectedSubGraph;
-//        Node[] unconnectedSubGraph;
-//
-//        Iterator subGraphsKeyIterator = subGraphs.keySet().iterator();
-//        String subGraphKey;
-//        sourceNode = null;
-//        currentMinDist = Double.MAX_VALUE;
-//        minNode = null;
-//        Node nextNode;
-//        String currentConnectionType;
-//
-//        //loop makes sure we add at least n-1 edges between n sub-graphs
-//        int edgesAdded = 0;
-//        while(edgesAdded<subGraphs.size()-1) {
-//
-//            while(subGraphsKeyIterator.hasNext()) {//go through every sub-graph
-//                subGraphKey = (String) subGraphsKeyIterator.next();
-//
-//                if(!connectedSubGraphKeys.contains(subGraphKey)) {
-//                    unconnectedSubGraph = subGraphs.get(subGraphKey);
-//
-//                    currentConnectionType = "evenToEven";
-//                    for (String connectedSubGraphKey : connectedSubGraphKeys) {
-//
-//                        connectedSubGraph = subGraphs.get(connectedSubGraphKey);
-//                        for (Node node : connectedSubGraph) {
-//                            //prefer odd degree nodes over even degree nodes
-//                            //if there are no odd degree nodes for the connection then connect closest even degree nodes
-//                            nextNode = nextBestNodeToConnect(node, unconnectedSubGraph);
-//                            currentConnectionType = addEdgeBasedOnConnectionType(node,nextNode,currentConnectionType);
-//                        }
-//                    }
-//                    //add the unconnected subGraph to the connected set
-//                    connectedSubGraphKeys.add(subGraphKey);
-//                    super.graph.addEdge(sourceNode, minNode);
-//                    edgesConfig.add(new Edge(sourceNode,minNode));
-//                    cost = cost + Heuristics.computeEuclideanDistance(sourceNode, minNode);
-//                    this.edgesAdded++;
-//                }
-//            }
-//            edgesAdded++;
-//        }
-//    }
-
-//    /**
-//     * This methods gives the next best node
-//     * to connect from a sourceNode and the set of nodes to connect (nodesToSearch)
-//     * @param sourceNode the node to connect from
-//     * @param nodesToSearch the set of nodes that the sourceNode could connect to
-//     * @return node best node to connect
-//     */
-//    private Node nextBestNodeToConnect(Node sourceNode, Node[] nodesToSearch) {
-//        /*
-//         Best node to connect as defined by this method
-//         smallest distance and degree odd node is the best
-//         next best is any odd degree node
-//         and lastly the shortest distance node with even degree
-//        */
-//        double minDistance = Double.MAX_VALUE;
-//        double currentDistance;
-//        Node bestNode = null;
-//        boolean foundOddNode = false;
-//
-//        for (Node nextNode : nodesToSearch) {
-//            if(nextNode!=sourceNode) {
-//                if(foundOddNode) {
-//                    if(graph.degree(nextNode)%2!=0) {
-//                        currentDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
-//                        if(currentDistance < minDistance) {
-//                            minDistance = currentDistance;
-//                            bestNode = nextNode;
-//                        }
-//                    }
-//                }
-//                else {
-//                    if(graph.degree(nextNode)%2!=0) {
-//                        foundOddNode = true;
-//                        minDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
-//                        bestNode = nextNode;
-//                    }
-//                    else {
-//                        currentDistance = Heuristics.computeEuclideanDistance(sourceNode, nextNode);
-//                        if(currentDistance < minDistance) {
-//                            minDistance = currentDistance;
-//                            bestNode = nextNode;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return bestNode;
-//    }
-//
-//    /**
-//     * This method adds the edge depending
-//     * on the current connection type and the
-//     * connection type that the node and nextNode have
-//     * @param node node to connect from
-//     * @param nextNode node to connect to
-//     * @param currentConnectionType the current connection type that exists
-//     * @return
-//     */
-//    private String addEdgeBasedOnConnectionType(Node node, Node nextNode, String currentConnectionType) {
-//        if(graph.degree(node)%2!=0) {//node has odd degree
-//            if(graph.degree(nextNode)%2!=0) {//nextNode has odd degree
-//
-//                //only change the edges nodes if the connection is with shorter distance
-//                // since we already have a oddToOdd connection
-//                if(currentConnectionType.equals("oddToOdd")) {
-//                    if(graph.degree(node)%2!=0) {
-//                        if(graph.degree(nextNode)%2!=0) {
-//                            updateDistAndNodes(node,nextNode,false);
-//                        }
-//                    }
-//                }
-//                //change the edges if the connection is odd to odd as we prefer
-//                // odd to odd over odd to even and even to even connection
-//                else {
-//                    updateDistAndNodes(node,nextNode,true);
-//                    currentConnectionType = "oddToOdd";
-//                }
-//            }
-//            else {//nextNode has even degree
-//                //change the edges if this connection odd to even is less than the current odd to even connection
-//                if(currentConnectionType.equals("oddToEven")) {
-//                    updateDistAndNodes(node,nextNode,false);
-//                }
-//                //change the edges since we prefer odd to even connection over even to even connection
-//                if(currentConnectionType.equals("evenToEven")) {
-//                    updateDistAndNodes(node,nextNode,true);
-//                    currentConnectionType = "oddToEven";
-//                }
-//            }
-//        }
-//        else {//node has even degree
-//            if(graph.degree(nextNode)%2!=0) {//next node has odd degree
-//                //change the edges if this connection odd to even is less than the current odd to even connection
-//                if(currentConnectionType.equals("oddToEven")) {
-//                    updateDistAndNodes(node,nextNode,false);
-//                }
-//                //change the edges since we prefer odd to even connection over even to even connection
-//                if(currentConnectionType.equals("evenToEven")) {
-//                    updateDistAndNodes(node,nextNode,true);
-//                    currentConnectionType = "oddToEven";
-//                }
-//            }
-//            else {
-//                //next node has even degree
-//                //only change the edge if our current edge connection is even to even
-//                //since we prefer other types of connections
-//                if(currentConnectionType.equals("evenToEven")) {
-//                    updateDistAndNodes(node,nextNode,false);
-//                }
-//            }
-//        }
-//        return currentConnectionType;
-//    }
-//
-//    /**
-//     * update the distance and the nodes the connection is made to
-//     * @param node node to connect from
-//     * @param nextNode node to connect to
-//     * @param greedyUpdate force connection update -use when giving a certain connection type priority
-//     *                     like odd to odd connection over odd to even connection
-//     */
-//    private void updateDistAndNodes(Node node, Node nextNode,boolean greedyUpdate) {
-//        double dist = Heuristics.computeEuclideanDistance(node, nextNode);
-//        if(greedyUpdate) {
-//            currentMinDist = dist;
-//            sourceNode = node;
-//            minNode = nextNode;
-//        }
-//        else {
-//            if (dist < currentMinDist) {
-//                currentMinDist = dist;
-//                sourceNode = node;
-//                minNode = nextNode;
-//            }
-//        }
-//    }
-//
-//    /**
-//     * This method eulerises a connected graph with odd nodes
-//     * @param oddNodes nodes which have odd degree
-//     */
-//    private void euleriseGraphWithOddNodes(HashMap<Node, Node> oddNodes,ArrayList<Edge> edgesConfig) {
-//        Iterator oddNodesIterator = oddNodes.keySet().iterator();
-//        Node sourceOddNode;
-//        Node nextNodeToConnect;
-//        while(oddNodesIterator.hasNext()) {
-//            sourceOddNode = (Node) oddNodesIterator.next();
-//            nextNodeToConnect = nextBestNodeToConnect(sourceOddNode,oddNodes.values().toArray(new Node[oddNodes.size()]));
-//            super.graph.addEdge(sourceOddNode,nextNodeToConnect);
-//            edgesConfig.add(new Edge(sourceOddNode,nextNodeToConnect));
-//            cost = cost + Heuristics.computeEuclideanDistance(sourceOddNode,nextNodeToConnect);
-//            edgesAdded++;
-//            oddNodes.remove(sourceOddNode);
-//            oddNodes.remove(nextNodeToConnect);
-//            oddNodesIterator = oddNodes.keySet().iterator();
-//        }
-//    }
 }

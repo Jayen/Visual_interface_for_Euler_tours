@@ -65,7 +65,6 @@ public class HierholzersAlgorithm extends EulerTourAlgorithm {
                     insertionIndex = indexToCheckFrom;
                 }
             }
-            System.out.println(nodePathList);
             return nodePathList;
         }
         return null;

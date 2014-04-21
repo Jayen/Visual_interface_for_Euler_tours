@@ -10,8 +10,6 @@ import com.alee.laf.button.WebButton;
 import com.alee.laf.progressbar.WebProgressBar;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -139,28 +137,36 @@ public class AppGUI extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                algorithmVisualiser.resetVisualisation();
+                if(algorithmVisualiser!=null) {
+                    algorithmVisualiser.resetVisualisation();
+                }
             }
         });
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                algorithmVisualiser.undoStep();
+                if(algorithmVisualiser!=null) {
+                    algorithmVisualiser.undoStep();
+                }
             }
         });
 
         pausePlayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                algorithmVisualiser.pausePlay();
+                if(algorithmVisualiser!=null) {
+                    algorithmVisualiser.pausePlay();
+                }
             }
         });
 
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                algorithmVisualiser.nextStep();
+                if(algorithmVisualiser!=null) {
+                    algorithmVisualiser.nextStep();
+                }
             }
         });
 

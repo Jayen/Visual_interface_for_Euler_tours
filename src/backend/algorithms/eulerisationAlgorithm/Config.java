@@ -6,17 +6,20 @@ import backend.internalgraph.Graph;
 import backend.internalgraph.Node;
 import frontend.gui.AppGUI;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Random;
 
 /**
- * Jayen kumar Jaentilal k1189304
- */
+* Jayen kumar Jaentilal k1189304
+*/
 public class Config implements Configuration {
 
     private double cost;
     private ArrayList<Edge> edgesConfig;
     private Random random;
-    private HashMap<String,Node[]> subGraphs;
+    private HashMap<String,HashMap<Integer,Node>> subGraphs;
     private int randomIndex1;
     private int randomIndex2;
     private Edge randomEdge1;
@@ -28,17 +31,17 @@ public class Config implements Configuration {
     public Config(ArrayList<Edge> edgesConfig,HashMap<String,Node[]> subGraphs) {
         this.edgesConfig = edgesConfig;
         random = new Random();
-        this.subGraphs = new HashMap<String, Node[]>();
+        this.subGraphs = new HashMap<String, HashMap<Integer, Node>>();
         Iterator keysIterator = subGraphs.keySet().iterator();
         String key;
-        Node[] subGraph;
+        HashMap<Integer,Node> subGraph;
         Node[] subGraphArray;
         while(keysIterator.hasNext()) {
             key = (String) keysIterator.next();
             subGraphArray = subGraphs.get(key);
-            subGraph = new Node[subGraphArray.length];
+            subGraph = new HashMap<Integer, Node>(subGraphArray.length);
             for(int i=0; i<subGraphArray.length; i++) {
-                subGraph[i]=subGraphArray[i];
+                subGraph.put(i,subGraphArray[i]);
             }
             this.subGraphs.put(key, subGraph);
         }
@@ -85,22 +88,20 @@ public class Config implements Configuration {
          we only want to change the common node with a node in the same sub-graph
         */
         Iterator subGraphIterator = subGraphs.keySet().iterator();
-        Node[] subGraph = null;
+        HashMap<Integer,Node> subGraph = null;
         while(subGraphIterator.hasNext()) {
             subGraph = subGraphs.get(subGraphIterator.next());
-            for(int i=0; i<subGraph.length; i++) {
-                if(subGraph[i].equals(commonNode)) {
-                    break;
-                }
+            if(subGraph.values().contains(commonNode)) {
+                break;
             }
         }
-        if(subGraph.length==1) {
+        if(subGraph.size()==1) {
             return;//if only 1 node in the sub-graph then cannot make any changes
         }
         Node node;
         //choose a random valid node to change to
         while(true) {
-            node = subGraph[random.nextInt(subGraph.length)];
+            node = subGraph.get(random.nextInt(subGraph.size()));
             if(!node.equals(commonNode)) {
                 newEdge1 = new Edge(randomEdge1.getOpposite(commonNode),node);
                 newEdge2 = new Edge(randomEdge2.getOpposite(commonNode),node);
@@ -155,7 +156,6 @@ public class Config implements Configuration {
                 newEdge2 = new Edge(randomEdge1.getSecondNode(),randomEdge2.getSecondNode());
                 edgesConfig.set(randomIndex1,newEdge1);
                 edgesConfig.set(randomIndex2,newEdge2);
-                return;
             }
         }
     }
@@ -184,14 +184,12 @@ public class Config implements Configuration {
     private String getContainingSubGraphKey(Node nodeToSearch) {
         Iterator subGraphKeysIterator = subGraphs.keySet().iterator();
         String key;
-        Node[] subGraph;
+        HashMap<Integer,Node> subGraph;
         while(subGraphKeysIterator.hasNext()) {
             key = (String) subGraphKeysIterator.next();
             subGraph = subGraphs.get(key);
-            for(int i=0; i<subGraph.length; i++) {
-                if(subGraph[i].equals(nodeToSearch)) {
-                    return key;
-                }
+            if(subGraph.values().contains(nodeToSearch)) {
+                return key;
             }
         }
         return null;

@@ -48,56 +48,64 @@ public class RunButtonListener implements ActionListener {
             graph = graphVisualiserPanel.getCurrentGraph();
             fleurysAlgorithm = new FleurysAlgorithm();
             hierholzersAlgorithm = new HierholzersAlgorithm();
-            switch(task) {
-                case EulerTourCheck:
-                    if(EulerTourChecker.hasEulerTour(graph)) {
-                        JOptionPane.showMessageDialog(null,"This graph has a Euler tour","Info",JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null,"This graph has no Euler tour","Info",JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    break;
-                case NearestNeighbour:
-                    appGUI.setStatus("Eulerising graph");
-                    eulerisationThread = new Thread() {
-                        @Override
-                        public void run() {
-                            eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
-                            eulerisationAlgorithm.euleriseGraph(true);
+            if(graph!=null) {
+                switch(task) {
+                    case EulerTourCheck:
+                        if(EulerTourChecker.hasEulerTour(graph)) {
+                            JOptionPane.showMessageDialog(null,"This graph has a Euler tour","Info",JOptionPane.INFORMATION_MESSAGE);
                         }
-                    };
-                    eulerisationThread.start();
-                    break;
-                case LocalSearch:
-                    appGUI.setStatus("Eulerising graph");
-                    eulerisationThread = new Thread() {
-                        @Override
-                        public void run() {
-                            eulerisationAlgorithm = new SimulatedAnnealing(graph,true);
-                            eulerisationAlgorithm.euleriseGraph(true);
+                        else {
+                            JOptionPane.showMessageDialog(null,"This graph has no Euler tour","Info",JOptionPane.INFORMATION_MESSAGE);
                         }
-                    };
-                    eulerisationThread.start();
-                    break;
-                case SimulatedAnnealing:
-                    appGUI.setStatus("Eulerising graph");
-                    eulerisationThread = new Thread() {
-                        @Override
-                        public void run() {
-                            eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
-                            eulerisationAlgorithm.euleriseGraph(true);
+                        break;
+                    case NearestNeighbour:
+                        if(!EulerTourChecker.hasEulerTour(graph)) {
+                            appGUI.setStatus("Eulerising graph");
+                            eulerisationThread = new Thread() {
+                                @Override
+                                public void run() {
+                                    eulerisationAlgorithm = new NearestNeighbourAlgorithm(graph);
+                                    eulerisationAlgorithm.euleriseGraph(true);
+                                }
+                            };
+                            eulerisationThread.start();
                         }
-                    };
-                    eulerisationThread.start();
-                    break;
-                case FleuryAlgorithm:
-                    eulerTourAlgorithm = new FleurysAlgorithm();
-                    AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
-                    break;
-                case HierholzersAlgorithm:
-                    eulerTourAlgorithm = new HierholzersAlgorithm();
-                    AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
-                    break;
+                        break;
+                    case LocalSearch:
+                        if(!EulerTourChecker.hasEulerTour(graph)) {
+                            appGUI.setStatus("Eulerising graph");
+                            eulerisationThread = new Thread() {
+                                @Override
+                                public void run() {
+                                    eulerisationAlgorithm = new SimulatedAnnealing(graph,true);
+                                    eulerisationAlgorithm.euleriseGraph(true);
+                                }
+                            };
+                            eulerisationThread.start();
+                        }
+                        break;
+                    case SimulatedAnnealing:
+                        if(!EulerTourChecker.hasEulerTour(graph)) {
+                            appGUI.setStatus("Eulerising graph");
+                            eulerisationThread = new Thread() {
+                                @Override
+                                public void run() {
+                                    eulerisationAlgorithm = new SimulatedAnnealing(graph,false);
+                                    eulerisationAlgorithm.euleriseGraph(true);
+                                }
+                            };
+                            eulerisationThread.start();
+                        }
+                        break;
+                    case FleuryAlgorithm:
+                        eulerTourAlgorithm = new FleurysAlgorithm();
+                        AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
+                        break;
+                    case HierholzersAlgorithm:
+                        eulerTourAlgorithm = new HierholzersAlgorithm();
+                        AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
+                        break;
+                }
             }
         }
     }
@@ -130,9 +138,7 @@ public class RunButtonListener implements ActionListener {
             }
         }
         catch (NullPointerException e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null,"No task selected","No task",JOptionPane.INFORMATION_MESSAGE);
-
         }
         return null;
     }
