@@ -28,7 +28,7 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
             super.findSubGraphs();//there may be subGraphs if there are some edges
         }
         numberOfPhases = 6000;
-        numberOfTransitions = 500;
+        numberOfTransitions = 400;
         temperature = 1500.0;
         isTSP = graph.getNumberOfEdges()==0;
         currentConfig = initialiseConfig();

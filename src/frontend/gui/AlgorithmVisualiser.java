@@ -7,6 +7,7 @@ import backend.internalgraph.Node;
 import graphView.backend.GridCell;
 import graphView.backend.PathRouter;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class AlgorithmVisualiser {
 
     private static List<Node> nodePathList;
     private static Thread AlgorithmVisualisationThread;
-    private static boolean  paused = false;
+    private boolean  paused = false;
     private static GraphVisualiserPanel graphVisualiserPanel;
     private static ArrayList<Short> visualisedShortValues = new ArrayList<Short>();
     private int currentNodeI = 1;
@@ -79,7 +80,7 @@ public class AlgorithmVisualiser {
      * @param node2 -the next node
      */
     public static void visualiseNextAnimated(Node node1, Node node2) {
-        short edgeValue = getEdgeValueToTraverse(node1,node2);
+        short edgeValue = getEdgeValueToTraverse(node1,node2,true);
         visualisedShortValues.add(edgeValue);
         animateEdge(node1,node2,edgeValue,true);
     }
@@ -105,21 +106,27 @@ public class AlgorithmVisualiser {
         else {
             g2d.setColor(Color.BLACK);
         }
+        try {
+            for(int i=path.size()-1; i>=0; i--) {
+                g2d.fillRect(path.get(i).getCol() * graphVisualiserPanel.x, path.get(i).getRow() * graphVisualiserPanel.y,
+                        graphVisualiserPanel.x,graphVisualiserPanel.y);
 
-        for(int i=path.size()-1; i>=0; i--) {
-            g2d.fillRect(path.get(i).getCol() * graphVisualiserPanel.x, path.get(i).getRow() * graphVisualiserPanel.y,
-                         graphVisualiserPanel.x,graphVisualiserPanel.y);
-
-            if(i==path.size()/2) {
-                graphVisualiserPanel.revalidate();
-                graphVisualiserPanel.repaint();
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
+                if(i==path.size()/2) {
+                    graphVisualiserPanel.revalidate();
+                    graphVisualiserPanel.repaint();
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                 }
             }
         }
+        catch(NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "<html>The tour is "+nodePathList.toString()+"<br>" +
+                    "however due to edge crossing program is unable to visualise.</html>", "Unable to visualise", JOptionPane.INFORMATION_MESSAGE);
+        }
+
         graphVisualiserPanel.revalidate();
         graphVisualiserPanel.repaint();
     }
@@ -131,7 +138,7 @@ public class AlgorithmVisualiser {
      * @param node2 -the next node
      * @return short -edge value
      */
-    private static short getEdgeValueToTraverse(Node node1,Node node2) {
+    private static short getEdgeValueToTraverse(Node node1,Node node2,boolean goingForward) {
         ArrayList<Short> edgeValues = graphVisualiserPanel.viewGrid.getEdgeValues(node1, node2);
         short edgeValue = -1;
         if(edgeValues.size()==1) {
@@ -139,9 +146,18 @@ public class AlgorithmVisualiser {
         }
         else {
             //only traverse edges values not traversed (needed since there may be multiple edges between 2 nodes)
-            for(short value:edgeValues) {
-                if(!visualisedShortValues.contains(value)) {
-                    edgeValue = value;
+            if(goingForward) {
+                for(short value:edgeValues) {
+                    if(!visualisedShortValues.contains(value)) {
+                        edgeValue = value;
+                    }
+                }
+            }
+            else {
+                for(short value:edgeValues) {
+                    if(visualisedShortValues.contains(value)) {
+                        edgeValue = value;
+                    }
                 }
             }
         }
@@ -163,7 +179,7 @@ public class AlgorithmVisualiser {
             currentNodeI--;
             Node node1 = nodePathList.get(currentNodeI);
             Node node2 = nodePathList.get(currentNodeI + 1);
-            short edgeValue = getEdgeValueToTraverse(node1,node2);
+            short edgeValue = getEdgeValueToTraverse(node1,node2,false);
             visualisedShortValues.remove(new Short(edgeValue));
             animateEdge(node1,node2,edgeValue,false);
         }
@@ -175,7 +191,7 @@ public class AlgorithmVisualiser {
             currentNodeI++;
             Node node1 = nodePathList.get(currentNodeI-1);
             Node node2 = nodePathList.get(currentNodeI);
-            short edgeValue = getEdgeValueToTraverse(node1,node2);
+            short edgeValue = getEdgeValueToTraverse(node1,node2,true);
             visualisedShortValues.add(edgeValue);
             animateEdge(node1,node2,edgeValue,true);
         }

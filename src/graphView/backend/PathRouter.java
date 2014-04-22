@@ -167,7 +167,7 @@ public class PathRouter {
                     GridCell cell;
 
                     if(this.isAllowedToWalk(viewGrid.getOccupancyGridValue(row,col))||
-                      (row==endRow && col==endCol)) {
+                            (row==endRow && col==endCol)) {
 
                         isCuttingCorners= false;//isCuttingCorners(row, col, parentsRow, parentsCol);
                         cellIsEndCell = row==endRow && col==endCol;
@@ -288,7 +288,7 @@ public class PathRouter {
         if(row==parentsRow-1 && col==parentsCol-1) {
             //check to see if the east and the north cells are not traversable
             if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)) &&
-               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol))) {
+                    !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol))) {
                 return true;
             }
             return false;
@@ -297,7 +297,7 @@ public class PathRouter {
         else if(row ==parentsRow-1 && col==parentsCol+1) {
             //check to see if the west and the north cells are not traversable
             if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)) &&
-               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol))) {
+                    !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow-1,parentsCol))) {
                 return true;
             }
             return false;
@@ -306,7 +306,7 @@ public class PathRouter {
         else if(row==parentsRow+1 && col==parentsCol-1) {
             //check to see if the east and the south cells are not traversable
             if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol-1)) &&
-               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol))) {
+                    !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol))) {
                 return true;
             }
             return false;
@@ -315,7 +315,7 @@ public class PathRouter {
         else if(row==parentsRow+1 && col==parentsCol+1) {
             //check to see if the west and the south cells are not traversable
             if(!this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow,parentsCol+1)) &&
-               !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol))) {
+                    !this.isAllowedToWalk(viewGrid.getOccupancyGridValue(parentsRow+1,parentsCol))) {
                 return true;
             }
             return false;

@@ -99,10 +99,16 @@ public class RunButtonListener implements ActionListener {
                         break;
                     case FleuryAlgorithm:
                         eulerTourAlgorithm = new FleurysAlgorithm();
+                        if(AppGUI.algorithmVisualiser!=null) {
+                            AppGUI.algorithmVisualiser.endVisualisationThread();
+                        }
                         AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
                         break;
                     case HierholzersAlgorithm:
                         eulerTourAlgorithm = new HierholzersAlgorithm();
+                        if(AppGUI.algorithmVisualiser!=null) {
+                            AppGUI.algorithmVisualiser.endVisualisationThread();
+                        }
                         AppGUI.algorithmVisualiser = new AlgorithmVisualiser(graphVisualiserPanel,eulerTourAlgorithm);
                         break;
                 }
