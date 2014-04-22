@@ -3,8 +3,9 @@ package backend.algorithms;
 import backend.internalgraph.Node;
 
 /**
- * User: jayen
- * Date: 28/03/14, Time: 13:33
+ * This class has the heuristics
+ * for the algorithms
+ * Jayen kumar Jaentilal k1189304
  */
 public class Heuristics {
 
