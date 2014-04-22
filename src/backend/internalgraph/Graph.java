@@ -21,7 +21,7 @@ public class Graph {
 
     /**
      * Copy constructor for graph
-     * @param graph -graph to copy
+     * @param graph graph to copy
      */
     public Graph(Graph graph) {
         nodes = new HashMap<Node, List<Node>>();

@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- *
+ * This class sets up the foundation
+ * for the eulerisation algorithms
+ * Algorithms implementing eulerisation
+ * should extend this class.
  * Jayen kumar Jaentilal k1189304
  */
 public abstract class EulerisationAlgorithm {
@@ -20,6 +23,10 @@ public abstract class EulerisationAlgorithm {
     public Graph graph;
     public HashMap<Node,Node> nodes;
 
+    /**
+     * This method find all the sub-graphs
+     * (connected components) of the main graph
+     */
     public void findSubGraphs() {
         HashMap<Node,Node> marked = new HashMap<Node,Node>();
         Node[] nodeKeys = nodes.keySet().toArray(new Node[marked.size()]);
@@ -36,6 +43,13 @@ public abstract class EulerisationAlgorithm {
         }
     }
 
+    /**
+     * This method carries out a DFS and marks
+     * all the nodes reachable from the source node
+     * @param sourceNode the node to search from
+     * @param marked the marked nodes are all the nodes reachable
+     *               from the source node
+     */
     public void connectedNodesDFS(Node sourceNode,HashMap<Node,Node> marked) {
         marked.put(sourceNode,sourceNode);
         Iterator iterator = graph.getConnectedNodes(sourceNode).iterator();
@@ -49,6 +63,11 @@ public abstract class EulerisationAlgorithm {
         }
     }
 
+    /**
+     * Put all the nodes in the
+     * nodes HashMap
+     * @param nodes The HashMap to put the nodes in
+     */
     public void putAllNodes(HashMap<Node, Node> nodes) {
         Iterator iterator = graph.getNodes().iterator();
         Node node;
@@ -58,6 +77,11 @@ public abstract class EulerisationAlgorithm {
         }
     }
 
+    /**
+     * Put all the odd degree
+     * nodes in the HashMap
+     * @param nodes The HashMap to put the nodes in
+     */
     public void putAllOddNodes(HashMap<Node, Node> nodes) {
         Iterator iterator = graph.getNodes().iterator();
         Node node;

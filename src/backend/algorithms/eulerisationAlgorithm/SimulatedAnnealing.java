@@ -8,6 +8,8 @@ import frontend.gui.AppGUI;
 import java.util.*;
 
 /**
+ * This class implement the simulated
+ * annealing algorithm for eulerisation
  * Jayen kumar Jaentilal k1189304
  */
 public class SimulatedAnnealing extends EulerisationAlgorithm {
@@ -46,7 +48,6 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         double nextConfigCost;
         for(int phase = 0; phase<numberOfPhases; phase++) {
             for (int transition = 0; transition< numberOfTransitions; transition++) {
-                System.out.println("phase "+phase+" transition "+transition);
                 nextConfigCost = currentConfig.generateNeighbouringConfig();
                 if(nextConfigCost<bestConfig.getCost()) {
                     if(isTSP) {
@@ -84,6 +85,11 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * Generate the initial configuration
+     * for the simulated annealing algorithm
+     * @return
+     */
     private Configuration initialiseConfig() {
         if(isTSP) {
             return randomTSPConfig();
@@ -103,6 +109,14 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * This method randomly following
+     * a set of preferences connects
+     * all the sub-graphs
+     * @param edgesConfig the edges used to connect
+     *                    the sub-graphs will be added
+     *                    to the edgesConfig
+     */
     private void connectTheSubGraphs(ArrayList<Edge> edgesConfig) {
         HashSet<String> connectedSubGraphKeys = new HashSet<String>();
         connectedSubGraphKeys.add("subGraph0");
@@ -131,6 +145,11 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * Randomly eulerise a graph
+     * @param edgesConfig the edges used to eulerise
+     *                    will be added to the edgesConfig
+     */
     private void euleriseTheGraph(ArrayList<Edge> edgesConfig) {
         Node oddDegreeNode1;
         Node oddDegreeNode2;
@@ -154,6 +173,13 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         }
     }
 
+    /**
+     * Get a node that is part of the connected sub-graphs
+     * @param connectedSubGraphKeys the keys of the connected sub-graphs
+     * @return Node -a node in the connected sub-graph, if there are nodes
+     *               which have odd degree then they are returned else any
+     *               node with even degree is returned
+     */
     private Node getAConnectedNode(HashSet<String> connectedSubGraphKeys) {
         Iterator keysIterator = connectedSubGraphKeys.iterator();
         Node node = null;
@@ -170,6 +196,13 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         return node;
     }
 
+    /**
+     * Get a node that is part of the sub-graph given
+     * @param subGraphKeyToConnect the keys of the sub-graph to be connected
+     * @return Node -a node in the sub-graph, if there are nodes
+     *               which have odd degree then they are returned else any
+     *               node with even degree is returned
+     */
     private Node getAUnconnectedNode(String subGraphKeyToConnect) {
         List<Node> nodesList = Arrays.asList(super.subGraphs.get(subGraphKeyToConnect));
 
@@ -184,6 +217,13 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         return node;
     }
 
+    /**
+     * This method generates the config
+     * for when the problem is the TSP.
+     * The method generates a random solution
+     * for the problem
+     * @return TSPConfig -Config representing the random solution
+     */
     private TSPConfig randomTSPConfig() {
         ArrayList<Node> tspPath = new ArrayList<Node>();
         ArrayList<Node> unvisitedNodes = this.getAllNodes();
@@ -200,6 +240,15 @@ public class SimulatedAnnealing extends EulerisationAlgorithm {
         return new TSPConfig(tspPath);
     }
 
+    /**
+     * Get and remove a random node from
+     * the set of unvisited nodes.
+     * @param startNode the source node for the TSP
+     * @param unvisitedNodes set of nodes that still need to be visited
+     * @param randomGenerator the Random instance to be used for
+     *                        generating a random choice
+     * @return
+     */
     private Node removeNextRandomNode(Node startNode, ArrayList<Node> unvisitedNodes, Random randomGenerator) {
         //don't go back to the start node until the very end
         if(unvisitedNodes.size()==0) {

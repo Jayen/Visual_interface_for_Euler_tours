@@ -12,7 +12,12 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
-* Jayen kumar Jaentilal k1189304
+ * This class is the configuration
+ * for the non tsp graphs.
+ * Store all the required information
+ * for the configuration and provides
+ * methods manipulating the configuration
+ * Jayen kumar Jaentilal k1189304
 */
 public class Config implements Configuration {
 
@@ -48,6 +53,11 @@ public class Config implements Configuration {
         computeCost();
     }
 
+    /**
+     * Copy constructor for
+     * creating copying a Config
+     * @param config config to copy
+     */
     public Config(Config config) {
         this.edgesConfig = new ArrayList<Edge>();
         for (int i = 0; i < config.getNumberOfEdgesAdded(); i++) {
@@ -82,6 +92,11 @@ public class Config implements Configuration {
         return cost;
     }
 
+    /**
+     * This method changes the common node
+     * of the two random edges chosen
+     * @param commonNode
+     */
     private void changeCommonNode(Node commonNode) {
         /*
          find which sub-graph the commonNode is in
@@ -112,6 +127,11 @@ public class Config implements Configuration {
         }
     }
 
+    /**
+     * This method carries out
+     * the twoOptSwap for the
+     * two random edges chosen
+     */
     private void twoOptEdgeSwap() {
         String edge1Node1SubGraph = getContainingSubGraphKey(randomEdge1.getFirstNode());
         String edge1Node2SubGraph = getContainingSubGraphKey(randomEdge1.getSecondNode());
@@ -160,6 +180,17 @@ public class Config implements Configuration {
         }
     }
 
+    /**
+     * Get the crossing count between the 2 sets
+     * of graphs. The crossing count is the number of
+     * edges that connect sub-graphs in set one with
+     * sub-graphs in set two.
+     * @param set1Key1
+     * @param set1Key2
+     * @param set2Key1
+     * @param set2Key2
+     * @return
+     */
     private int getEdgesCrossingCount(String set1Key1, String set1Key2, String set2Key1, String set2Key2) {
         String edgeKey1;
         String edgeKey2;

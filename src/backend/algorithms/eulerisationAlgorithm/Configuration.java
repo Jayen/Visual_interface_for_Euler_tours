@@ -18,7 +18,6 @@ public interface Configuration {
      */
     public double generateNeighbouringConfig();
 
-
     /**
      * Undo the last configuration
      * that was generated
@@ -27,7 +26,7 @@ public interface Configuration {
 
     /**
      * Get the cost of the configuration
-     * @return
+     * @return double -the cost of the configuration
      */
     public double getCost();
 
