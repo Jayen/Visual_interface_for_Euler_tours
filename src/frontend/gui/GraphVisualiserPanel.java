@@ -40,7 +40,6 @@ public class GraphVisualiserPanel extends JPanel {
         Thread loadNewGraphThread = new Thread() {
             @Override
             public void run() {
-                System.out.println("drawing graph");
                 viewGrid.loadNewGraph(GraphVisualiserPanel.this.graph);
                 imageBuffer = new BufferedImage(viewGrid.rowLength()*x,viewGrid.colLength()*y,BufferedImage.TYPE_INT_RGB);
                 Graphics2D g2d = imageBuffer.createGraphics();
@@ -86,7 +85,6 @@ public class GraphVisualiserPanel extends JPanel {
                 GraphVisualiserPanel.this.revalidate();
                 GraphVisualiserPanel.this.repaint();
                 appGUI.clearStatus();
-                System.out.println("done drawing graph");
             }
         };
         loadNewGraphThread.start();
