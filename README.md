@@ -21,8 +21,8 @@ Nearest neighbour algorithm
 Local search
 Simulated annealing
 
-![Error loading image](https://raw.githubusercontent.com/Jayen//Visual_interface_for_Euler_tours/master/screenshots/screenshot.png)
+![Error loading image](https://raw.githubusercontent.com/Jayen/Visual_interface_for_Euler_tours/master/screenshots/screenshot.PNG)
 Usage
 
-![Error loading image](https://raw.githubusercontent.com/Jayen//Visual_interface_for_Euler_tours/master/screenshots/screenshot2.png)
+![Error loading image](https://raw.githubusercontent.com/Jayen/Visual_interface_for_Euler_tours/master/screenshots/screenshot2.PNG)
 Usage
