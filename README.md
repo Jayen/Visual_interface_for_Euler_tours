@@ -13,13 +13,13 @@ format defined in the help section of the program. Please see the test folder fo
 The program draws the graph in a way such that no edges cross if possible.
 
 Euler tour algorithms:
-Fleury's algorithm
-Hierholzer's algorithm
+- Fleury's algorithm
+- Hierholzer's algorithm
 
 Eulerisation algorithm:
-Nearest neighbour algorithm
-Local search
-Simulated annealing
+- Nearest neighbour algorithm
+- Local search
+- Simulated annealing
 
 ![Error loading image](https://raw.githubusercontent.com/Jayen/Visual_interface_for_Euler_tours/master/screenshots/screenshot.PNG)
 
