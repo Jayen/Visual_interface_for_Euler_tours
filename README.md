@@ -1,7 +1,7 @@
 Visual interface for Euler tours
 =========
 ----------------------------------------------------------------------------------
-Visual interface or Euler tours and Eulerisation algorithms for circuit board wiring.
+Visual interface for Euler tours and Eulerisation algorithms for circuit board wiring.
 --------------
 
 This program allows user to input a undirected graph and visualise its
